@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
+import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 import { LanguageProvider } from './context/LanguageContext';
 import { ThemeProvider } from './context/ThemeContext';
 import { Navbar } from './components/common/Navbar';
 import { Footer } from './components/common/Footer';
+import { pageTransition } from './lib/motion';
 
 // Pages
 import { HomePage } from './pages/HomePage';
@@ -21,22 +23,47 @@ import { LocalLanguagePage } from './pages/LocalLanguagePage';
 import { JoinPage } from './pages/JoinPage';
 import { ContactPage } from './pages/ContactPage';
 
-// Scroll to top helper on route navigation
+// ─── Scroll-to-top on route change ────────────────────────────────────────────
 const ScrollToTop = () => {
   const { pathname } = useLocation();
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   }, [pathname]);
   return null;
 };
 
-// Page content wrapper with subtle route transition
+// ─── Top scroll progress bar ──────────────────────────────────────────────────
+const ScrollProgressBar = () => {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
+
+  return (
+    <motion.div
+      style={{ scaleX }}
+      className="fixed top-0 left-0 right-0 h-[2px] bg-emerald-500 origin-left z-[9999] pointer-events-none"
+      aria-hidden="true"
+    />
+  );
+};
+
+// ─── Animated page wrapper ────────────────────────────────────────────────────
 const PageWrapper = ({ children }) => {
   const location = useLocation();
   return (
-    <div key={location.pathname} className="page-transition">
-      {children}
-    </div>
+    <AnimatePresence mode="wait" initial={false}>
+      <motion.div
+        key={location.pathname}
+        initial={pageTransition.initial}
+        animate={pageTransition.animate}
+        exit={pageTransition.exit}
+      >
+        {children}
+      </motion.div>
+    </AnimatePresence>
   );
 };
 
@@ -46,6 +73,7 @@ export default function App() {
       <LanguageProvider>
         <Router>
           <ScrollToTop />
+          <ScrollProgressBar />
           <div className="flex flex-col min-h-screen bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-200">
             <Navbar />
             <main className="flex-grow">
