@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#022c22" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f43f5e" />
+      <stop offset="100%" stop-color="#be123c" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24" />
+      <stop offset="100%" stop-color="#d97706" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <!-- Outer Ring -->
+  <circle cx="100" cy="100" r="92" fill="none" stroke="url(#primaryGrad)" stroke-width="4" stroke-dasharray="4 2" opacity="0.6"/>
+  <circle cx="100" cy="100" r="86" fill="url(#primaryGrad)" filter="url(#shadow)"/>
+
+  <!-- Inner Decorative Ring -->
+  <circle cx="100" cy="100" r="78" fill="#047857" stroke="url(#goldGrad)" stroke-width="2"/>
+  
+  <!-- Subtle Bangladesh Accent Ring / Sun Disc -->
+  <circle cx="100" cy="85" r="28" fill="url(#accentGrad)" opacity="0.9" />
+
+  <!-- Academic Graduation Cap -->
+  <g transform="translate(100, 72) scale(0.9)">
+    <!-- Cap Diamond -->
+    <polygon points="0,-16 38,0 0,16 -38,0" fill="#ffffff" filter="url(#shadow)"/>
+    <polygon points="0,-13 32,0 0,13 -32,0" fill="#f8fafc"/>
+    <!-- Cap Skull Base -->
+    <path d="M-22,6 C-22,18 22,18 22,6" fill="none" stroke="#e2e8f0" stroke-width="4"/>
+    <!-- Tassel -->
+    <path d="M12,4 L28,12 L30,24" fill="none" stroke="#fbbf24" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="30" cy="25" r="2.5" fill="#f59e0b"/>
+  </g>
+
+  <!-- Open Book of Knowledge -->
+  <g transform="translate(100, 115) scale(0.85)">
+    <!-- Left Page -->
+    <path d="M-4,0 C-15,-6 -30,-6 -42,-2 C-43,-2 -44,-1 -44,1 L-44,25 C-44,27 -43,28 -41,27 C-30,23 -16,23 -4,29 Z" fill="#ffffff" opacity="0.95"/>
+    <!-- Right Page -->
+    <path d="M4,0 C15,-6 30,-6 42,-2 C43,-2 44,-1 44,1 L44,25 C44,27 43,28 41,27 C30,23 16,23 4,29 Z" fill="#ffffff" opacity="0.95"/>
+    <!-- Book Spine -->
+    <path d="M0,-1 L0,30" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/>
+    <!-- Page lines left -->
+    <line x1="-12" y1="7" x2="-35" y2="4" stroke="#047857" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
+    <line x1="-12" y1="13" x2="-35" y2="10" stroke="#047857" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
+    <line x1="-12" y1="19" x2="-30" y2="16" stroke="#047857" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
+    <!-- Page lines right -->
+    <line x1="12" y1="7" x2="35" y2="4" stroke="#047857" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
+    <line x1="12" y1="13" x2="35" y2="10" stroke="#047857" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
+    <line x1="12" y1="19" x2="30" y2="16" stroke="#047857" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
+  </g>
+
+  <!-- Unity Bridge / Titas Wave Ribbon at Bottom -->
+  <path d="M50,146 Q100,162 150,146 Q100,172 50,146 Z" fill="url(#goldGrad)" opacity="0.95"/>
+
+  <!-- Text: BSA-DIU -->
+  <text x="100" y="174" text-anchor="middle" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-weight="800" font-size="14" fill="#ffffff" letter-spacing="3">BSA • DIU</text>
+
+  <!-- Laurel Wreath branches -->
+  <g fill="#fbbf24" opacity="0.8">
+    <circle cx="34" cy="90" r="3"/>
+    <circle cx="30" cy="105" r="3"/>
+    <circle cx="32" cy="120" r="3"/>
+    <circle cx="166" cy="90" r="3"/>
+    <circle cx="170" cy="105" r="3"/>
+    <circle cx="168" cy="120" r="3"/>
+  </g>
+</svg>

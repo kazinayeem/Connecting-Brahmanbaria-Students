@@ -1,0 +1,72 @@
+export const noticesData = [
+  {
+    id: "not-1",
+    titleBn: "জরুরি রক্তদান নেটওয়ার্ক তালিকা হালনাগাদকরণ প্রসঙ্গে",
+    titleEn: "Urgent Update: Student Blood Donation Directory 2026",
+    dateBn: "১৮ সেপ্টেম্বর, ২০২৬",
+    dateEn: "September 18, 2026",
+    category: "important",
+    categoryBn: "জরুরি",
+    categoryEn: "Important",
+    descBn: "ক্যাম্পাসে যেকোনো সহপাঠী বা তাদের পরিবারের চিকিৎসাজনিত জরুরি রক্তদানের সুবিধার্থে নতুন ও পুরাতন সকল সদস্যকে রক্তের গ্রুপ আপডেট করার অনুরোধ করা হচ্ছে।",
+    descEn: "All BSA-DIU members are urgently requested to verify their blood group in the voluntary donor registry for emergency campus patient support.",
+    contentBn: "সম্মানিত সদস্যবৃন্দ, আমাদের অ্যাসোসিয়েশনের অন্যতম প্রধান মানবিক উদ্যোগ হলো ২৪/৭ জরুরি রক্তদান নেটওয়ার্ক। বিগত সেমিস্টারে আমাদের সদস্যরা ডিআইইউ পরিবার ও সাভার-ঢাকার বিভিন্ন হাসপাতালে রেকর্ড সংখ্যক ব্যাগ রক্ত সরবরাহ করেছে। আপনার বর্তমান মোবাইল নম্বর ও রক্তের গ্রুপ ডাটাবেজে হালনাগাদ রাখুন যাতে সংকটের মুহূর্তে তাৎক্ষণিক জীবন রক্ষায় ভূমিকা রাখা যায়।",
+    contentEn: "Dear members, one of our key humanitarian initiatives is our 24/7 voluntary blood donor network. During emergency calls across Savar and Dhaka hospitals, our quick response has saved lives. Please ensure your current mobile contact and blood group are up to date on your student profile."
+  },
+  {
+    id: "not-2",
+    titleBn: "ফল সেমিস্টার ২০২৬ এর নতুন সদস্য নিবন্ধন শুরু",
+    titleEn: "Fall 2026 General Membership Registration Now Open",
+    dateBn: "১০ সেপ্টেম্বর, ২০২৬",
+    dateEn: "September 10, 2026",
+    category: "membership",
+    categoryBn: "সদস্যপদ",
+    categoryEn: "Membership",
+    descBn: "ড্যাফোডিল ইন্টারন্যাশনাল ইউনিভার্সিটিতে ভর্তি হওয়া ব্রাহ্মণবাড়িয়া জেলার সকল নবীনের জন্য অনলাইন সদস্য নিবন্ধন কার্যক্রম উন্মুক্ত করা হলো।",
+    descEn: "Online membership registration is now open for all incoming Fall 2026 freshmen from Brahmanbaria studying at DIU.",
+    contentBn: "ডিআইইউ-তে অধ্যয়নরত সকল নবাগত ও অধ্যয়নরত ব্রাহ্মণবাড়িয়ার ভাই-বোনদের অবগতির জন্য জানানো যাচ্ছে যে, অ্যাসোসিয়েশনের অফিশিয়াল ওয়েবসাইটের 'সদস্য হোন' লিংকের মাধ্যমে অনলাইনে তথ্য জমা দেওয়া যাবে। সদস্য নিবন্ধনে কোনো ফি প্রযোজ্য নয়।",
+    contentEn: "All newly admitted students from Brahmanbaria are cordially invited to complete their free online membership registration via the 'Join Us' page on our association portal."
+  },
+  {
+    id: "not-3",
+    titleBn: "মিডটার্ম পরীক্ষার প্রস্তুতিমূলক পিয়ার স্টাডি গ্রুপ গঠন",
+    titleEn: "Formation of Midterm Peer Study Groups (CSE, SWE, BBA)",
+    dateBn: "০২ সেপ্টেম্বর, ২০২৬",
+    dateEn: "September 02, 2026",
+    category: "academic",
+    categoryBn: "একাডেমিক",
+    categoryEn: "Academic",
+    descBn: "আসন্ন মিডটার্ম পরীক্ষাকে সামনে রেখে বিভিন্ন কঠিন কোর্সে সিনিয়রদের তত্ত্বাবধানে যৌথ স্টাডি সেশন আয়োজন করা হচ্ছে।",
+    descEn: "Collaborative study circles led by high-achieving seniors are being organized to prepare for the upcoming university midterm examinations.",
+    contentBn: "লাইব্রেরির গ্রুপ স্টাডি রুমে প্রতিদিন বিকাল ৪টা থেকে সন্ধ্যা ৬টা পর্যন্ত সিএসই, সফটওয়্যার ইঞ্জিনিয়ারিং ও ব্যবসায় প্রশাসনের জটিল বিষয়গুলোর ওপর নিয়মিত কনসেপ্ট ক্লিয়ারিং ও অ্যালগরিদম প্র্যাকটিস সেশন চলবে। আগ্রহী শিক্ষার্থীরা সংশ্লিষ্ট ব্যাচ প্রতিনিধির সাথে যোগাযোগ করুন।",
+    contentEn: "Daily peer revision circles will be hosted in the DIU Central Library Group Study Zone from 4:00 PM to 6:00 PM covering complex data structures, algorithms, and financial accounting concepts."
+  },
+  {
+    id: "not-4",
+    titleBn: "বার্ষিক শিক্ষার্থী মিলনমেলা ২০২৬ এর আয়োজক কমিটি আহ্বান",
+    titleEn: "Call for Volunteers: Annual Student Reunion Organizing Team",
+    dateBn: "২৫ আগস্ট, ২০২৬",
+    dateEn: "August 25, 2026",
+    category: "event",
+    categoryBn: "ইভেন্ট",
+    categoryEn: "Event",
+    descBn: "আসন্ন বার্ষিক মিলনমেলা ও সাংস্কৃতিক সন্ধ্যা সুন্দরভাবে সম্পন্ন করতে আগ্রহী উদ্যমী স্বেচ্ছাসেবকদের আবেদন আহ্বান করা যাচ্ছে।",
+    descEn: "Calling motivated member volunteers to join the organizing, stage management, and welcoming committees for the upcoming Annual Reunion.",
+    contentBn: "বার্ষিক শিক্ষার্থী মিলনমেলা ২০২৬ আয়োজনের লক্ষে লজিস্টিকস, কালচারাল, ফুড অ্যান্ড হসপিটালিটি এবং ফটোগ্রাফি টিমে কাজ করতে ইচ্ছুক সদস্যদের কার্যনির্বাহী পরিষদের প্রচার বা সাংগঠনিক সম্পাদকের সাথে যোগাযোগের অনুরোধ করা হচ্ছে।",
+    contentEn: "Interested members willing to contribute in event management, stage decor, guest reception, and photography are encouraged to contact our organizing secretary."
+  },
+  {
+    id: "not-5",
+    titleBn: "ডিআইইউ ক্যাম্পাসে অ্যাসোসিয়েশনের মাসিক সাধারণ সভা",
+    titleEn: "Monthly General Meeting Notice at Ashulia Campus",
+    dateBn: "১৫ আগস্ট, ২০২৬",
+    dateEn: "August 15, 2026",
+    category: "general",
+    categoryBn: "সাধারণ",
+    categoryEn: "General",
+    descBn: "চলতি সেমিস্টারের পরিকল্পনা প্রণয়ন ও বাজেট অনুমোদনের লক্ষ্যে অ্যাসোসিয়েশনের সকল সদস্য ও প্রতিনিধির জরুরি সভা।",
+    descEn: "All members and batch representatives are cordially invited to the monthly open assembly to discuss upcoming semester initiatives.",
+    contentBn: "স্থান: স্টুডেন্ট লাউঞ্জ-০২, গ্রিন ক্যাম্পাস, আশুলিয়া। সময়: বিকাল ০৪:৩০ ঘটিকা। আলোচ্যসূচি: বার্ষিক ক্রীড়া টুর্নামেন্ট নির্ধারণ এবং জেলা সংযোগ কার্যক্রম জোরদারকরণ।",
+    contentEn: "Venue: Student Lounge 02, DIU Smart City, Ashulia. Time: 4:30 PM. Agenda: Annual sports fixtures and inter-upazila student networking roadmap."
+  }
+];

@@ -1,0 +1,250 @@
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useLanguage } from '../context/LanguageContext';
+import { Hero } from '../components/home/Hero';
+import { NoticeTicker } from '../components/home/NoticeTicker';
+import { AboutPreview } from '../components/home/AboutPreview';
+import { ActivityGrid } from '../components/home/ActivityGrid';
+import { UpazilaHighlight } from '../components/home/UpazilaHighlight';
+import { LatestEvents } from '../components/home/LatestEvents';
+import { SectionHeader } from '../components/common/SectionHeader';
+import { NoticeCard } from '../components/notices/NoticeCard';
+import { Modal } from '../components/common/Modal';
+import { noticesData } from '../data/noticesData';
+import { galleryData } from '../data/galleryData';
+import { 
+  ArrowRight, UserPlus, Bell, Image as ImageIcon, 
+  Sparkles, CheckCircle2, ShieldCheck, Heart, Compass 
+} from 'lucide-react';
+
+export const HomePage = () => {
+  const { lang, t } = useLanguage();
+  const [selectedNotice, setSelectedNotice] = useState(null);
+
+  const recentNotices = noticesData.slice(0, 3);
+  const galleryTeaser = galleryData.slice(0, 4);
+
+  return (
+    <div className="space-y-0">
+      {/* Urgent Notice Ticker */}
+      <NoticeTicker />
+
+      {/* Hero Section */}
+      <Hero />
+
+      {/* About Highlights */}
+      <AboutPreview />
+
+      {/* Core Activities Grid */}
+      <ActivityGrid />
+
+      {/* Brahmanbaria Connection - 9 Upazilas */}
+      <UpazilaHighlight />
+
+      {/* Explore Brahmanbaria Teaser Banner */}
+      <section className="py-12 bg-gradient-to-r from-brand-950 via-slate-900 to-brand-950 text-white relative overflow-hidden border-y border-emerald-800/40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-8 bg-emerald-950/40 p-8 sm:p-10 rounded-3xl border border-emerald-700/50 backdrop-blur-md">
+            <div className="space-y-3 text-center lg:text-left max-w-2xl">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-amber-500 text-slate-950 shadow-sm">
+                <Sparkles className="w-3.5 h-3.5 fill-slate-950" />
+                <span>{t('explore.badge')}</span>
+              </div>
+              <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">
+                {t('explore.title')}
+              </h3>
+              <p className="text-sm sm:text-base text-emerald-200/90 leading-relaxed">
+                {t('explore.subtitle')}
+              </p>
+              <div className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-2.5 text-xs text-slate-300">
+                <span className="bg-white/10 px-3 py-1 rounded-full">🏛️ {lang === 'bn' ? 'ঐতিহাসিক স্থান' : 'Historic Places'}</span>
+                <span className="bg-white/10 px-3 py-1 rounded-full">🍬 {lang === 'bn' ? 'জিআই সনদপ্রাপ্ত ছানামুখী' : 'GI-Certified Chhanamukhi'}</span>
+                <span className="bg-white/10 px-3 py-1 rounded-full">🎵 {lang === 'bn' ? 'ওস্তাদ আলাউদ্দিন খাঁ' : 'Ustad Alauddin Khan'}</span>
+                <span className="bg-white/10 px-3 py-1 rounded-full">🌊 {lang === 'bn' ? 'তিতাস ও মেঘনা নদী' : 'Titas & Meghna'}</span>
+              </div>
+            </div>
+
+            <Link
+              to="/explore"
+              className="shrink-0 inline-flex items-center gap-2.5 px-8 py-4 rounded-2xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black text-sm sm:text-base shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+            >
+              <Compass className="w-5 h-5 text-slate-950" />
+              <span>{lang === 'bn' ? 'ব্রাহ্মণবাড়িয়া ঘুরে দেখুন' : 'Explore Compendium'}</span>
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Upcoming Events Section */}
+      <LatestEvents />
+
+      {/* Notice Board Preview Section */}
+      <section className="py-20 bg-white relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
+            <div>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase mb-2 bg-crimson-100 text-crimson-800 border border-crimson-300">
+                <Bell className="w-3.5 h-3.5" />
+                <span>{t('notices.badge')}</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-black text-slate-900">
+                {t('notices.title')}
+              </h2>
+              <p className="text-sm text-slate-600 mt-1">
+                {t('notices.subtitle')}
+              </p>
+            </div>
+
+            <Link
+              to="/notices"
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-700 hover:text-brand-900 bg-brand-50 hover:bg-brand-100 px-4 py-2.5 rounded-xl border border-brand-200 transition-colors shrink-0"
+            >
+              <span>{lang === 'bn' ? 'সকল নোটিশ দেখুন' : 'All Announcements'}</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {recentNotices.map((notice) => (
+              <NoticeCard
+                key={notice.id}
+                notice={notice}
+                onSelect={(n) => setSelectedNotice(n)}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Photo Gallery Teaser */}
+      <section className="py-20 bg-slate-900 text-white relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
+            <div>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase mb-2 bg-emerald-950 text-emerald-300 border border-emerald-700/60">
+                <ImageIcon className="w-3.5 h-3.5" />
+                <span>{t('gallery.badge')}</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-black text-white">
+                {t('gallery.title')}
+              </h2>
+              <p className="text-sm text-slate-400 mt-1">
+                {t('gallery.subtitle')}
+              </p>
+            </div>
+
+            <Link
+              to="/gallery"
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-300 hover:text-white bg-emerald-900/60 hover:bg-emerald-800/80 px-4 py-2.5 rounded-xl border border-emerald-700 transition-colors shrink-0"
+            >
+              <span>{lang === 'bn' ? 'পূর্ণাঙ্গ গ্যালারি দেখুন' : 'View Full Gallery'}</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {galleryTeaser.map((item) => (
+              <div
+                key={item.id}
+                className="group relative rounded-2xl overflow-hidden bg-slate-800 h-64 border border-slate-700/60"
+              >
+                <img
+                  src={item.image}
+                  alt={lang === 'bn' ? item.titleBn : item.titleEn}
+                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent"></div>
+                <div className="absolute bottom-0 inset-x-0 p-4">
+                  <span className="text-[10px] uppercase font-bold text-emerald-400 block mb-1">
+                    {item.date}
+                  </span>
+                  <h4 className="text-xs sm:text-sm font-bold text-white line-clamp-2">
+                    {lang === 'bn' ? item.titleBn : item.titleEn}
+                  </h4>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Join Community CTA Banner */}
+      <section className="py-16 bg-gradient-to-r from-brand-800 via-emerald-900 to-brand-950 text-white relative overflow-hidden">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center space-y-6">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-crimson-600/90 text-white text-xs font-bold shadow-sm">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>{lang === 'bn' ? 'ডিআইইউ শিক্ষার্থীদের জন্য উন্মুক্ত' : 'Open for all Brahmanbaria students at DIU'}</span>
+          </div>
+
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight">
+            {lang === 'bn' 
+              ? 'আপনি কি ব্রাহ্মণবাড়িয়ার সন্তান ও ডিআইইউ শিক্ষার্থী?' 
+              : 'Are You from Brahmanbaria & Studying at DIU?'}
+          </h2>
+
+          <p className="text-base sm:text-lg text-emerald-100/90 max-w-2xl mx-auto font-normal">
+            {lang === 'bn'
+              ? 'আমাদের শিক্ষার্থী পরিবারে আজই নিবন্ধন করে যুক্ত হোন স্টাডি গ্রুপ, ক্যারিয়ার ওয়ার্কশপ ও বাৎসরিক মিলনমেলায়।'
+              : 'Join our student brotherhood today to access peer study circles, career workshops, blood donation network, and joyous reunions.'}
+          </p>
+
+          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              to="/join"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-base font-bold text-white bg-gradient-to-r from-crimson-600 to-rose-700 hover:from-crimson-500 hover:to-rose-600 shadow-xl shadow-crimson-950/40 transition-transform transform hover:-translate-y-0.5 active:translate-y-0"
+            >
+              <UserPlus className="w-5 h-5" />
+              <span>{t('nav.join')}</span>
+            </Link>
+
+            <Link
+              to="/contact"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-base font-bold text-white bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-sm transition-colors"
+            >
+              <span>{t('nav.contact')}</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Notice Detail Modal */}
+      <Modal
+        isOpen={!!selectedNotice}
+        onClose={() => setSelectedNotice(null)}
+        title={selectedNotice ? (lang === 'bn' ? selectedNotice.titleBn : selectedNotice.titleEn) : ''}
+      >
+        {selectedNotice && (
+          <div className="space-y-4 text-slate-700">
+            <div className="flex items-center justify-between text-xs text-slate-400 pb-2 border-b border-slate-100">
+              <span className="font-bold text-brand-700">
+                {lang === 'bn' ? selectedNotice.categoryBn : selectedNotice.categoryEn}
+              </span>
+              <span>
+                {t('notices.publishedOn')} {lang === 'bn' ? selectedNotice.dateBn : selectedNotice.dateEn}
+              </span>
+            </div>
+
+            <p className="text-sm font-semibold text-slate-900 leading-relaxed">
+              {lang === 'bn' ? selectedNotice.descBn : selectedNotice.descEn}
+            </p>
+
+            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80 text-sm leading-relaxed text-slate-700 whitespace-pre-line">
+              {lang === 'bn' ? selectedNotice.contentBn : selectedNotice.contentEn}
+            </div>
+
+            <div className="pt-2 flex justify-end">
+              <button
+                type="button"
+                onClick={() => setSelectedNotice(null)}
+                className="px-5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-xs font-bold text-slate-700 transition-colors"
+              >
+                {t('notices.close')}
+              </button>
+            </div>
+          </div>
+        )}
+      </Modal>
+    </div>
+  );
+};

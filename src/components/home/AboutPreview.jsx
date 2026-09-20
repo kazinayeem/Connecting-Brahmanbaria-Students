@@ -1,0 +1,106 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useLanguage } from '../../context/LanguageContext';
+import { SectionHeader } from '../common/SectionHeader';
+import { 
+  Compass, Eye, Target, BookOpen, 
+  ArrowRight, CheckCircle2, Sparkles, Users 
+} from 'lucide-react';
+
+export const AboutPreview = () => {
+  const { t, lang } = useLanguage();
+
+  const cards = [
+    {
+      icon: BookOpen,
+      title: t('about.storyTitle'),
+      desc: t('about.storyDesc'),
+      color: "from-emerald-500 to-teal-700"
+    },
+    {
+      icon: Target,
+      title: t('about.purposeTitle'),
+      desc: t('about.purposeDesc'),
+      color: "from-blue-500 to-indigo-700"
+    },
+    {
+      icon: Eye,
+      title: t('about.visionTitle'),
+      desc: t('about.visionDesc'),
+      color: "from-purple-500 to-indigo-700"
+    },
+    {
+      icon: Compass,
+      title: t('about.missionTitle'),
+      desc: t('about.missionDesc'),
+      color: "from-rose-500 to-crimson-700"
+    }
+  ];
+
+  return (
+    <section className="py-20 bg-white relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <SectionHeader
+          badge={t('about.badge')}
+          title={t('about.title')}
+          subtitle={t('about.subtitle')}
+        />
+
+        {/* 4 Pillars Grid (Story, Purpose, Vision, Mission) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {cards.map((card, idx) => {
+            const Icon = card.icon;
+            return (
+              <div 
+                key={idx}
+                className="group relative rounded-2xl p-6 bg-slate-50 border border-slate-200/80 hover:border-brand-500/50 hover:bg-white hover:shadow-soft-lg transition-all duration-300 flex flex-col justify-between"
+              >
+                <div>
+                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${card.color} text-white flex items-center justify-center shadow-md mb-5 group-hover:scale-110 transition-transform`}>
+                    <Icon className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900 mb-2.5 group-hover:text-brand-700 transition-colors">
+                    {card.title}
+                  </h3>
+                  <p className="text-sm text-slate-600 leading-relaxed line-clamp-4">
+                    {card.desc}
+                  </p>
+                </div>
+
+                <div className="mt-6 pt-4 border-t border-slate-200/60 flex items-center text-xs font-semibold text-brand-700 group-hover:text-brand-800">
+                  <span>{lang === 'bn' ? 'বিস্তারিত পড়ুন' : 'Read details'}</span>
+                  <ArrowRight className="w-3.5 h-3.5 ml-1 transform group-hover:translate-x-1 transition-transform" />
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Bottom Banner linking to full About Page */}
+        <div className="mt-12 rounded-2xl bg-gradient-to-r from-brand-900 to-emerald-950 p-8 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="space-y-2 text-center md:text-left">
+            <h4 className="text-xl font-bold flex items-center justify-center md:justify-start gap-2">
+              <Sparkles className="w-5 h-5 text-emerald-400" />
+              <span>{lang === 'bn' ? 'আমাদের পরিবারে সবাইকে স্বাগতম' : 'Everyone is Welcomed in Our Student Family'}</span>
+            </h4>
+            <p className="text-sm text-slate-300 max-w-xl">
+              {lang === 'bn' 
+                ? 'ব্রাহ্মণবাড়িয়া থেকে ডিআইইউ-তে আসা প্রতিটি নতুন শিক্ষার্থীর পাশে ছায়ার মতো থাকে বিএসএ-ডিআইইউ।'
+                : 'BSA-DIU stands by every Brahmanbaria student at DIU, offering warm academic and social guidance from day one.'}
+            </p>
+          </div>
+
+          <Link
+            to="/about"
+            className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white text-brand-900 font-bold hover:bg-emerald-50 shadow-md transition-colors text-sm"
+          >
+            <span>{lang === 'bn' ? 'আমাদের সম্পূর্ণ পরিচিতি' : 'Full About Page'}</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+
+      </div>
+    </section>
+  );
+};
