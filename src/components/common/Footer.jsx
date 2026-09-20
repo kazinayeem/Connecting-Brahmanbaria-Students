@@ -7,7 +7,7 @@ import {
 } from 'lucide-react';
 
 export const Footer = () => {
-  const { t, lang } = useLanguage();
+  const { t, lang, isBb, isBn, isEn } = useLanguage();
 
   return (
     <footer className="bg-gradient-to-b from-slate-900 to-brand-950 text-slate-300 border-t border-emerald-900/60 pt-12 sm:pt-16 pb-8 sm:pb-10">
@@ -25,7 +25,7 @@ export const Footer = () => {
                   BSA • DIU
                 </span>
                 <span className="text-xs text-emerald-400 font-semibold">
-                  {lang === 'bn' ? 'ব্রাহ্মণবাড়িয়া স্টুডেন্টস অ্যাসোসিয়েশন' : 'Brahmanbaria Students Association'}
+                  {isBb ? 'বাউনবাইরা স্টুডেন্টস অ্যাসোসিয়েশন' : isBn ? 'ব্রাহ্মণবাড়িয়া স্টুডেন্টস অ্যাসোসিয়েশন' : 'Brahmanbaria Students Association'}
                 </span>
               </div>
             </div>
@@ -83,6 +83,11 @@ export const Footer = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/local-language" className="text-teal-400 hover:text-teal-300 font-bold transition-colors flex items-center gap-1.5">
+                  <span className="text-teal-400">🗣</span> {isBb ? 'আমাগো ভাষা' : isBn ? 'আঞ্চলিক ভাষা' : 'Local Dialect'}
+                </Link>
+              </li>
+              <li>
                 <Link to="/history" className="text-emerald-400 hover:text-emerald-300 font-bold transition-colors flex items-center gap-1.5">
                   <Landmark className="w-3.5 h-3.5 text-emerald-400" /> {t('nav.history')}
                 </Link>
@@ -118,12 +123,12 @@ export const Footer = () => {
             <ul className="space-y-2 text-sm">
               <li>
                 <Link to="/activities" className="text-slate-400 hover:text-emerald-400 transition-colors flex items-center gap-1.5">
-                  <span className="text-emerald-500">›</span> {lang === 'bn' ? 'একাডেমিক সহযোগিতা' : 'Academic Support'}
+                  <span className="text-emerald-500">›</span> {isBb ? 'লেখাপড়ার সাহায্য-সহযোগিতা' : isBn ? 'একাডেমিক সহযোগিতা' : 'Academic Support'}
                 </Link>
               </li>
               <li>
                 <Link to="/activities" className="text-slate-400 hover:text-emerald-400 transition-colors flex items-center gap-1.5">
-                  <span className="text-emerald-500">›</span> {lang === 'bn' ? 'ক্যারিয়ার কর্মশালা' : 'Career Workshops'}
+                  <span className="text-emerald-500">›</span> {isBb ? 'ক্যারিয়ার কামকাজ ও কর্মশালা' : isBn ? 'ক্যারিয়ার কর্মশালা' : 'Career Workshops'}
                 </Link>
               </li>
               <li>
@@ -158,9 +163,7 @@ export const Footer = () => {
               <div className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" />
                 <span>
-                  {lang === 'bn' 
-                    ? 'ড্যাফোডিল স্মার্ট সিটি, বিরুলিয়া, আশুলিয়া, সাভার, ঢাকা'
-                    : 'Daffodil Smart City, Birulia, Ashulia, Savar, Dhaka'}
+                  {isEn ? 'Daffodil Smart City, Birulia, Ashulia, Savar, Dhaka' : 'ড্যাফোডিল স্মার্ট সিটি, বিরুলিয়া, আশুলিয়া, সাভার, ঢাকা'}
                 </span>
               </div>
               <div className="flex items-center gap-2">
@@ -176,7 +179,7 @@ export const Footer = () => {
             <div className="pt-2">
               <div className="inline-flex items-center gap-1.5 bg-emerald-950/80 border border-emerald-800/70 px-3 py-1.5 rounded-lg text-xs text-emerald-300">
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-                <span>{lang === 'bn' ? 'অরাজনৈতিক ও অলাভজনক' : 'Non-Political & Non-Profit'}</span>
+                <span>{isEn ? 'Non-Political & Non-Profit' : 'অরাজনৈতিক ও অলাভজনক'}</span>
               </div>
             </div>
           </div>
@@ -193,10 +196,10 @@ export const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <p>
-            © 2026 {lang === 'bn' ? 'ব্রাহ্মণবাড়িয়া স্টুডেন্টস অ্যাসোসিয়েশন, ড্যাফোডিল ইন্টারন্যাশনাল ইউনিভার্সিটি' : 'Brahmanbaria Students Association, Daffodil International University'}. {t('footer.rights')}
+            © 2026 {isBb ? 'বাউনবাইরা স্টুডেন্টস অ্যাসোসিয়েশন, ড্যাফোডিল ইন্টারন্যাশনাল ইউনিভার্সিটি' : isBn ? 'ব্রাহ্মণবাড়িয়া স্টুডেন্টস অ্যাসোসিয়েশন, ড্যাফোডিল ইন্টারন্যাশনাল ইউনিভার্সিটি' : 'Brahmanbaria Students Association, Daffodil International University'}. {t('footer.rights')}
           </p>
           <div className="flex items-center gap-1 text-slate-400">
-            <span>{lang === 'bn' ? 'ব্রাহ্মণবাড়িয়ার শিক্ষার্থীদের ভালোবাসায় নির্মিত' : 'Crafted with unity for Brahmanbaria students at DIU'}</span>
+            <span>{isBb ? 'বাউনবাইরার ছাওয়াল-মাইয়াগো ভালোবাসায় বানাইছি' : isBn ? 'ব্রাহ্মণবাড়িয়ার শিক্ষার্থীদের ভালোবাসায় নির্মিত' : 'Crafted with unity for Brahmanbaria students at DIU'}</span>
             <Heart className="w-3.5 h-3.5 text-crimson-500 inline fill-crimson-500 ml-1" />
           </div>
         </div>

@@ -7,7 +7,7 @@ import {
 } from 'lucide-react';
 
 export const FunCultureSection = () => {
-  const { lang } = useLanguage();
+  const { lang, isBb, isBn, isEn, isBanglaScript } = useLanguage();
   const [selectedItem, setSelectedItem] = useState(null);
   const scrollContainerRef = useRef(null);
 
@@ -78,21 +78,25 @@ export const FunCultureSection = () => {
             {/* Friendly Badge */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-amber-100 dark:bg-amber-950/70 text-amber-900 dark:text-amber-300 border border-amber-300/80 dark:border-amber-700/60 shadow-2xs">
               <Coffee className="w-4 h-4 text-amber-700 dark:text-amber-400" />
-              <span>{lang === 'bn' ? 'লোকজ আড্ডা ও রসিকতা' : 'Local Folklore & Warm Humor'}</span>
+              <span>{isBb ? 'আমাগো আড্ডা আর রঙ্গ-রসিকতা' : isBn ? 'লোকজ আড্ডা ও রসিকতা' : 'Local Folklore & Warm Humor'}</span>
             </div>
 
             {/* Main Headline */}
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
-              {lang === 'bn' 
-                ? 'ব্রাহ্মণবাড়িয়ার কিছু মজার পরিচিতি' 
-                : 'Fun Facts & Folklore of Brahmanbaria'}
+              {isBb
+                ? 'বাউনবাইরার কিচ্ছু মজার পরিচয়'
+                : isBn 
+                  ? 'ব্রাহ্মণবাড়িয়ার কিছু মজার পরিচিতি' 
+                  : 'Fun Facts & Folklore of Brahmanbaria'}
             </h2>
 
             {/* Contextual description - strictly framed as humor/folklore */}
             <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-              {lang === 'bn'
-                ? 'আমাদের জেলার মানুষ যেমন অতিথিপরায়ণ, প্রাণবন্ত ও আড্ডাপ্রিয়—তেমনি “ব্রাহ্মণবাড়িয়ার ঝগড়া” নিয়েও আছে নানা মজার গল্প ও লোকমুখে প্রচলিত কথা।'
-                : 'Known for warm hospitality, lively conversations and a strong sense of community, Brahmanbaria also has a humorous local reputation for its legendary "jhogra" stories.'}
+              {isBb
+                ? 'আমাগো বাউনবাইরার মানুষ যেমন মেহমানদার, দিলখোলা আর আড্ডাবাজ—তেমনি বাউনবাইরার হুজ্জত-ঝগড়া লইয়াও কত মজার কিচ্ছা প্রচলিত!'
+                : isBn
+                  ? 'আমাদের জেলার মানুষ যেমন অতিথিপরায়ণ, প্রাণবন্ত ও আড্ডাপ্রিয়—তেমনি “ব্রাহ্মণবাড়িয়ার ঝগড়া” নিয়েও আছে নানা মজার গল্প ও লোকমুখে প্রচলিত কথা।'
+                  : 'Known for warm hospitality, lively conversations and a strong sense of community, Brahmanbaria also has a humorous local reputation for its legendary "jhogra" stories.'}
             </p>
           </div>
 
@@ -137,7 +141,7 @@ export const FunCultureSection = () => {
                 <div className="relative h-48 sm:h-52 overflow-hidden bg-slate-900">
                   <img
                     src={item.image}
-                    alt={lang === 'bn' ? item.topicBn : item.topicEn}
+                    alt={isBanglaScript ? item.topicBn : item.topicEn}
                     className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                   />
@@ -146,7 +150,7 @@ export const FunCultureSection = () => {
                   {/* Topic Pill */}
                   <div className="absolute top-3 left-3">
                     <span className="px-2.5 py-1 rounded-full text-[11px] font-bold text-white bg-black/60 backdrop-blur-md border border-white/20">
-                      {lang === 'bn' ? item.topicBn : item.topicEn}
+                      {isBanglaScript ? item.topicBn : item.topicEn}
                     </span>
                   </div>
 
@@ -155,31 +159,31 @@ export const FunCultureSection = () => {
                     <div className="absolute top-3 right-3">
                       <span className="px-2 py-0.5 rounded-full text-[10px] font-black text-amber-900 bg-amber-400 shadow-xs flex items-center gap-1">
                         <Smile className="w-3 h-3" />
-                        <span>{lang === 'bn' ? 'রসিকতা' : 'Folklore'}</span>
+                        <span>{isBb ? 'রঙ্গ-রসিকতা' : isBn ? 'রসিকতা' : 'Folklore'}</span>
                       </span>
                     </div>
                   )}
 
                   {/* Hover Caption Overlay Indicator */}
                   <div className="absolute bottom-3 right-3 text-xs text-emerald-300 font-semibold opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1 bg-black/60 px-2 py-1 rounded-lg backdrop-blur-xs">
-                    <span>{lang === 'bn' ? 'বড় দেখুন' : 'Expand'}</span>
+                    <span>{isBb ? 'বড় কইরা দেহেন' : isBn ? 'বড় দেখুন' : 'Expand'}</span>
                   </div>
                 </div>
 
                 {/* Card Content */}
                 <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between space-y-2">
                   <h4 className="text-sm font-bold text-slate-900 dark:text-white group-hover:text-brand-700 dark:group-hover:text-emerald-400 transition-colors line-clamp-1">
-                    {lang === 'bn' ? item.topicBn : item.topicEn}
+                    {isBanglaScript ? item.topicBn : item.topicEn}
                   </h4>
                   
                   <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed line-clamp-2">
-                    {lang === 'bn' ? item.captionBn : item.captionEn}
+                    {isBanglaScript ? item.captionBn : item.captionEn}
                   </p>
 
                   <div className="pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[10px] text-slate-400 dark:text-slate-500">
                     <span className="truncate">{item.credit}</span>
                     <span className="text-brand-600 dark:text-emerald-400 font-semibold shrink-0 ml-1">
-                      {lang === 'bn' ? 'ক্লিক করুন' : 'View'}
+                      {isBb ? 'ক্লিক কইরা দেহেন' : isBn ? 'ক্লিক করুন' : 'View'}
                     </span>
                   </div>
                 </div>
@@ -195,14 +199,18 @@ export const FunCultureSection = () => {
             <MessageCircleHeart className="w-5 h-5 text-crimson-600 dark:text-rose-400" />
           </div>
           <p className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white tracking-tight">
-            “{lang === 'bn' 
-              ? 'ব্রাহ্মণবাড়িয়ার মানুষ—আড্ডা জমলে গল্পের শেষ নেই!' 
-              : 'People from Brahmanbaria — once the adda starts, the stories never end!'}”
+            “{isBb
+              ? 'বাউনবাইরার মানুষ—একবার আড্ডা জমলে আর কুনো কতা নাই!'
+              : isBn 
+                ? 'ব্রাহ্মণবাড়িয়ার মানুষ—আড্ডা জমলে গল্পের শেষ নেই!' 
+                : 'People from Brahmanbaria — once the adda starts, the stories never end!'}”
           </p>
           <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-xl mx-auto font-medium">
-            {lang === 'bn' 
-              ? 'চায়ের স্টল থেকে শুরু করে বিশ্ববিদ্যালয়ের ক্যাম্পাস—সবখানেই আমাদের বন্ধন অটুট।' 
-              : 'From village tea stalls to DIU campus lawns, our student bond remains vibrant and unbreakable.'}
+            {isBb
+              ? 'চায়ের দোকান থেইকা বিশ্ববিদ্যালয়ের ক্যাম্পাস—সবখানেই আমাগো টান অটুট।'
+              : isBn 
+                ? 'চায়ের স্টল থেকে শুরু করে বিশ্ববিদ্যালয়ের ক্যাম্পাস—সবখানেই আমাদের বন্ধন অটুট।' 
+                : 'From village tea stalls to DIU campus lawns, our student bond remains vibrant and unbreakable.'}
           </p>
         </div>
 
@@ -250,17 +258,17 @@ export const FunCultureSection = () => {
             <div className="relative h-64 sm:h-80 w-full bg-slate-900">
               <img
                 src={selectedItem.image}
-                alt={lang === 'bn' ? selectedItem.topicBn : selectedItem.topicEn}
+                alt={isBanglaScript ? selectedItem.topicBn : selectedItem.topicEn}
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
               
               <div className="absolute bottom-4 left-4 right-4 text-white">
                 <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-amber-500 text-slate-950 mb-1.5 inline-block">
-                  {lang === 'bn' ? selectedItem.topicBn : selectedItem.topicEn}
+                  {isBanglaScript ? selectedItem.topicBn : selectedItem.topicEn}
                 </span>
                 <h3 className="text-xl sm:text-2xl font-black leading-tight">
-                  {lang === 'bn' ? selectedItem.topicBn : selectedItem.topicEn}
+                  {isBanglaScript ? selectedItem.topicBn : selectedItem.topicEn}
                 </h3>
               </div>
             </div>
@@ -269,7 +277,7 @@ export const FunCultureSection = () => {
             <div className="p-6 sm:p-7 space-y-4">
               <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
                 <p className="text-sm sm:text-base text-slate-800 dark:text-slate-200 leading-relaxed font-medium">
-                  {lang === 'bn' ? selectedItem.captionBn : selectedItem.captionEn}
+                  {isBanglaScript ? selectedItem.captionBn : selectedItem.captionEn}
                 </p>
               </div>
 
@@ -278,12 +286,14 @@ export const FunCultureSection = () => {
                 <div className="p-3.5 rounded-xl bg-amber-50 dark:bg-amber-950/50 border border-amber-200 dark:border-amber-800/60 text-xs text-amber-950 dark:text-amber-200 space-y-1">
                   <div className="font-bold flex items-center gap-1.5 text-amber-900 dark:text-amber-300">
                     <Smile className="w-4 h-4 text-amber-600 dark:text-amber-400" />
-                    <span>{lang === 'bn' ? 'লোকজ রসিকতার পেছনের কথা:' : 'The Spirit Behind the Folklore:'}</span>
+                    <span>{isBb ? 'রঙ্গ-রসিকতার পেছনের আসল কথা:' : isBn ? 'লোকজ রসিকতার পেছনের কথা:' : 'The Spirit Behind the Folklore:'}</span>
                   </div>
                   <p className="leading-relaxed">
-                    {lang === 'bn'
-                      ? 'ব্রাহ্মণবাড়িয়ার মানুষ যেমন অনুভূতিপ্রবণ ও আবেগপ্রবণ, তেমনি তীব্র ভ্রাতৃত্ববোধ ও যেকোনো প্রয়োজনে একে অপরের পাশে সবার আগে দাঁড়ানোর জন্য সুপরিচিত। এটি এক অমায়িক সামাজিক সৌহার্দ্যের বহিঃপ্রকাশ।'
-                      : 'Known for being deeply emotional and expressive, people of Brahmanbaria are equally famous for unwavering loyalty and standing by each other in every need.'}
+                    {isBb
+                      ? 'বাউনবাইরার মানুষ যেমন দিলদরিয়া ও আবেগপ্রবণ, তেমনি একের বিপদে আরেকজন সবার আগে বুক চিতাইয়া খাড়ায়। এইডাই বাউনবাইরার ভাই-বেরাদরির আসল ভালোবাসা।'
+                      : isBn
+                        ? 'ব্রাহ্মণবাড়িয়ার মানুষ যেমন অনুভূতিপ্রবণ ও আবেগপ্রবণ, তেমনি তীব্র ভ্রাতৃত্ববোধ ও যেকোনো প্রয়োজনে একে অপরের পাশে সবার আগে দাঁড়ানোর জন্য সুপরিচিত। এটি এক অমায়িক সামাজিক সৌহার্দ্যের বহিঃপ্রকাশ।'
+                        : 'Known for being deeply emotional and expressive, people of Brahmanbaria are equally famous for unwavering loyalty and standing by each other in every need.'}
                   </p>
                 </div>
               )}
@@ -291,11 +301,11 @@ export const FunCultureSection = () => {
               {/* Source & Credits */}
               <div className="pt-2 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-slate-500 dark:text-slate-400">
                 <div>
-                  <span className="font-bold text-slate-700 dark:text-slate-300">{lang === 'bn' ? 'তথ্যউৎস: ' : 'Source: '}</span>
+                  <span className="font-bold text-slate-700 dark:text-slate-300">{isBanglaScript ? 'তথ্যউৎস: ' : 'Source: '}</span>
                   <span>{selectedItem.source}</span>
                 </div>
                 <div>
-                  <span className="font-bold text-slate-700 dark:text-slate-300">{lang === 'bn' ? 'ফটোগ্রাফি/ইলাস্ট্রেশন: ' : 'Credit: '}</span>
+                  <span className="font-bold text-slate-700 dark:text-slate-300">{isBanglaScript ? 'ফটোগ্রাফি/ইলাস্ট্রেশন: ' : 'Credit: '}</span>
                   <span>{selectedItem.credit}</span>
                 </div>
               </div>

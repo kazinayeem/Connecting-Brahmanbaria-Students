@@ -1,4 +1,343 @@
 export const translations = {
+  // 1. BB = ব্রাহ্মণবাড়িয়ার আঞ্চলিক ভাষা (বাউনবাইরা) — DEFAULT
+  bb: {
+    associationName: "বাউনবাইরা স্টুডেন্টস অ্যাসোসিয়েশন",
+    universityName: "ড্যাফোডিল ইন্টারন্যাশনাল ইউনিভার্সিটি",
+    shortName: "BSA-DIU",
+    tagline: "দোস্তি, সাহায্য-সহযোগিতা আর একলগে আগাইয়া চলা",
+
+    nav: {
+      home: "হোম",
+      about: "আমাগো সম্পর্কে",
+      committee: "কমিটি",
+      members: "শিক্ষার্থীরা",
+      activities: "কামকাজ",
+      events: "ইভেন্ট",
+      notices: "নোটিশ",
+      gallery: "গ্যালারি",
+      upazilas: "৯ উপজেলা",
+      explore: "আইয়েন বাউনবাইরারে জানি",
+      history: "ইতিহাস",
+      localLanguage: "আমাগো ভাষা",
+      more: "আরও",
+      join: "যোগ দেন",
+      contact: "যোগাযোগ",
+    },
+
+    hero: {
+      badge: "ড্যাফোডিল ইন্টারন্যাশনাল ইউনিভার্সিটি • বাউনবাইরার পোলাপানের পরিবার",
+      title: "ডিআইইউতে বাউনবাইরার পোলাপানের একলগে থাকার আপন ঠিকানা",
+      subtitle: "ড্যাফোডিল ইন্টারন্যাশনাল ইউনিভার্সিটিতে বাউনবাইরা থেইকা আইসা আমরা হগলে এক পরিবার। পড়ালেহা, নতুন ক্যাম্পাস জীবন কিম্বা যেকোনো দরকারেই আমরা একজন আরেকজনের পাশে আছি।",
+      btnAbout: "আমাগো সম্পর্কে জানেন",
+      btnJoin: "আমাগো লগে যোগ দেন",
+      statStudents: "বর্তমান শিক্ষার্থী",
+      statUpazilas: "উপজেলা",
+      statDepartments: "ডিপার্টমেন্ট",
+      statEvents: "আয়োজন ও প্রোগ্রাম",
+    },
+
+    about: {
+      badge: "আমাগো পরিচিতি",
+      title: "ক্যাম্পাসে আমাগো এক টুকরা নিজের ঠিকানা",
+      subtitle: "ডিআইইউর এত বড় ক্যাম্পাসে বাউনবাইরার সব পোলাপান যেন একলগে থাকতে পারে আর দরকারে সাহায্য পায়—এইডাই আমাগো চাওয়া।",
+      storyTitle: "শুরুর কতা",
+      storyDesc: "ডিআইইউর নানান ডিপার্টমেন্টে বাউনবাইরার শত শত পোলাপান পড়ালেহা করতাছে। নতুন ক্যাম্পাসে আইসা মানাইয়া নেওন, ক্লাস কিম্বা পরীক্ষার পড়ালেহায় সিনিয়র ভাই-আপুগোর একটু সাহায্য পাইলে চলাটা অনেক সহজ অইয়া যায়। হেই ভাবনা থেইকাই আমাগো এই অ্যাসোসিয়েশন। এইডা কুনো দলবাজি বা রাজনীতির সংগঠন না—পোলাপানের দোস্তি আর একজন আরেকজনরে সাহায্য করনের একখান প্ল্যাটফর্ম।",
+      purposeTitle: "আমাগো উদ্দেশ্য",
+      purposeDesc: "ক্যাম্পাসে বাউনবাইরার নতুন-পুরাতন পোলাপানের মইধ্যে সুন্দর খাতির জমানো, পড়ালেহায় একজন আরেকজনরে সাহায্য করন আর ক্যারিয়ারের লেইগা একলগে ভালা কিছু শেখা।",
+      visionTitle: "আমাগো লক্ষ্য",
+      visionDesc: "এমন একখান পরিবেশ গইড়া তোলা, যেখানে হগলে মিলেমিশে থাকবো, বিপদে-আপদে পাশে দাঁড়াবো আর পড়ালেহা শ্যাষে সুন্দর ক্যারিয়ার গড়বো।",
+      missionTitle: "আমরা যা করি",
+      missionDesc: "পরীক্ষার আগে স্টাডি গ্রুপ, ক্যারিয়ার নিয়া আড্ডা ও কর্মশালা, বার্ষিক পিকনিক, খেলাধুলা আর জরুরি রক্তের বেবস্থা করনের মতো মানবিক কামকাজে হগলরে একলগে আগাইয়া নেওয়া।",
+      valuesBadge: "আমাগো ৪টা মূল বুনিয়াদ",
+      values: [
+        { title: "একলগে থাকা আর সাহায্য করন", desc: "ক্যাম্পাসে পড়ালেহা কিম্বা ব্যক্তিগত যেকোনো দরকারেই বন্ধুর মতো পাশে থাকা।" },
+        { title: "নতুন কিছু শেখা ও দক্ষতা বাড়ানো", desc: "স্টাডি সার্কেল আর ক্যারিয়ার আড্ডার মাধ্যমে নিজেদের স্কিল বাড়াইয়া লওয়া।" },
+        { title: "আমাগো ঐতিহ্য ও কৃষ্টি", desc: "তিতাস নদীর পাড়ের সমৃদ্ধ সংস্কৃতি, আতিথেয়তা আর ভালোবাসার সম্পর্ক ক্যাম্পাসেও ধইরা রাখা।" },
+        { title: "মানুষের পাশে দাঁড়ানো", desc: "জরুরি রক্তের বেবস্থা করন আর বিপদে-আপদে সাধ্যমতো মানুষের পাশে থাকা।" }
+      ]
+    },
+
+    committee: {
+      badge: "পরিচালনা ও দেখাশোনা",
+      title: "কার্যনির্বাহী কমিটি",
+      subtitle: "অ্যাসোসিয়েশনের কামকাজ সুন্দর ও সুশৃঙ্খলভাবে চালাইয়া নেওয়ার দায়িত্বে থাকা আমাগো ভাইয়েরা-বোনেরা।",
+      sessionBadge: "বর্তমান কমিটি (নমুনা তথ্য)",
+      viewProfile: "যোগাযোগ",
+      filterAll: "সব পদবী",
+      roles: {
+        president: "সভাপতি",
+        vicePresident: "সহ-সভাপতি",
+        generalSecretary: "সাধারণ সম্পাদক",
+        jointGeneralSecretary: "যুগ্ম সাধারণ সম্পাদক",
+        organizingSecretary: "সাংগঠনিক সম্পাদক",
+        financeSecretary: "অর্থ সম্পাদক",
+        officeSecretary: "দপ্তর সম্পাদক",
+        publicitySecretary: "প্রচার সম্পাদক",
+        culturalSecretary: "সাংস্কৃতিক সম্পাদক",
+        sportsSecretary: "ক্রীড়া সম্পাদক",
+        executiveMember: "কার্যনির্বাহী সদস্য",
+      }
+    },
+
+    members: {
+      badge: "পোলাপানের তালিকা",
+      title: "আমাগো সদস্যবৃন্দ",
+      subtitle: "ডিআইইউর নানান ডিপার্টমেন্ট ও ব্যাচে পড়ুয়া বাউনবাইরার পোলাপানের তালিকা।",
+      searchPlaceholder: "নাম কিম্বা স্টুডেন্ট আইডি দিয়া খুঁজেন...",
+      allDepartments: "সব ডিপার্টমেন্ট",
+      allBatches: "সব ব্যাচ",
+      allUpazilas: "সব উপজেলা",
+      noResults: "কুনো শিক্ষার্থী পাওয়া যায় নাই। অন্য নাম বা আইডি দিয়া চেষ্টা করেন।",
+      department: "ডিপার্টমেন্ট",
+      batch: "ব্যাচ",
+      upazila: "উপজেলা",
+      studentId: "স্টুডেন্ট আইডি",
+      totalMembers: "মোট শিক্ষার্থী",
+    },
+
+    activities: {
+      badge: "আমাগো কামকাজ",
+      title: "আমাগো নিয়মিত কামকাজ",
+      subtitle: "ক্লাস-পরীক্ষার লগে লগে আড্ডা, খেলাধুলা, স্কিল বাড়ানো আর সামাজিক কামকাজে আমরা বছরজুড়েই সক্রিয় থাকি।",
+      pillars: [
+        {
+          id: "academic",
+          title: "পড়ালেহায় সাহায্য",
+          subtitle: "Academic Support & Peer Learning",
+          desc: "কঠিন বিষয়গুলা সহজে বুঝতে সিনিয়র ভাই-আপুগোর গাইডলাইন, নোট আর প্রশ্নব্যাংক শেয়ারিং এবং পরীক্ষার আগে একলগে বয়া পড়ার ব্যবস্থা।",
+          features: ["স্টাডি গ্রুপ ও পরীক্ষার টিপস", "নোট ও প্রশ্নব্যাংক শেয়ারিং", "ল্যাব ও প্রজেক্টে সাহায্য"]
+        },
+        {
+          id: "career",
+          title: "ক্যারিয়ার নিয়া আড্ডা ও কর্মশালা",
+          subtitle: "Career Development & Mentorship",
+          desc: "চাকরির বাজারের লেইগা নিজেদের তৈরি করতে ভালো সিভি বানানো, ইন্টারভিউয়ের কৌশল আর অভিজ্ঞ ভাই-আপুগোরে নিয়া ক্যারিয়ার সেশন।",
+          features: ["সিভি ও লিঙ্কডইন রিভিউ", "স্কিল বাড়ানোর আড্ডা", "অভিজ্ঞ সিনিয়রদের পরামর্শ"]
+        },
+        {
+          id: "cultural",
+          title: "সাংস্কৃতিক অনুষ্ঠান ও পরব",
+          subtitle: "Cultural Programs & Celebrations",
+          desc: "পহেলা বৈশাখ, বিজয় দিবস আর বিশেষ দিনগুলাতে আড্ডা, গান আর আনন্দঘন আয়োজনের মাধ্যমে আমাগো ঐতিহ্য উদযাপন।",
+          features: ["বার্ষিক সাংস্কৃতিক অনুষ্ঠান", "গান, কবিতা ও আড্ডা", "জাতীয় দিবস উদযাপন"]
+        },
+        {
+          id: "sports",
+          title: "খেলাধুলা ও ফুর্তি",
+          subtitle: "Sports & Friendly Matches",
+          desc: "শরীর ফিট রাখা আর হগলের মইধ্যে বন্ধুত্ব বাড়াইতে ডিআইইউর মাঠে ক্রিকেট, ফুটবল টুর্নামেন্ট আর ইনডোর গেমসের আয়োজন।",
+          features: ["বিএসএ ক্রিকেট লিগ", "আন্তঃব্যাচ ফুটবল ম্যাচ", "দাবা, ক্যারম ও ব্যাডমিন্টন"]
+        },
+        {
+          id: "social",
+          title: "স্বেচ্ছাসেবী কামকাজ ও রক্তদান",
+          subtitle: "Social & Humanitarian Work",
+          desc: "যেকোনো জরুরি দরকারে রক্তের বেবস্থা করন, শীতের কাপড় দেওয়া আর বিপদের সময় মানুষের পাশে দাঁড়ানো।",
+          features: ["জরুরি রক্তের গ্রুপ নেটওয়ার্ক", "শীতবস্ত্র ও ত্রাণ সহায়তা", "ক্যাম্পাস পরিচ্ছন্নতা"]
+        },
+        {
+          id: "networking",
+          title: "শিক্ষার্থীদের নেটওয়ার্কিং",
+          subtitle: "Student Networking & Bonding",
+          desc: "ক্যাম্পাসের নানান বিভাগ ও ব্যাচের পোলাপানের লগে পরিচয়, সুন্দর সম্পর্ক আর সারা জীবনের দোস্তি গইড়া তোলা।",
+          features: ["নতুনদের বরণ ও পরিচয় পর্ব", "ডিপার্টমেন্টভিত্তিক আড্ডা", "বার্ষিক মিলনমেলা ও পিকনিক"]
+        }
+      ]
+    },
+
+    events: {
+      badge: "ক্যাম্পাস আয়োজন",
+      title: "আমাগো ইভেন্ট ও আয়োজন",
+      subtitle: "আমাগো ওয়ার্কশপ, আড্ডা ও খেলাধুলার আয়োজনে আপনেও অংশ নেন।",
+      upcomingTab: "সামনে যেই অনুষ্ঠানগুলা আছে",
+      pastTab: "হইয়া যাওয়া আয়োজন",
+      date: "তারিখ",
+      time: "সময়",
+      location: "স্থান",
+      registerBtn: "রেজিস্ট্রেশন করেন",
+      detailsBtn: "বিস্তারিত দেহেন",
+      seats: "আসন সংখ্যা",
+      modalTitle: "ইভেন্ট রেজিস্ট্রেশন",
+      namePlaceholder: "আপনের পুরো নাম",
+      idPlaceholder: "ডিআইইউ স্টুডেন্ট আইডি",
+      phonePlaceholder: "মোবাইল নম্বর",
+      confirmRegister: "কনফার্ম করেন",
+      successMsg: "আপনের রেজিস্ট্রেশন ঠিকমতো হইছে! বিস্তারিত তথ্য আপনের মোবাইলে কিম্বা ইমেইলে জানাইয়া দেওয়া হইবো।",
+    },
+
+    notices: {
+      badge: "জরুরি নোটিশ",
+      title: "নোটিশ বোর্ড",
+      subtitle: "অ্যাসোসিয়েশনের তাজা খবর, নোটিশ আর ঘোষণার সবশেষ আপডেট।",
+      categories: {
+        all: "সব নোটিশ",
+        general: "সাধারণ",
+        academic: "পড়ালেহা",
+        event: "ইভেন্ট",
+        membership: "সদস্যপদ",
+        important: "জরুরি"
+      },
+      viewDetails: "বিস্তারিত দেহেন",
+      close: "বন্ধ করেন",
+      publishedOn: "প্রকাশের তারিখ:",
+      noNotices: "এই ক্যাটাগরিতে অহন কুনো নোটিশ নাই।"
+    },
+
+    gallery: {
+      badge: "ছবির অ্যালবাম",
+      title: "আমাগো প্রিয় মুহূর্তগুলা",
+      subtitle: "ক্যাম্পাসে আমাগো আড্ডা, অনুষ্ঠান, খেলাধুলা আর নানা স্মৃতির ছবি।",
+      categories: {
+        all: "সব ছবি",
+        gatherings: "পোলাপানের আড্ডা",
+        cultural: "সাংস্কৃতিক অনুষ্ঠান",
+        sports: "খেলাধুলা",
+        workshops: "সেমিনার ও ওয়ার্কশপ",
+        meetings: "কমিটি মিটিং",
+        campus: "ক্যাম্পাস জীবন"
+      }
+    },
+
+    upazilas: {
+      badge: "আমাগো শেকড়",
+      title: "বাউনবাইরার ৯ উপজেলা",
+      subtitle: "তিতাস আর মেঘনা বিধৌত বাউনবাইরার ৯টা উপজেলার পোলাপান আইজ এক পরিবারের মতো ডিআইইউতে একলগে আছে।",
+      intro: "সদর থেইকা সরাইল, আখাউড়া থেইকা বাঞ্ছারামপুর— জিলার প্রতিটি কোনা থেইকা পোলাপান স্বপ্ন নিয়া ড্যাফোডিল ইন্টারন্যাশনাল ইউনিভার্সিটিতে আইছে। ক্যাম্পাসে আমরা হগলেই একে অন্যের সহযোদ্ধা ও বন্ধু।",
+      clickPrompt: "উপজেলার বিস্তারিত জানতে ক্লিক করেন",
+      studentsCount: "ডিআইইউতে পড়তাছে",
+      specialty: "পরিচিতি ও ঐতিহ্য",
+      list: [
+        { id: "sadar", name: "ব্রাহ্মণবাড়িয়া সদর", title: "সাংস্কৃতিক ঐতিহ্যের প্রাণকেন্দ্র ও বিখ্যাত ছানামুখী", desc: "তিতাস নদীর পাড়ে অবস্থিত জিলা সদর, সুরসম্রাট ওস্তাদ আলাউদ্দিন খাঁ-র স্মৃতিধন্য এলাকা এবং জিআই সনদপ্রাপ্ত বিখ্যাত মিষ্টি ছানামুখীর আদিভিটা।" },
+        { id: "sarail", name: "সরাইল", title: "ঐতিহাসিক সরাইল পরগনা ও শিকারি কুকুর", desc: "ঈসা খাঁর স্মৃতিবিজড়িত প্রাচীন জনপদ, বিশ্বখ্যাত সরাইল শিকারি কুকুর আর ঐতিহ্যবাহী নৌকা বাইচের সূতিকাগার।" },
+        { id: "ashuganj", name: "আশুগঞ্জ", title: "নদী বন্দর ও বিদ্যুৎ উৎপাদনের মোকাম", desc: "মেঘনা নদীর তীরে অবস্থিত দেশের প্রধান নদী বন্দর, বিদ্যুৎ কেন্দ্র আর চালের বিখ্যাত মোকাম।" },
+        { id: "akhaura", name: "আখাউড়া", title: "বীরশ্রেষ্ঠ মোস্তফা কামালের বীরত্বগাথা", desc: "গুরুত্বপূর্ণ স্থলবন্দর, ঐতিহাসিক রেলওয়ে জংশন আর ১৯৭১ সালের মহান মুক্তিযুদ্ধের অমর স্মৃতি।" },
+        { id: "kasba", name: "কসবা", title: "সীমান্তের পাহাড়ঘেরা সবুজ জনপদ", desc: "শালদা নদী গ্যাসক্ষেত্র, আন্তর্জাতিক সীমান্ত হাট আর কোল্লাপাথর শহীদ সমাধিস্থল সংলগ্ন প্রাকৃতিক এলাকা।" },
+        { id: "nabinagar", name: "নবীনগর", title: "তিতাস পাড়ের সুর সাধক ও গুণী মানুষের মাটি", desc: "মেঘনা ও তিতাস নদী ঘেরা সবুজ মাটি, লোকগান আর হস্তশিল্পের দীর্ঘ ঐতিহ্যের জনপদ।" },
+        { id: "bancharampur", name: "বাঞ্ছারামপুর", title: "মেঘনার উর্বর কোল ও তাঁতশিল্পের সুনাম", desc: "মেঘনা নদীর তীরের উর্বর শস্যভূমি আর লুঙ্গি ও শাড়ির ঐতিহ্যবাহী তাঁতশিল্পের লেইগা মশহুর।" },
+        { id: "nasirnagar", name: "নাসিরনগর", title: "বিশাল হাওর ও সমৃদ্ধ লোকসংস্কৃতি", desc: "মেদিনী হাওর আর খোলা জলের অপরূপ রূপ, তাজা দেশি মাছ আর গ্রামীণ ঐতিহ্যের আধার।" },
+        { id: "bijoynagar", name: "বিজয়নগর", title: "মিষ্টি লিচুর বাগান ও পাহাড়ি টিলা", desc: "সবুজ টিলাঘেরা সীমান্ত উপজেলা, যা রসালো লিচু আর মাল্টার লেইগা জিলাজুড়ে বিখ্যাত।" }
+      ]
+    },
+
+    join: {
+      badge: "যোগ দেন",
+      title: "আমাগো লগে যোগ দেন",
+      subtitle: "আপনের বাড়ি যদি বাউনবাইরা জিলায় অয় আর ড্যাফোডিল ইন্টারন্যাশনাল ইউনিভার্সিটিতে পড়েন, তয় আইজকাই আমাগো শিক্ষার্থী পরিবারে যুক্ত হউন।",
+      fullName: "আপনের পুরো নাম",
+      studentId: "ডিআইইউ স্টুডেন্ট আইডি",
+      department: "ডিপার্টমেন্ট",
+      batch: "ব্যাচ",
+      email: "ইমেইল",
+      phone: "মোবাইল নম্বর",
+      bloodGroup: "রক্তের গ্রুপ",
+      homeUpazila: "নিজের উপজেলা (বাউনবাইরা)",
+      currentAddress: "বর্তমান ঠিকানা (মেস / হোস্টেল / বাসা)",
+      profilePhoto: "প্রোফাইল ছবি (ঐচ্ছিক)",
+      submitBtn: "আবেদন জমা দেন",
+      successTitle: "আবেদন ঠিকমতো জমা হইছে!",
+      successDesc: "বাউনবাইরা স্টুডেন্টস অ্যাসোসিয়েশন, ডিআইইউতে আপনেরে স্বাগতম। খুব তাড়াতাড়ি আপনের লগে যোগাযোগ করমু।",
+      cardPreview: "স্টুডেন্ট আইডি কার্ডের প্রিভিউ",
+      membershipId: "আইডি নং: BSA-DIU-2026-",
+      sampleNotice: "এইডা একখান ডেমো ফর্ম। তথ্য যাচাইয়ের পর ডাটাবেজে যুক্ত করা হইবো।"
+    },
+
+    contact: {
+      badge: "যোগাযোগ",
+      title: "আমাগো লগে যোগাযোগ করেন",
+      subtitle: "যেকোনো দরকার, পরমার্শ কিম্বা সাহায্যের লেইগা মন খুইলা আমাগো লগে যোগাযোগ করেন।",
+      campusLocation: "ক্যাম্পাসের ঠিকানা",
+      campusDesc: "ড্যাফোডিল স্মার্ট সিটি, বিরুলিয়া, আশুলিয়া, সাভার, ঢাকা।",
+      email: "ইমেইল",
+      phone: "মোবাইল / হেল্পলাইন",
+      socialTitle: "সোশ্যাল মিডিয়ায় লগে থাহেন",
+      formTitle: "আপনের কথা পাঠান",
+      name: "আপনের নাম",
+      emailLabel: "আপনের ইমেইল",
+      subject: "বিষয়",
+      message: "আপনের কথা লিখেন...",
+      sendBtn: "পাঠাইয়া দেন",
+      sentSuccess: "আপনের কথা আমাগো কাছে পৌছাইছে! খুব জলদিই যোগাযোগ করমু।",
+      faqTitle: "সাধারণ কিছু প্রশ্নের উত্তর (FAQ)",
+      faqs: [
+        { q: "কে বা কারা এই অ্যাসোসিয়েশনের সদস্য হইতে পারবো?", a: "ড্যাফোডিল ইন্টারন্যাশনাল ইউনিভার্সিটির (DIU) যেকোনো ডিপার্টমেন্ট ও ব্যাচে পড়ুয়া যেকোনো শিক্ষার্থী, যাগো বাড়ি বাউনবাইরা জিলার কুনো উপজেলায়।" },
+        { q: "সদস্য হইতে কি কুনো টেকা দিতে অয়?", a: "প্রাথমিক সদস্য নিবন্ধন এক্কেরে ফ্রি। তবে কুনো পিকনিক বা ইভেন্টের বেলায় সবার সম্মতিতে অংশগ্রহণের খরচ ঠিক হইতে পারে।" },
+        { q: "এইডা কি ডিআইইউ-এর কুনো সরকারি প্রশাসনিক শাখা?", a: "না, এইডা ডিআইইউতে পড়ুয়া বাউনবাইরার পোলাপানের পরিচালিত অরাজনৈতিক আর বন্ধুত্বপূর্ণ একখান কমিউনিটি।" },
+        { q: "ক্যাম্পাসে কুনো সাহায্য লাগলে কার লগে কথা কমু?", a: "আমাগো কমিটির যেকোনো ভাই-আপু কিম্বা ফেসবুক গ্রুপে একটা পোস্ট দিলেই সিনিয়ররা আপনের পাশে দাঁড়াইবো।" }
+      ]
+    },
+
+    explore: {
+      badge: "বাউনবাইরার তথ্যকোষ ও গাইড",
+      title: "আইয়েন বাউনবাইরারে জানি",
+      subtitle: "আমাগো শেকড়, পরিচয়, ৯টা উপজেলা, বিখ্যাত খানা-দানা, ঘোরার জায়গা আর ইতিহাস।",
+      heroPrompt: "আমি বাউনবাইরার কুন এলাকার? আমাগো এলাকায় কী বিখ্যাত?",
+      homeFinderTitle: "বাউনবাইরার কুন এলাকার?",
+      homeFinderSubtitle: "আপনের নিজের উপজেলা বাছেন আর জাইনা লন আপনের এলাকার বিশেষত্ব, ঘোরার জায়গা, বিখ্যাত খানা আর সহপাঠীদের তালিকা।",
+      searchPlaceholder: "উপজেলা, খানা, ঘোরার জায়গা, নদী কিম্বা পরিচিত মানুষ খুঁজেন...",
+      allResults: "সব রেজাল্ট",
+      exploreAreaBtn: "এলাকা দেহেন",
+      verifiedSource: "উৎস / তথ্যসূত্র:",
+      selectUpazilaPrompt: "বিস্তারিত দেখতে যেকোনো উপজেলা বাছেন",
+      tabs: {
+        all: "হগলকিছু",
+        upazilas: "৯ উপজেলা",
+        areas: "জনপ্রিয় এলাকা ও বাজার",
+        places: "ঘোরার জায়গা",
+        foods: "বিখ্যাত খানা",
+        products: "বিখ্যাত পণ্য ও শিল্প",
+        rivers: "নদী ও জলপথ",
+        culture: "সংস্কৃতি ও ঐতিহ্য",
+        notable: "পরিচিত মানুষ"
+      },
+      glance: {
+        title: "এক নজরে বাউনবাইরা",
+        division: "বিভাগ: চট্টগ্রাম",
+        upazilasCount: "উপজেলা: ৯টা",
+        rivers: "প্রধান নদী: তিতাস, মেঘনা, শালদা, হাওড়া",
+        area: "আয়তন: প্রায় ১,৯২৭ বর্গ কিমি",
+        identity: "ঐতিহাসিক পরিচয়: সুরসম্রাট আলাউদ্দিন খাঁ-র স্মৃতিধন্য মাটি ও তিতাস সাহিত্য"
+      },
+      pipeline: {
+        title: "বাউনবাইরা থেইকা ড্যাফোডিল ইন্টারন্যাশনাল ইউনিভার্সিটি",
+        subtitle: "এলাকা আলাদা, কতা আলাদা—কিন্তু আমাগো টান এক।",
+        step1: "৯টা নানান উপজেলা",
+        step2: "বাউনবাইরার নিজস্ব কৃষ্টি ও ঐতিহ্য",
+        step3: "ড্যাফোডিল ইন্টারন্যাশনাল ইউনিভার্সিটি",
+        step4: "বাউনবাইরা স্টুডেন্টস অ্যাসোসিয়েশন (BSA-DIU)"
+      },
+      didYouKnow: "আপনে কি জানেন?",
+      nextFact: "পরের তথ্য"
+    },
+
+    common: {
+      retry: "আবার চেষ্টা করেন",
+      loading: "একটু তর সইন, লোড হইতাছে...",
+      notFound: "কিছু পাওয়া যায় নাই",
+      learnMore: "আরও জানেন",
+      viewAll: "সব দেহেন",
+      seeMore: "আরও দেহেন",
+      viewDetails: "বিস্তারিত দেহেন",
+      success: "ঠিকমতো হইছে",
+      error: "দুঃখিত, একটু সমস্যা হইছে",
+      backHome: "হোমে ফির‍্যা যান",
+      search: "খুঁজেন",
+      filter: "ফিল্টার",
+      close: "বন্ধ করেন",
+      all: "হগল",
+    },
+
+    footer: {
+      desc: "ড্যাফোডিল ইন্টারন্যাশনাল ইউনিভার্সিটিতে পড়ুয়া বাউনবাইরার পোলাপানের একখান অরাজনৈতিক, বন্ধুত্বপূর্ণ ও সহযোগিতামূলক প্ল্যাটফর্ম।",
+      quickLinks: "দরকারী লিংক",
+      activitiesCol: "আমাগো কামকাজ",
+      contactCol: "ক্যাম্পাসে যোগাযোগ",
+      disclaimer: "বিজ্ঞপ্তি: এই ওয়েবসাইটডা ড্যাফোডিল ইন্টারন্যাশনাল ইউনিভার্সিটিতে পড়ুয়া বাউনবাইরার পোলাপানের একখান স্বাধীন ছাত্র কমিউনিটি। এইডা বিশ্ববিদ্যালয়ের কেন্দ্রীয় প্রশাসন কিম্বা কুনো রাজনৈতিক প্ল্যাটফর্ম না।",
+      rights: "হগল অধিকার সংরক্ষিত।",
+      craftedWith: "বাউনবাইরার পোলাপানের মহব্বতে বানানো"
+    }
+  },
+
+  // 2. BN = Standard Bangla
   bn: {
     associationName: "ব্রাহ্মণবাড়িয়া স্টুডেন্টস অ্যাসোসিয়েশন",
     universityName: "ড্যাফোডিল ইন্টারন্যাশনাল ইউনিভার্সিটি",
@@ -17,6 +356,8 @@ export const translations = {
       upazilas: "৯ উপজেলা",
       explore: "চলো ব্রাহ্মণবাড়িয়াকে জানি",
       history: "ইতিহাস",
+      localLanguage: "আঞ্চলিক ভাষা",
+      more: "আরও",
       join: "যোগ দিন",
       contact: "যোগাযোগ",
     },
@@ -306,6 +647,23 @@ export const translations = {
       nextFact: "পরবর্তী তথ্য"
     },
 
+    common: {
+      retry: "আবার চেষ্টা করুন",
+      loading: "লোড হচ্ছে...",
+      notFound: "কিছু পাওয়া যায়নি",
+      learnMore: "আরও জানুন",
+      viewAll: "সব দেখুন",
+      seeMore: "আরও দেখুন",
+      viewDetails: "বিস্তারিত দেখুন",
+      success: "সফলভাবে সম্পন্ন হয়েছে",
+      error: "দুঃখিত, একটি সমস্যা হয়েছে",
+      backHome: "হোমে ফিরে যান",
+      search: "অনুসন্ধান",
+      filter: "ফিল্টার",
+      close: "বন্ধ করুন",
+      all: "সব",
+    },
+
     footer: {
       desc: "ড্যাফোডিল ইন্টারন্যাশনাল ইউনিভার্সিটিতে অধ্যয়নরত ব্রাহ্মণবাড়িয়ার শিক্ষার্থীদের একটি অরাজনৈতিক, বন্ধুভাবাপন্ন ও সহযোগিতামূলক প্ল্যাটফর্ম।",
       quickLinks: "প্রয়োজনীয় লিংক",
@@ -313,9 +671,11 @@ export const translations = {
       contactCol: "ক্যাম্পাস যোগাযোগ",
       disclaimer: "বিজ্ঞপ্তি: এই ওয়েবসাইটটি ড্যাফোডিল ইন্টারন্যাশনাল ইউনিভার্সিটিতে অধ্যয়নরত ব্রাহ্মণবাড়িয়ার শিক্ষার্থীদের একটি স্বাধীন ছাত্র কমিউনিটি। এটি বিশ্ববিদ্যালয়ের কেন্দ্রীয় প্রশাসন কিংবা কোনো রাজনৈতিক প্ল্যাটফর্ম নয়।",
       rights: "সর্বস্বত্ব সংরক্ষিত।",
+      craftedWith: "ব্রাহ্মণবাড়িয়ার শিক্ষার্থীদের ভালোবাসায় নির্মিত"
     }
   },
 
+  // 3. EN = English
   en: {
     associationName: "Brahmanbaria Students Association",
     universityName: "Daffodil International University",
@@ -334,6 +694,8 @@ export const translations = {
       upazilas: "9 Upazilas",
       explore: "Explore Brahmanbaria",
       history: "History",
+      localLanguage: "Local Language",
+      more: "More",
       join: "Join Us",
       contact: "Contact",
     },
@@ -351,31 +713,31 @@ export const translations = {
     },
 
     about: {
-      badge: "About Us",
-      title: "A Little Piece of Home on Campus",
-      subtitle: "Helping students from Brahmanbaria feel welcomed, supported, and connected throughout their university journey.",
-      storyTitle: "How It Started",
-      storyDesc: "Hundreds of students from Brahmanbaria study across various departments at Daffodil International University. Adjusting to university life becomes so much smoother when you have friendly seniors and peers from home to guide you. That simple idea brought BSA-DIU to life. It is an independent, non-political student network built on genuine friendship.",
+      badge: "Who We Are",
+      title: "A Place We Call Home on Campus",
+      subtitle: "Dedicated to uniting all Brahmanbaria students across DIU campus through lifelong friendship, guidance, and mutual empowerment.",
+      storyTitle: "How We Started",
+      storyDesc: "With hundreds of students from Brahmanbaria pursuing various degrees across Daffodil International University, adapting to a vibrant campus and keeping up with academics becomes seamless when senior peers extend a guiding hand. That shared camaraderie gave birth to BSA-DIU—an independent, strictly non-political student network.",
       purposeTitle: "Our Purpose",
-      purposeDesc: "To build warm connections between new and senior students, help each other succeed academically, and develop practical skills for future careers.",
+      purposeDesc: "Fostering deep meaningful connections between freshmen and seniors, creating collaborative academic peer circles, and accelerating career preparedness.",
       visionTitle: "Our Vision",
-      visionDesc: "To foster a supportive student culture where members excel academically, grow into compassionate leaders, and build meaningful careers.",
+      visionDesc: "An inclusive, vibrant community where every Brahmanbaria student at DIU thrives socially, excels academically, and graduates into an impactful career.",
       missionTitle: "What We Do",
-      missionDesc: "Organizing peer study groups, career workshops, annual picnics, sports tournaments, and voluntary blood donation drives.",
+      missionDesc: "Peer study circles ahead of exams, career skill seminars, annual retreats and sports tournaments, and life-saving volunteer blood donation drives.",
       valuesBadge: "Our 4 Core Pillars",
       values: [
-        { title: "Mutual Support", desc: "Always being there for fellow students with academic advice and day-to-day campus guidance." },
-        { title: "Skill Development", desc: "Learning together through practical career workshops, technical talks, and study circles." },
-        { title: "Heritage & Community", desc: "Celebrating the warmth, literature, and hospitable traditions of Brahmanbaria on campus." },
-        { title: "Standing by People", desc: "Voluntary blood donation networks and stepping forward during community emergencies." }
+        { title: "Mutual Support & Camaraderie", desc: "Standing by each other like family through academic challenges and personal transitions." },
+        { title: "Continuous Learning & Growth", desc: "Accelerating modern career skills via peer mentoring, mock sessions, and workshops." },
+        { title: "Heritage & Cultural Pride", desc: "Celebrating the storied music, river traditions, and warm hospitality of the Titas basin." },
+        { title: "Compassion & Social Service", desc: "Mobilizing swift blood donations and humanitarian relief during emergencies." }
       ]
     },
 
     committee: {
-      badge: "Leadership & Team",
+      badge: "Leadership & Coordination",
       title: "Executive Committee",
-      subtitle: "Dedicated student representatives working to keep the association vibrant, organized, and helpful.",
-      sessionBadge: "Current Executive Team (Sample Data)",
+      subtitle: "Student representatives dedicated to steering our community with integrity, enthusiasm, and teamwork.",
+      sessionBadge: "Current Executive Committee (Representative)",
       viewProfile: "Contact",
       filterAll: "All Positions",
       roles: {
@@ -395,13 +757,13 @@ export const translations = {
 
     members: {
       badge: "Student Directory",
-      title: "Our Student Members",
-      subtitle: "Directory of students from Brahmanbaria studying across different departments and batches at DIU.",
-      searchPlaceholder: "Search by student name or DIU ID...",
+      title: "Our Members",
+      subtitle: "Discover fellow students from Brahmanbaria studying across diverse departments and batches at DIU.",
+      searchPlaceholder: "Search by name or Student ID...",
       allDepartments: "All Departments",
       allBatches: "All Batches",
       allUpazilas: "All Upazilas",
-      noResults: "No students found. Try searching with a different name or ID.",
+      noResults: "No student records match your query. Try searching by name, ID, or adjusting filters.",
       department: "Department",
       batch: "Batch",
       upazila: "Upazila",
@@ -410,79 +772,79 @@ export const translations = {
     },
 
     activities: {
-      badge: "What We Do",
-      title: "Our Core Activities",
-      subtitle: "Beyond the classroom: peer learning, career prep, friendly sports matches, and social initiatives.",
+      badge: "Our Activities",
+      title: "Regular Programs & Initiatives",
+      subtitle: "Balancing university academics with skill development, campus camaraderie, sports, and community outreach all year round.",
       pillars: [
         {
           id: "academic",
-          title: "Academic Collaboration",
-          subtitle: "Study Groups & Senior Mentoring",
-          desc: "Peer study circles for challenging courses, notes sharing, and exam preparation sessions guided by seniors.",
-          features: ["Study groups & exam prep", "Lecture notes & past questions", "Project and coding advice"]
+          title: "Academic Support & Peer Learning",
+          subtitle: "Peer Tutoring & Exam Preparation",
+          desc: "Guidance on challenging coursework from senior departmental toppers, question bank sharing, and focused group revisions before midterm and final exams.",
+          features: ["Peer study groups & exam tips", "Course note repositories", "Project & lab consultations"]
         },
         {
           id: "career",
-          title: "Career Workshops & Talks",
-          subtitle: "Career Readiness & Alumni Talks",
-          desc: "Resume building clinics, interview guidance, and informal mentorship from alumni working across industries.",
-          features: ["CV and portfolio reviews", "Skill bootcamps", "Alumni corporate advice"]
+          title: "Career Mentorship & Workshops",
+          subtitle: "Professional Readiness & Networking",
+          desc: "Actionable guidance from alumni and industry seniors covering competitive resumes, LinkedIn optimization, interview skills, and freelancing roadmaps.",
+          features: ["CV & portfolio reviews", "Skill acceleration workshops", "Alumni career dialogues"]
         },
         {
           id: "cultural",
-          title: "Cultural Events & Festivities",
-          subtitle: "Celebrations & Community Gatherings",
-          desc: "Celebrating Pahela Baishakh, Victory Day, and campus evenings with music, laughter, and cultural pride.",
-          features: ["Annual cultural evening", "Music, poetry & folklore", "National day celebrations"]
+          title: "Cultural Programs & Celebrations",
+          subtitle: "Heritage, Music & Literature",
+          desc: "Commemorating Bengali cultural milestones such as Pohela Boishakh, Victory Day, and literary evenings honoring Brahmanbaria's artistic titans.",
+          features: ["Annual cultural gala", "Acoustic music & open mic", "National day celebrations"]
         },
         {
           id: "sports",
-          title: "Sports & Recreation",
-          subtitle: "Tournaments & Friendly Matches",
-          desc: "Building teamwork and fitness through inter-batch cricket and football tournaments on DIU grounds.",
-          features: ["BSA Premier Cricket League", "Inter-batch football tournament", "Chess, carrom & badminton"]
+          title: "Sports & Friendly Matches",
+          subtitle: "Campus Tournaments & Fitness",
+          desc: "Fostering physical vitality and friendly departmental rivalries through cricket tournaments, inter-batch football, and indoor game championships.",
+          features: ["BSA Premier Cricket Cup", "Inter-batch soccer showdowns", "Badminton & indoor contests"]
         },
         {
           id: "social",
-          title: "Social & Voluntary Initiatives",
-          subtitle: "Humanitarian & Campus Drives",
-          desc: "Organizing emergency blood donors, winter clothing drives, and extending a helping hand during natural disasters.",
-          features: ["Emergency blood donor network", "Winter relief initiatives", "Campus cleanliness drives"]
+          title: "Social & Humanitarian Work",
+          subtitle: "Volunteering & Emergency Response",
+          desc: "Coordinating swift blood donor matching for hospital emergencies, winter clothing distributions, and flood relief initiatives.",
+          features: ["24/7 emergency blood registry", "Winter warm-clothes drives", "Campus hygiene campaigns"]
         },
         {
           id: "networking",
-          title: "Student Networking",
-          subtitle: "Cross-Batch Camaraderie",
-          desc: "Bringing together Brahmanbaria students across all DIU faculties to foster lifelong friendships.",
-          features: ["Freshers' reception & orientation", "Departmental catchups", "Annual picnic & reunion"]
+          title: "Student Networking & Bonding",
+          subtitle: "Freshers' Orientation & Reunions",
+          desc: "Bridging departments and batches so freshmen immediately find mentors and build lifelong friendships from day one.",
+          features: ["Freshers welcome gala", "Departmental tea meetups", "Annual community picnic & retreat"]
         }
       ]
     },
 
     events: {
       badge: "Campus Gatherings",
-      title: "Events & Programs",
-      subtitle: "Join our workshops, get-togethers, and sports tournaments.",
-      upcomingTab: "Upcoming",
-      pastTab: "Completed",
+      title: "Events & Gatherings",
+      subtitle: "Join our interactive workshops, reunions, recreational matches, and annual picnics.",
+      upcomingTab: "Upcoming Events",
+      pastTab: "Past Events",
       date: "Date",
       time: "Time",
       location: "Location",
       registerBtn: "Register Now",
       detailsBtn: "View Details",
-      seats: "Available Seats",
-      modalTitle: "Event Registration",
+      seats: "Seats Available",
+      modalTitle: "Event RSVP & Registration",
       namePlaceholder: "Your Full Name",
       idPlaceholder: "DIU Student ID",
-      phonePlaceholder: "Mobile Number",
-      confirmRegister: "Confirm",
-      successMsg: "Registration received! We will reach out with the event details soon.",
+      phonePlaceholder: "Mobile Contact Number",
+      confirmRegister: "Confirm Registration",
+      successMsg: "Your registration is confirmed! Detailed schedule and updates have been queued to your contact information.",
     },
 
     notices: {
-      badge: "Announcements",
+      badge: "Official Notices",
       title: "Notice Board",
-      subtitle: "Latest announcements, meeting notes, and membership updates.",
+      subtitle: "Official circulars, announcements, schedule updates, and urgent alerts from the executive board.",
       categories: {
         all: "All Notices",
         general: "General",
@@ -491,145 +853,163 @@ export const translations = {
         membership: "Membership",
         important: "Important"
       },
-      viewDetails: "View Details",
-      close: "Close",
-      publishedOn: "Published:",
-      noNotices: "No notices in this category at the moment."
+      viewDetails: "Read Full Notice",
+      close: "Close Reader",
+      publishedOn: "Published on:",
+      noNotices: "There are currently no active notices in this category."
     },
 
     gallery: {
-      badge: "Photo Album",
-      title: "Campus Moments",
-      subtitle: "Glimpses of student life, events, sports, and gatherings at DIU.",
+      badge: "Photo Archive",
+      title: "Memorable Moments",
+      subtitle: "Snapshots from our campus events, cultural celebrations, competitive matches, and informal hangouts.",
       categories: {
         all: "All Photos",
         gatherings: "Student Gatherings",
         cultural: "Cultural Events",
-        sports: "Sports & Games",
-        workshops: "Workshops",
-        meetings: "Meetings",
+        sports: "Sports & Matches",
+        workshops: "Workshops & Seminars",
+        meetings: "Committee Meetings",
         campus: "Campus Life"
       }
     },
 
     upazilas: {
       badge: "Our Roots",
-      title: "The 9 Upazilas of Brahmanbaria",
-      subtitle: "Representing all 9 upazilas along the Meghna and Titas rivers, united under one student community at DIU.",
-      intro: "From Sadar to Sarail, Akhaura to Bancharampur—students from every upazila bring their dreams and heritage to Daffodil International University. At DIU, we are one united family.",
-      clickPrompt: "Click an upazila to explore its highlights",
+      title: "9 Upazilas of Brahmanbaria",
+      subtitle: "Students hailing from all nine upazilas of Brahmanbaria united as one thriving community at Daffodil International University.",
+      intro: "From Sadar to Sarail, Akhaura to Bancharampur—aspirational young minds have arrived at DIU Ashulia to pursue higher education. On campus, we are friends, peers, and collaborators.",
+      clickPrompt: "Click any upazila card to view detailed cultural dossier",
       studentsCount: "Enrolled at DIU",
-      specialty: "Heritage & Specialty",
+      specialty: "Highlights & Identity",
       list: [
-        { id: "sadar", name: "Brahmanbaria Sadar", title: "Cultural Center & Famous Chhanamukhi", desc: "The historic district center on the Titas river, home to the musical legacy of Ustad Alauddin Khan and GI-certified Chhanamukhi." },
-        { id: "sarail", name: "Sarail", title: "Historic Township & Greyhound Breed", desc: "Ancient domain of Isa Khan, renowned for the Sarail hound breed and centuries of colorful traditional boat race heritage." },
-        { id: "ashuganj", name: "Ashuganj", title: "River Port & Energy Hub", desc: "A major river port on the Meghna, national thermal power generation hub, and one of Bangladesh's largest rice trade centers." },
-        { id: "akhaura", name: "Akhaura", title: "Land of Bir Sreshtho Mostafa Kamal", desc: "Vital international land port, historic railway junction, and historic battlegrounds of the 1971 Liberation War." },
-        { id: "kasba", name: "Kasba", title: "Border Hills & Heritage", desc: "Home to the Salda river gas field, Border Haat, Kollapathor Martyrs Memorial, and lush green topography." },
-        { id: "nabinagar", name: "Nabinagar", title: "Land of Music Along the Titas", desc: "Flanked by the Meghna and Titas rivers, a fertile land of folk music, literary heritage, and skilled artisans." },
-        { id: "bancharampur", name: "Bancharampur", title: "Meghna Basin & Handloom Heritage", desc: "Rich riverine landscape known for traditional handloom weaving and a vibrant youth community." },
-        { id: "nasirnagar", name: "Nasirnagar", title: "Expansive Haors & Folk Culture", desc: "Scenic wetlands of Medini Haor, abundant freshwater fisheries, and deep-rooted folk traditions." },
-        { id: "bijoynagar", name: "Bijoynagar", title: "Lush Orchards of Lychees & Guavas", desc: "Known for picturesque green hillocks and expansive orchards producing premium sweet lychees and fruits." }
+        { id: "sadar", name: "Brahmanbaria Sadar", title: "Cultural Epicenter & Home of GI-Certified Chhanamukhi", desc: "Located along the Titas river, ancestral ground of musical maestro Ustad Alauddin Khan, and birthplace of the GI-certified delicacy Chhanamukhi." },
+        { id: "sarail", name: "Sarail", title: "Historic Pargana & Indigenous Sarail Hounds", desc: "Ancient seat of Baro-Bhuiyan leader Isa Khan, globally renowned indigenous Sarail hunting hounds, and cradle of traditional boat races." },
+        { id: "ashuganj", name: "Ashuganj", title: "Strategic River Port & National Power Hub", desc: "Major river trading terminal on the Meghna river, key industrial fertilizer complex, and major rice trading center." },
+        { id: "akhaura", name: "Akhaura", title: "Heroic Battleground of Bir Sreshtho Mostafa Kamal", desc: "Vital international land port, historic railway junction, and revered ground of the 1971 Liberation War." },
+        { id: "kasba", name: "Kasba", title: "Picturesque Foothills & Historic Kollapathar", desc: "Salda river natural gas field, international border market, and sacred Kollapathar 52-martyr memorial resting ground." },
+        { id: "nabinagar", name: "Nabinagar", title: "Land of Classical Maestros Along the Titas River", desc: "Surrounded by the Meghna and Titas rivers, home of classical music heritage, folk bards, and traditional crafts." },
+        { id: "bancharampur", name: "Bancharampur", title: "Fertile Meghna Basin & Historic Handloom Heritage", desc: "Fertile agricultural soils along the Meghna river and renowned traditional handloom lungis and sarees." },
+        { id: "nasirnagar", name: "Nasirnagar", title: "Expansive Haor Wetlands & Rich Folk Culture", desc: "Breathtaking landscapes across the Medini Haor wetlands, freshwater fisheries, and folk traditions." },
+        { id: "bijoynagar", name: "Bijoynagar", title: "Lush Green Hillocks & Orchard Gardens", desc: "Border region characterized by rolling hillocks, celebrated across Bangladesh for luscious lychees and citrus orchards." }
       ]
     },
 
     join: {
       badge: "Join Us",
-      title: "Join Our Student Community",
-      subtitle: "If you are from Brahmanbaria and studying at Daffodil International University, join our student family today.",
+      title: "Become a Member",
+      subtitle: "If you are a student from Brahmanbaria enrolled at Daffodil International University, join our community today.",
       fullName: "Full Name",
       studentId: "DIU Student ID",
       department: "Department",
       batch: "Batch",
       email: "Email Address",
-      phone: "Mobile Number",
+      phone: "Mobile Phone Number",
       bloodGroup: "Blood Group",
       homeUpazila: "Home Upazila (Brahmanbaria)",
-      currentAddress: "Current Address (Hall / Mess / Home)",
+      currentAddress: "Current Address (Mess / Hostel / Residence)",
       profilePhoto: "Profile Photo (Optional)",
       submitBtn: "Submit Application",
       successTitle: "Application Submitted Successfully!",
-      successDesc: "Welcome to BSA-DIU! We will get in touch with you shortly.",
-      cardPreview: "Student ID Preview",
+      successDesc: "Welcome to Brahmanbaria Students Association, DIU. Our executive coordinators will reach out shortly.",
+      cardPreview: "Student Membership Card Preview",
       membershipId: "Member ID: BSA-DIU-2026-",
-      sampleNotice: "This is a demonstration form. Verified profiles are securely saved to the student registry."
+      sampleNotice: "Demonstration preview. Membership credentials are verified against the DIU student directory."
     },
 
     contact: {
-      badge: "Contact",
-      title: "Get in Touch With Us",
-      subtitle: "Feel free to reach out for student inquiries, campus advice, or community collaborations.",
-      campusLocation: "DIU Campus Location",
+      badge: "Contact Us",
+      title: "Get in Touch",
+      subtitle: "Have a question, need academic guidance, or want to collaborate? We'd love to hear from you.",
+      campusLocation: "Campus Location",
       campusDesc: "Daffodil Smart City, Birulia, Ashulia, Savar, Dhaka.",
       email: "Email Address",
-      phone: "Phone / Helpline",
-      socialTitle: "Connect on Social Media",
-      formTitle: "Send Us a Message",
-      name: "Your Name",
-      emailLabel: "Your Email",
+      phone: "Helpline & Mobile",
+      socialTitle: "Connect on Social Channels",
+      formTitle: "Send a Message",
+      name: "Your Full Name",
+      emailLabel: "Your Email Address",
       subject: "Subject",
       message: "Your Message...",
       sendBtn: "Send Message",
-      sentSuccess: "Thank you! Your message has been sent. We will respond promptly.",
+      sentSuccess: "Your message has been sent successfully! Our team will respond shortly.",
       faqTitle: "Frequently Asked Questions (FAQ)",
       faqs: [
-        { q: "Who can join BSA-DIU?", a: "Any student actively studying at Daffodil International University (DIU) whose home is in any upazila of Brahmanbaria district." },
-        { q: "Is there a registration fee to become a member?", a: "Initial membership registration is completely free. Minimal contributions may apply for specific events or annual picnics." },
-        { q: "Is BSA-DIU an official university department?", a: "No, BSA-DIU is an independent, non-political student network formed by students for students." },
-        { q: "How can new students get assistance on campus?", a: "You can reach out through our contact form, join our student Facebook group, or contact any committee member directly for campus tips." }
+        { q: "Who is eligible to join this association?", a: "Any student actively enrolled in any department or batch at Daffodil International University whose hometown or family is from any upazila of Brahmanbaria." },
+        { q: "Are there any membership fees?", a: "Standard community registration is completely free. Voluntary shared contributions may be organized for special retreats or annual gatherings." },
+        { q: "Is this an official administrative body of DIU?", a: "No, BSA-DIU is an independent, non-political student community run by and for Brahmanbaria students on campus." },
+        { q: "How can I receive urgent academic or accommodation help?", a: "You can reach out to any committee member or post in our active Facebook community group for prompt peer support." }
       ]
     },
 
     explore: {
-      badge: "Digital Guide & Encyclopedia",
+      badge: "District Dossier & Student Guide",
       title: "Explore Brahmanbaria",
-      subtitle: "Discover our heritage, 9 upazilas, authentic foods, iconic landmarks, and musical soul.",
-      heroPrompt: "Which part of Brahmanbaria are you from? What is famous in our homeland?",
-      homeFinderTitle: "Which part of Brahmanbaria are you from?",
-      homeFinderSubtitle: "Select your home upazila to discover signature foods, landmarks, local towns, and fellow DIU students.",
-      searchPlaceholder: "Search upazilas, foods, landmarks, rivers, or notable icons...",
+      subtitle: "Our roots, identity, 9 upazilas, iconic delicacies, heritage landmarks, and living culture.",
+      heroPrompt: "Where in Brahmanbaria are you from? What is your region famous for?",
+      homeFinderTitle: "Where in Brahmanbaria Are You From?",
+      homeFinderSubtitle: "Select your native upazila to discover regional specialties, landmarks, culinary delights, and fellow DIU peers.",
+      searchPlaceholder: "Search upazilas, delicacies, landmarks, rivers, or luminaries...",
       allResults: "All Results",
       exploreAreaBtn: "Explore Area",
-      verifiedSource: "Source / Reference:",
-      selectUpazilaPrompt: "Select any upazila to explore details",
+      verifiedSource: "Verified Source Citation:",
+      selectUpazilaPrompt: "Select any upazila to view complete regional dossier",
       tabs: {
-        all: "All",
+        all: "All Features",
         upazilas: "9 Upazilas",
-        areas: "Popular Areas & Bazars",
-        places: "Places to Visit",
-        foods: "Famous Foods",
-        products: "Famous Products",
+        areas: "Towns & Trading Bazars",
+        places: "Heritage Sites",
+        foods: "Iconic Delicacies",
+        products: "Crafts & Agriculture",
         rivers: "Rivers & Waterways",
-        culture: "Culture & Heritage",
-        notable: "Notable People"
+        culture: "Culture & Folklore",
+        notable: "Notable Figures"
       },
       glance: {
         title: "Brahmanbaria at a Glance",
         division: "Division: Chattogram",
-        upazilasCount: "Total Upazilas: 9",
+        upazilasCount: "Upazilas: 9",
         rivers: "Major Rivers: Titas, Meghna, Salda, Howrah",
-        area: "Area: Approx. 1,927 sq km",
-        identity: "Identity: Land of Ustad Alauddin Khan & Titas Literature"
+        area: "Area: Approx 1,927 sq km",
+        identity: "Cultural Identity: Birthplace of classical Maihar gharana and Titas literature"
       },
       pipeline: {
         title: "From Brahmanbaria to Daffodil International University",
-        subtitle: "Different places, different stories, one community.",
-        step1: "9 Upazilas",
-        step2: "Shared Brahmanbaria Heritage",
+        subtitle: "Diverse home towns, unique stories—united by one bond.",
+        step1: "9 Diverse Upazilas",
+        step2: "Rich Brahmanbaria Heritage",
         step3: "Daffodil International University",
         step4: "Brahmanbaria Students Association (BSA-DIU)"
       },
       didYouKnow: "Did You Know?",
-      nextFact: "Next Fact"
+      nextFact: "Next Trivia"
+    },
+
+    common: {
+      retry: "Try Again",
+      loading: "Loading...",
+      notFound: "No records found",
+      learnMore: "Learn More",
+      viewAll: "View All",
+      seeMore: "See More",
+      viewDetails: "View Details",
+      success: "Action completed successfully",
+      error: "Sorry, an unexpected error occurred",
+      backHome: "Return to Home",
+      search: "Search",
+      filter: "Filter",
+      close: "Close",
+      all: "All",
     },
 
     footer: {
-      desc: "An independent, student-run association connecting and supporting students from Brahmanbaria studying at Daffodil International University.",
+      desc: "A non-political, supportive community platform for Brahmanbaria students studying at Daffodil International University.",
       quickLinks: "Quick Links",
-      activitiesCol: "What We Do",
+      activitiesCol: "Our Activities",
       contactCol: "Campus Connect",
-      disclaimer: "Notice: This platform is exclusively for the student community of Brahmanbaria Students Association at Daffodil International University (BSA-DIU). It is not an official university administration portal or a political organization.",
+      disclaimer: "Disclaimer: This website represents an independent student community for Brahmanbaria students at DIU. It is neither an official university administrative wing nor a political body.",
       rights: "All rights reserved.",
+      craftedWith: "Crafted with unity for Brahmanbaria students at DIU"
     }
   }
 };

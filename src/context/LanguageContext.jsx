@@ -3,30 +3,71 @@ import { translations } from '../data/translations';
 
 const LanguageContext = createContext();
 
+export const DEFAULT_LANGUAGE = 'bb';
+
 export const LanguageProvider = ({ children }) => {
-  // Default to বাংলা ('bn') as required
-  const [lang, setLang] = useState(() => {
-    const saved = localStorage.getItem('bsa_diu_lang');
-    return saved === 'en' ? 'en' : 'bn';
+  // CRITICAL: Default MUST be 'bb' (ব্রাহ্মণবাড়িয়ার আঞ্চলিক ভাষা)
+  const [lang, setLangState] = useState(() => {
+    try {
+      const saved = localStorage.getItem('language') || localStorage.getItem('bsa_diu_lang');
+      if (saved === 'bb' || saved === 'bn' || saved === 'en') {
+        return saved;
+      }
+      return DEFAULT_LANGUAGE;
+    } catch {
+      return DEFAULT_LANGUAGE;
+    }
   });
 
+  const setLang = (newLang) => {
+    if (newLang === 'bb' || newLang === 'bn' || newLang === 'en') {
+      setLangState(newLang);
+      try {
+        localStorage.setItem('language', newLang);
+        localStorage.setItem('bsa_diu_lang', newLang);
+      } catch {
+        // Ignore localStorage errors
+      }
+    }
+  };
+
   useEffect(() => {
-    localStorage.setItem('bsa_diu_lang', lang);
-    document.documentElement.lang = lang;
-    if (lang === 'bn') {
-      document.body.classList.add('font-bangla');
-      document.body.classList.remove('font-sans');
-    } else {
+    try {
+      localStorage.setItem('language', lang);
+      localStorage.setItem('bsa_diu_lang', lang);
+    } catch {
+      // Ignore localStorage errors
+    }
+
+    // Set document lang & title
+    document.documentElement.lang = lang === 'en' ? 'en' : 'bn';
+    if (lang === 'en') {
       document.body.classList.add('font-sans');
       document.body.classList.remove('font-bangla');
+    } else {
+      document.body.classList.add('font-bangla');
+      document.body.classList.remove('font-sans');
+    }
+
+    // SEO / Document title update
+    if (lang === 'bb') {
+      document.title = "বাউনবাইরা স্টুডেন্টস অ্যাসোসিয়েশন | ড্যাফোডিল ইন্টারন্যাশনাল ইউনিভার্সিটি (BSA-DIU)";
+    } else if (lang === 'bn') {
+      document.title = "ব্রাহ্মণবাড়িয়া স্টুডেন্টস অ্যাসোসিয়েশন | ড্যাফোডিল ইন্টারন্যাশনাল ইউনিভার্সিটি (BSA-DIU)";
+    } else {
+      document.title = "Brahmanbaria Students Association | Daffodil International University (BSA-DIU)";
     }
   }, [lang]);
 
-  const toggleLang = (newLang) => {
-    if (newLang) {
-      setLang(newLang);
+  const toggleLang = (target) => {
+    if (target) {
+      setLang(target);
     } else {
-      setLang(prev => (prev === 'bn' ? 'en' : 'bn'));
+      setLang(prev => {
+        if (prev === 'bb') return 'bn';
+        if (prev === 'bn') return 'en';
+        return 'bb';
+      });
     }
   };
 
@@ -34,28 +75,69 @@ export const LanguageProvider = ({ children }) => {
   const t = (key) => {
     if (!key) return '';
     const keys = key.split('.');
+
+    // Try current lang
     let current = translations[lang];
+    let found = true;
     for (let k of keys) {
       if (current && current[k] !== undefined) {
         current = current[k];
       } else {
-        // Fallback to bangla or english or key
-        let fallback = translations['bn'];
-        for (let fk of keys) {
-          if (fallback && fallback[fk] !== undefined) {
-            fallback = fallback[fk];
-          } else {
-            return key;
-          }
-        }
-        return fallback;
+        found = false;
+        break;
       }
     }
-    return current;
+    if (found && current !== undefined) return current;
+
+    // Fallback: bb -> bn -> en
+    const fallbacks = [translations['bb'], translations['bn'], translations['en']];
+    for (let fb of fallbacks) {
+      if (!fb) continue;
+      let curr = fb;
+      let ok = true;
+      for (let k of keys) {
+        if (curr && curr[k] !== undefined) {
+          curr = curr[k];
+        } else {
+          ok = false;
+          break;
+        }
+      }
+      if (ok && curr !== undefined) return curr;
+    }
+
+    return key;
+  };
+
+  // Helper for localized object properties e.g. l(item, 'title') -> item.titleBb || item.titleBn || item.titleEn
+  const l = (item, prefix) => {
+    if (!item || !prefix) return '';
+    const capitalized = prefix.charAt(0).toUpperCase() + prefix.slice(1);
+    const bbKey = `${prefix}Bb`;
+    const bnKey = `${prefix}Bn`;
+    const enKey = `${prefix}En`;
+
+    if (lang === 'bb') {
+      return item[bbKey] || item[bnKey] || item[enKey] || item[prefix] || '';
+    }
+    if (lang === 'bn') {
+      return item[bnKey] || item[bbKey] || item[enKey] || item[prefix] || '';
+    }
+    return item[enKey] || item[bnKey] || item[bbKey] || item[prefix] || '';
   };
 
   return (
-    <LanguageContext.Provider value={{ lang, setLang, toggleLang, t }}>
+    <LanguageContext.Provider value={{
+      lang,
+      setLang,
+      toggleLang,
+      t,
+      l,
+      isBb: lang === 'bb',
+      isBn: lang === 'bn',
+      isEn: lang === 'en',
+      isBanglaScript: lang === 'bb' || lang === 'bn'
+    }}>
       {children}
     </LanguageContext.Provider>
   );

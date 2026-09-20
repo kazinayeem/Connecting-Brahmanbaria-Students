@@ -4,7 +4,7 @@ import { homeFaqData } from '../../data/homeFaqData';
 import { Plus, Minus, HelpCircle } from 'lucide-react';
 
 export const HomeFaqSection = () => {
-  const { lang } = useLanguage();
+  const { lang, isBb, isBn, isEn } = useLanguage();
   // Open the first item by default; toggle on click
   const [openIndex, setOpenIndex] = useState(0);
 
@@ -23,20 +23,22 @@ export const HomeFaqSection = () => {
         <div className="text-center space-y-3 max-w-2xl mx-auto">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-brand-100 dark:bg-emerald-950/70 text-brand-800 dark:text-emerald-300 border border-brand-200 dark:border-emerald-800/80 shadow-2xs">
             <HelpCircle className="w-3.5 h-3.5 text-brand-600 dark:text-emerald-400" />
-            <span>{lang === 'bn' ? 'প্রশ্ন ও উত্তর' : 'FAQ'}</span>
+            <span>{isBb ? 'জিজ্ঞাসা আর জবাব' : isBn ? 'প্রশ্ন ও উত্তর' : 'FAQ'}</span>
           </div>
 
           <h2 
             id="home-faq-heading"
             className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 dark:text-white tracking-tight"
           >
-            {lang === 'bn' ? 'সাধারণ কিছু প্রশ্ন' : 'Frequently Asked Questions'}
+            {isBb ? 'মনের যত প্রশ্ন' : isBn ? 'সাধারণ কিছু প্রশ্ন' : 'Frequently Asked Questions'}
           </h2>
 
           <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-            {lang === 'bn' 
-              ? 'আমাদের সংগঠন ও কার্যক্রম সম্পর্কে কিছু সাধারণ প্রশ্নের উত্তর।' 
-              : 'Answers to some common questions about our association and activities.'}
+            {isBb
+              ? 'আমাগো সংগঠন আর কামকাজ নিয়া মনে কুনো প্রশ্ন থাকলে এইহানে দেহেন।'
+              : isBn
+                ? 'আমাদের সংগঠন ও কার্যক্রম সম্পর্কে কিছু সাধারণ প্রশ্নের উত্তর।' 
+                : 'Answers to some common questions about our association and activities.'}
           </p>
         </div>
 
@@ -44,8 +46,8 @@ export const HomeFaqSection = () => {
         <div className="space-y-3 sm:space-y-3.5">
           {homeFaqData.map((faq, index) => {
             const isOpen = openIndex === index;
-            const questionText = lang === 'bn' ? faq.qBn : faq.qEn;
-            const answerText = lang === 'bn' ? faq.aBn : faq.aEn;
+            const questionText = isBb ? (faq.qBb || faq.qBn) : isBn ? faq.qBn : faq.qEn;
+            const answerText = isBb ? (faq.aBb || faq.aBn) : isBn ? faq.aBn : faq.aEn;
 
             return (
               <div

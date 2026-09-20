@@ -7,7 +7,7 @@ import {
 } from 'lucide-react';
 
 export const Hero = () => {
-  const { t, lang } = useLanguage();
+  const { t, lang, isBb, isBn, isEn } = useLanguage();
 
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-brand-950 via-slate-900 to-brand-950 text-white pt-8 sm:pt-12 pb-14 sm:pb-20 lg:pt-20 lg:pb-28">
@@ -30,7 +30,18 @@ export const Hero = () => {
 
             {/* Main Headline */}
             <h1 className="text-2xl xs:text-3xl sm:text-5xl lg:text-5xl xl:text-6xl font-black tracking-tight leading-tight text-white">
-              {lang === 'bn' ? (
+              {isBb ? (
+                <>
+                  <span className="text-white">বাউনবাইরার ছাওয়াল-মাইয়াগো </span>
+                  <span className="bg-gradient-to-r from-emerald-400 via-teal-300 to-green-400 bg-clip-text text-transparent">
+                    এক লগে পথ চলা
+                  </span>
+                  <span className="text-white"> আর </span>
+                  <span className="bg-gradient-to-r from-rose-400 to-crimson-400 bg-clip-text text-transparent">
+                    ঐক্য
+                  </span>
+                </>
+              ) : isBn ? (
                 <>
                   <span className="text-white">ব্রাহ্মণবাড়িয়ার শিক্ষার্থীদের </span>
                   <span className="bg-gradient-to-r from-emerald-400 via-teal-300 to-green-400 bg-clip-text text-transparent">
@@ -83,17 +94,17 @@ export const Hero = () => {
             <div className="pt-2 sm:pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4 text-xs text-emerald-300/80">
               <div className="flex items-center gap-1.5">
                 <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                <span>{lang === 'bn' ? 'অরাজনৈতিক ও ছাত্রকল্যাণমুখী' : 'Non-political Student Network'}</span>
+                <span>{isBb ? 'অরাজনৈতিক ও ছাত্রকল্যাণমুখী' : isBn ? 'অরাজনৈতিক ও ছাত্রকল্যাণমুখী' : 'Non-political Student Network'}</span>
               </div>
               <span className="hidden sm:inline text-slate-600">•</span>
               <div className="flex items-center gap-1.5">
                 <HeartHandshake className="w-4 h-4 text-emerald-400" />
-                <span>{lang === 'bn' ? '৯ উপজেলার ভ্রাতৃত্ব' : '9 Upazilas Brotherhood'}</span>
+                <span>{isBb ? '৯ উপজেলার ভাই-বেরাদরি' : isBn ? '৯ উপজেলার ভ্রাতৃত্ব' : '9 Upazilas Brotherhood'}</span>
               </div>
               <span className="hidden sm:inline text-slate-600">•</span>
               <div className="flex items-center gap-1.5">
                 <GraduationCap className="w-4 h-4 text-emerald-400" />
-                <span>{lang === 'bn' ? 'ডিআইইউ ক্যাম্পাস কমিউনিটি' : 'DIU Campus Hub'}</span>
+                <span>{isBb ? 'ডিআইইউ ক্যাম্পাস পরিবার' : isBn ? 'ডিআইইউ ক্যাম্পাস কমিউনিটি' : 'DIU Campus Hub'}</span>
               </div>
             </div>
 
@@ -125,10 +136,10 @@ export const Hero = () => {
                     <span>Daffodil Smart City, Ashulia</span>
                   </div>
                   <h3 className="text-base sm:text-lg font-extrabold text-white">
-                    {lang === 'bn' ? 'ক্যাম্পাসে আমাদের এক পরিবার' : 'Our Unified Family on Campus'}
+                    {isBb ? 'ক্যাম্পাসে আমরা এক পরিবার' : isBn ? 'ক্যাম্পাসে আমাদের এক পরিবার' : 'Our Unified Family on Campus'}
                   </h3>
                   <p className="text-[11px] sm:text-xs text-slate-300">
-                    {lang === 'bn' ? 'জ্ঞানার্জন, বন্ধুত্ব ও মানবিক কাজের মেলবন্ধন।' : 'Where learning, friendship, and shared aspirations converge.'}
+                    {isBb ? 'পড়ালেহা, বন্ধুত্ব আর বিপদে-আপদে পাশে থাহনের মেলবন্ধন।' : isBn ? 'জ্ঞানার্জন, বন্ধুত্ব ও মানবিক কাজের মেলবন্ধন।' : 'Where learning, friendship, and shared aspirations converge.'}
                   </p>
                 </div>
               </div>
@@ -141,7 +152,7 @@ export const Hero = () => {
                 <div>
                   <span className="text-base sm:text-xl font-black text-white block">9 Upazilas</span>
                   <span className="text-[10px] sm:text-[11px] text-emerald-300 font-medium">
-                    {lang === 'bn' ? 'ব্রাহ্মণবাড়িয়ার প্রতিটি কোণ' : 'United Representation'}
+                    {isBb ? 'বাউনবাইরার প্রতিটি কোণ' : isBn ? 'ব্রাহ্মণবাড়িয়ার প্রতিটি কোণ' : 'United Representation'}
                   </span>
                 </div>
               </div>
@@ -154,7 +165,7 @@ export const Hero = () => {
                 <div>
                   <span className="text-base sm:text-xl font-black text-white block">500+</span>
                   <span className="text-[10px] sm:text-[11px] text-crimson-200 font-medium">
-                    {lang === 'bn' ? 'ডিআইইউ শিক্ষার্থী' : 'Connected Students'}
+                    {isBb ? 'ডিআইইউ শিক্ষার্থী' : isBn ? 'ডিআইইউ শিক্ষার্থী' : 'Connected Students'}
                   </span>
                 </div>
               </div>

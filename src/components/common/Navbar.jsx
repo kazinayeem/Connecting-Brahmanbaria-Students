@@ -6,12 +6,11 @@ import { ThemeToggle } from './ThemeToggle';
 import { 
   Menu, X, Home, Info, Users, GraduationCap, Calendar, 
   Activity, Bell, Image, MapPin, Mail, ChevronDown, 
-  Compass, Landmark, Plus
+  Compass, Landmark, Plus, MessageSquare
 } from 'lucide-react';
 
 export const Navbar = () => {
-  const { t, lang } = useLanguage();
-  const isBn = lang === 'bn';
+  const { t, lang, isBb, isBn } = useLanguage();
   const location = useLocation();
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -78,8 +77,9 @@ export const Navbar = () => {
 
   // 2. Secondary links placed inside "আরও ▾" (More) dropdown
   const secondaryLinks = [
-    { path: '/explore', label: isBn ? 'ব্রাহ্মণবাড়িয়াকে জানি' : 'Explore Brahmanbaria', icon: Compass },
-    { path: '/history', label: isBn ? 'ব্রাহ্মণবাড়িয়ার ইতিহাস' : 'History of Brahmanbaria', icon: Landmark },
+    { path: '/explore', label: isBb ? 'বাউনবাইরারে জানি' : isBn ? 'ব্রাহ্মণবাড়িয়াকে জানি' : 'Explore Brahmanbaria', icon: Compass },
+    { path: '/history', label: isBb ? 'বাউনবাইরার ইতিহাস' : isBn ? 'ব্রাহ্মণবাড়িয়ার ইতিহাস' : 'History of Brahmanbaria', icon: Landmark },
+    { path: '/local-language', label: isBb ? 'আমাগো ভাষা' : isBn ? 'আঞ্চলিক ভাষা' : 'Local Language', icon: MessageSquare },
     { path: '/gallery', label: t('nav.gallery'), icon: Image },
     { path: '/upazilas', label: t('nav.upazilas'), icon: MapPin },
     { path: '/contact', label: t('nav.contact'), icon: Mail },
@@ -129,7 +129,7 @@ export const Navbar = () => {
                 </span>
               </div>
               <span className="text-[11px] text-emerald-700 dark:text-emerald-400/90 font-medium line-clamp-1 max-w-[140px] xs:max-w-[200px] sm:max-w-none">
-                {isBn ? 'ব্রাহ্মণবাড়িয়া শিক্ষার্থী পরিবার' : 'Brahmanbaria Student Community'}
+                {isBb ? 'বাউনবাইরার পোলাপানের পরিবার' : isBn ? 'ব্রাহ্মণবাড়িয়া শিক্ষার্থী পরিবার' : 'Brahmanbaria Student Community'}
               </span>
             </div>
           </Link>
@@ -166,7 +166,7 @@ export const Navbar = () => {
                 aria-expanded={dropdownOpen}
                 aria-haspopup="true"
               >
-                <span>{isBn ? 'আরও' : 'More'}</span>
+                <span>{t('nav.more')}</span>
                 <ChevronDown className={`w-3.5 h-3.5 text-slate-400 transition-transform duration-150 ${dropdownOpen ? 'rotate-180 text-emerald-600 dark:text-emerald-400' : ''}`} />
               </button>
 
@@ -174,7 +174,7 @@ export const Navbar = () => {
               {dropdownOpen && (
                 <div className="absolute right-0 mt-1.5 w-56 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl py-1.5 z-50 animate-fadeIn">
                   <div className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 border-b border-slate-100 dark:border-slate-800 mb-1">
-                    {isBn ? 'অন্যান্য পেজ' : 'Additional Pages'}
+                    {isBb ? 'অন্যান্য পেজ' : isBn ? 'অন্যান্য পেজ' : 'Additional Pages'}
                   </div>
                   {secondaryLinks.map((sublink) => {
                     const active = isActive(sublink.path);
@@ -260,7 +260,7 @@ export const Navbar = () => {
             {/* Mobile Primary Navigation Links */}
             <div className="space-y-1">
               <div className="px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
-                {isBn ? 'প্রধান মেন্যু' : 'Main Menu'}
+                {isBb ? 'প্রধান মেন্যু' : isBn ? 'প্রধান মেন্যু' : 'Main Menu'}
               </div>
               {primaryLinks.map((link) => {
                 const Icon = link.icon;
@@ -286,7 +286,7 @@ export const Navbar = () => {
             {/* Mobile Secondary / "আরও" Navigation Links */}
             <div className="mt-4 pt-3 border-t border-slate-200 dark:border-slate-800 space-y-1">
               <div className="px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
-                {isBn ? 'আরও পেজসমূহ' : 'More Pages'}
+                {isBb ? 'আরও পেজসমূহ' : isBn ? 'আরও পেজসমূহ' : 'More Pages'}
               </div>
               <div className="grid grid-cols-1 gap-1">
                 {secondaryLinks.map((sublink) => {

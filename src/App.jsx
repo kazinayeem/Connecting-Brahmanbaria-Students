@@ -17,6 +17,7 @@ import { GalleryPage } from './pages/GalleryPage';
 import { UpazilasPage } from './pages/UpazilasPage';
 import { ExplorePage } from './pages/ExplorePage';
 import { HistoryPage } from './pages/HistoryPage';
+import { LocalLanguagePage } from './pages/LocalLanguagePage';
 import { JoinPage } from './pages/JoinPage';
 import { ContactPage } from './pages/ContactPage';
 
@@ -54,6 +55,7 @@ export default function App() {
                   <Route path="/explore" element={<ExplorePage />} />
                   <Route path="/explore-brahmanbaria" element={<ExplorePage />} />
                   <Route path="/history" element={<HistoryPage />} />
+                  <Route path="/local-language" element={<LocalLanguagePage />} />
                   <Route path="/about" element={<AboutPage />} />
                   <Route path="/committee" element={<CommitteePage />} />
                   <Route path="/members" element={<MembersPage />} />
