@@ -1,36 +1,57 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '../../context/LanguageContext';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { ThemeToggle } from './ThemeToggle';
 import { 
   Menu, X, Home, Info, Users, GraduationCap, Calendar, 
-  Activity, Bell, Image, MapPin, UserPlus, Mail, ChevronRight, Compass, Sparkles, Landmark 
+  Activity, Bell, Image, MapPin, Mail, ChevronDown, 
+  Compass, Landmark, Plus
 } from 'lucide-react';
 
 export const Navbar = () => {
   const { t, lang } = useLanguage();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const isBn = lang === 'bn';
   const location = useLocation();
 
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const dropdownRef = useRef(null);
+
+  // Scroll detection for compact sticky header
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu on route change
+  // Close mobile menu and dropdown on route change
   useEffect(() => {
     setMobileMenuOpen(false);
+    setDropdownOpen(false);
   }, [location.pathname]);
 
-  // Handle escape key and body scroll lock for mobile drawer
+  // Click outside to close desktop dropdown
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  // Escape key and scroll-lock for mobile menu
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.key === 'Escape') setMobileMenuOpen(false);
+      if (e.key === 'Escape') {
+        setMobileMenuOpen(false);
+        setDropdownOpen(false);
+      }
     };
     if (mobileMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -44,16 +65,21 @@ export const Navbar = () => {
     };
   }, [mobileMenuOpen]);
 
-  const navLinks = [
+  // 1. Primary navigation links (visible directly on desktop)
+  const primaryLinks = [
     { path: '/', label: t('nav.home'), icon: Home },
-    { path: '/explore', label: t('nav.explore'), icon: Compass, featured: true },
-    { path: '/history', label: t('nav.history'), icon: Landmark },
     { path: '/about', label: t('nav.about'), icon: Info },
     { path: '/committee', label: t('nav.committee'), icon: Users },
     { path: '/members', label: t('nav.members'), icon: GraduationCap },
     { path: '/activities', label: t('nav.activities'), icon: Activity },
     { path: '/events', label: t('nav.events'), icon: Calendar },
     { path: '/notices', label: t('nav.notices'), icon: Bell },
+  ];
+
+  // 2. Secondary links placed inside "আরও ▾" (More) dropdown
+  const secondaryLinks = [
+    { path: '/explore', label: isBn ? 'ব্রাহ্মণবাড়িয়াকে জানি' : 'Explore Brahmanbaria', icon: Compass },
+    { path: '/history', label: isBn ? 'ব্রাহ্মণবাড়িয়ার ইতিহাস' : 'History of Brahmanbaria', icon: Landmark },
     { path: '/gallery', label: t('nav.gallery'), icon: Image },
     { path: '/upazilas', label: t('nav.upazilas'), icon: MapPin },
     { path: '/contact', label: t('nav.contact'), icon: Mail },
@@ -65,64 +91,61 @@ export const Navbar = () => {
     return false;
   };
 
+  const isMoreActive = secondaryLinks.some((link) => isActive(link.path));
+
   return (
-    <header className={`sticky top-0 z-50 transition-all duration-300 ${
-      scrolled 
-        ? 'bg-brand-950/95 backdrop-blur-md shadow-lg border-b border-brand-800/40 py-2 sm:py-2.5' 
-        : 'bg-gradient-to-r from-brand-950 via-brand-900 to-brand-950 text-white py-2.5 sm:py-3.5 border-b border-brand-800/30'
-    }`}>
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
+    <header
+      className={`sticky top-0 z-50 transition-all duration-200 ${
+        scrolled
+          ? 'bg-white/95 dark:bg-slate-950/95 backdrop-blur-md shadow-xs border-b border-slate-200 dark:border-slate-800/80 py-2 sm:py-2.5'
+          : 'bg-white/90 dark:bg-slate-950/90 backdrop-blur-sm border-b border-slate-200/70 dark:border-slate-800/60 py-2.5 sm:py-3.5'
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between gap-4">
           
-          {/* Logo & Identity */}
-          <Link to="/" className="flex items-center gap-2 sm:gap-3 group focus:outline-none shrink-0">
-            <div className="relative w-9 h-9 sm:w-11 sm:h-11 rounded-full overflow-hidden shadow-md ring-2 ring-emerald-400/40 group-hover:ring-emerald-300 transition-all transform group-hover:scale-105">
-              <img src="/logo.svg" alt="BSA-DIU Logo" className="w-full h-full object-cover" width="44" height="44" />
+          {/* Logo & Identity (Left) */}
+          <Link
+            to="/"
+            className="flex items-center gap-2.5 sm:gap-3 group focus:outline-none shrink-0"
+            aria-label="BSA DIU Home"
+          >
+            <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full overflow-hidden shadow-xs ring-1.5 ring-emerald-500/40 group-hover:ring-emerald-500 transition-all transform group-hover:scale-105 shrink-0 bg-emerald-950">
+              <img
+                src="/logo.svg"
+                alt="BSA-DIU Logo"
+                className="w-full h-full object-cover"
+                width="40"
+                height="40"
+              />
             </div>
             <div className="flex flex-col">
-              <div className="flex items-center gap-1.5 sm:gap-2">
-                <span className="text-base sm:text-xl font-extrabold tracking-tight text-white group-hover:text-emerald-300 transition-colors">
+              <div className="flex items-center gap-1.5">
+                <span className="text-base sm:text-lg font-black tracking-tight text-slate-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">
                   BSA • DIU
                 </span>
-                <span className="hidden xs:inline-block px-1.5 py-0.5 text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider bg-crimson-600/90 text-white rounded">
+                <span className="hidden xs:inline-block px-1.5 py-0.2 text-[9px] font-bold uppercase tracking-wider bg-emerald-100 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-300 rounded border border-emerald-200 dark:border-emerald-800/50">
                   Community
                 </span>
               </div>
-              <span className="text-[10px] sm:text-xs text-emerald-300/90 font-medium line-clamp-1 max-w-[130px] xs:max-w-[200px] sm:max-w-none">
-                {lang === 'bn' ? 'ব্রাহ্মণবাড়িয়া স্টুডেন্টস অ্যাসোসিয়েশন' : 'Brahmanbaria Students Association'}
+              <span className="text-[11px] text-emerald-700 dark:text-emerald-400/90 font-medium line-clamp-1 max-w-[140px] xs:max-w-[200px] sm:max-w-none">
+                {isBn ? 'ব্রাহ্মণবাড়িয়া শিক্ষার্থী পরিবার' : 'Brahmanbaria Student Community'}
               </span>
             </div>
           </Link>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden xl:flex items-center space-x-1 lg:space-x-1.5">
-            {navLinks.slice(0, 8).map((link) => {
+          {/* Main Desktop Navigation (Center) */}
+          <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1">
+            {primaryLinks.map((link) => {
               const active = isActive(link.path);
-              if (link.featured) {
-                return (
-                  <Link
-                    key={link.path}
-                    to={link.path}
-                    className={`px-2.5 py-1.5 rounded-lg text-xs 2xl:text-sm font-bold transition-all duration-150 flex items-center gap-1.5 ${
-                      active
-                        ? 'bg-amber-500 text-slate-950 shadow-md ring-2 ring-amber-300'
-                        : 'bg-emerald-900/90 text-amber-300 hover:bg-emerald-800 hover:text-amber-200 border border-amber-500/40 shadow-xs'
-                    }`}
-                  >
-                    <Compass className="w-3.5 h-3.5 text-amber-400" />
-                    <span>{link.label}</span>
-                  </Link>
-                );
-              }
-
               return (
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`px-2.5 py-1.5 rounded-lg text-xs 2xl:text-sm font-semibold transition-all duration-150 ${
+                  className={`relative px-2.5 py-1.5 rounded-lg text-xs xl:text-[13px] transition-all duration-150 ${
                     active
-                      ? 'bg-emerald-800/80 text-white shadow-sm border border-emerald-600/50'
-                      : 'text-emerald-100 hover:text-white hover:bg-emerald-800/40'
+                      ? 'text-emerald-700 dark:text-emerald-400 font-bold bg-emerald-50 dark:bg-emerald-950/50 after:absolute after:bottom-0.5 after:left-1/2 after:-translate-x-1/2 after:w-3.5 after:h-0.5 after:bg-emerald-600 dark:after:bg-emerald-400 after:rounded-full'
+                      : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/80 dark:hover:bg-slate-800/60 font-medium'
                   }`}
                 >
                   {link.label}
@@ -130,114 +153,116 @@ export const Navbar = () => {
               );
             })}
 
-            {/* Dropdown / More links for Desktop */}
-            <div className="relative group">
+            {/* "আরও ▾" (More) Dropdown Menu */}
+            <div className="relative" ref={dropdownRef}>
               <button
                 type="button"
-                className={`px-2.5 py-1.5 rounded-lg text-xs 2xl:text-sm font-semibold flex items-center gap-1 transition-all ${
-                  isActive('/notices') || isActive('/gallery') || isActive('/upazilas') || isActive('/contact')
-                    ? 'bg-emerald-800/80 text-white border border-emerald-600/50'
-                    : 'text-emerald-100 hover:text-white hover:bg-emerald-800/40'
+                onClick={() => setDropdownOpen(!dropdownOpen)}
+                className={`relative px-2.5 py-1.5 rounded-lg text-xs xl:text-[13px] flex items-center gap-1 transition-all duration-150 ${
+                  isMoreActive
+                    ? 'text-emerald-700 dark:text-emerald-400 font-bold bg-emerald-50 dark:bg-emerald-950/50 after:absolute after:bottom-0.5 after:left-1/2 after:-translate-x-1/2 after:w-3.5 after:h-0.5 after:bg-emerald-600 dark:after:bg-emerald-400 after:rounded-full'
+                    : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/80 dark:hover:bg-slate-800/60 font-medium'
                 }`}
+                aria-expanded={dropdownOpen}
+                aria-haspopup="true"
               >
-                <span>{lang === 'bn' ? 'আরও' : 'More'}</span>
-                <ChevronRight className="w-3.5 h-3.5 rotate-90" />
+                <span>{isBn ? 'আরও' : 'More'}</span>
+                <ChevronDown className={`w-3.5 h-3.5 text-slate-400 transition-transform duration-150 ${dropdownOpen ? 'rotate-180 text-emerald-600 dark:text-emerald-400' : ''}`} />
               </button>
-              
-              <div className="absolute right-0 mt-1 w-52 bg-slate-900/95 backdrop-blur-md rounded-xl shadow-xl border border-emerald-800/60 py-2 hidden group-hover:block transition-all animate-fadeIn">
-                <Link
-                  to="/notices"
-                  className={`flex items-center gap-2 px-4 py-2 text-xs font-semibold ${
-                    isActive('/notices') ? 'text-emerald-400 bg-emerald-950/60' : 'text-slate-200 hover:text-white hover:bg-emerald-900/50'
-                  }`}
-                >
-                  <Bell className="w-3.5 h-3.5 text-emerald-400" />
-                  {t('nav.notices')}
-                </Link>
-                <Link
-                  to="/gallery"
-                  className={`flex items-center gap-2 px-4 py-2 text-xs font-semibold ${
-                    isActive('/gallery') ? 'text-emerald-400 bg-emerald-950/60' : 'text-slate-200 hover:text-white hover:bg-emerald-900/50'
-                  }`}
-                >
-                  <Image className="w-3.5 h-3.5 text-emerald-400" />
-                  {t('nav.gallery')}
-                </Link>
-                <Link
-                  to="/upazilas"
-                  className={`flex items-center gap-2 px-4 py-2 text-xs font-semibold ${
-                    isActive('/upazilas') ? 'text-emerald-400 bg-emerald-950/60' : 'text-slate-200 hover:text-white hover:bg-emerald-900/50'
-                  }`}
-                >
-                  <MapPin className="w-3.5 h-3.5 text-emerald-400" />
-                  {t('nav.upazilas')}
-                </Link>
-                <Link
-                  to="/contact"
-                  className={`flex items-center gap-2 px-4 py-2 text-xs font-semibold ${
-                    isActive('/contact') ? 'text-emerald-400 bg-emerald-950/60' : 'text-slate-200 hover:text-white hover:bg-emerald-900/50'
-                  }`}
-                >
-                  <Mail className="w-3.5 h-3.5 text-emerald-400" />
-                  {t('nav.contact')}
-                </Link>
-              </div>
+
+              {/* Desktop Dropdown Popover */}
+              {dropdownOpen && (
+                <div className="absolute right-0 mt-1.5 w-56 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl py-1.5 z-50 animate-fadeIn">
+                  <div className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 border-b border-slate-100 dark:border-slate-800 mb-1">
+                    {isBn ? 'অন্যান্য পেজ' : 'Additional Pages'}
+                  </div>
+                  {secondaryLinks.map((sublink) => {
+                    const active = isActive(sublink.path);
+                    const SubIcon = sublink.icon;
+                    return (
+                      <Link
+                        key={sublink.path}
+                        to={sublink.path}
+                        onClick={() => setDropdownOpen(false)}
+                        className={`flex items-center gap-2.5 px-3 py-2 text-xs transition-colors ${
+                          active
+                            ? 'text-emerald-700 dark:text-emerald-400 font-bold bg-emerald-50 dark:bg-emerald-950/60'
+                            : 'text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800/60'
+                        }`}
+                      >
+                        <SubIcon className={`w-3.5 h-3.5 ${active ? 'text-emerald-600 dark:text-emerald-400' : 'text-slate-400 dark:text-slate-500'}`} />
+                        <span>{sublink.label}</span>
+                      </Link>
+                    );
+                  })}
+                </div>
+              )}
             </div>
           </nav>
 
-          {/* Action CTAs: Language Switcher, Theme Toggle & Join Us */}
-          <div className="hidden sm:flex items-center gap-2.5">
+          {/* Desktop Right Actions: Theme, Language, Join CTA */}
+          <div className="hidden lg:flex items-center gap-2 shrink-0">
             <ThemeToggle />
             <LanguageSwitcher />
 
+            {/* Compact Join CTA */}
             <Link
               to="/join"
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-crimson-600 to-rose-700 hover:from-crimson-500 hover:to-rose-600 shadow-md shadow-crimson-900/30 hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0"
+              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-bold text-white bg-crimson-600 hover:bg-crimson-700 active:bg-crimson-800 shadow-xs hover:shadow-sm transition-all duration-150 transform hover:-translate-y-0.5 active:translate-y-0 shrink-0"
             >
-              <UserPlus className="w-3.5 h-3.5" />
+              <Plus className="w-3.5 h-3.5" />
               <span>{t('nav.join')}</span>
             </Link>
           </div>
 
-          {/* Mobile Menu Button & Mobile Controls */}
-          <div className="flex items-center gap-1.5 xs:gap-2 xl:hidden">
-            <div className="sm:hidden flex items-center gap-1">
-              <ThemeToggle />
-              <LanguageSwitcher variant="mobile-inline" />
-            </div>
-            
+          {/* Mobile Right Controls: [Theme Icon] [Hamburger Button] */}
+          <div className="flex items-center gap-1.5 lg:hidden">
+            <ThemeToggle />
+
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-emerald-100 hover:text-white hover:bg-emerald-800/50 focus:outline-none min-h-[44px] min-w-[44px] flex items-center justify-center"
+              className="p-2 rounded-lg text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/60 focus:outline-none min-h-[38px] min-w-[38px] flex items-center justify-center transition-colors"
               aria-label="Toggle navigation menu"
               aria-expanded={mobileMenuOpen}
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
 
         </div>
       </div>
 
-      {/* Mobile Slide-down Drawer & Backdrop */}
+      {/* Mobile Slide-down Menu & Backdrop */}
       {mobileMenuOpen && (
         <>
           <div 
-            className="fixed inset-0 top-[53px] sm:top-[61px] bg-slate-950/60 backdrop-blur-xs z-40 xl:hidden animate-fadeIn"
+            className="fixed inset-0 top-[53px] sm:top-[61px] bg-slate-950/50 backdrop-blur-xs z-40 lg:hidden animate-fadeIn"
             onClick={() => setMobileMenuOpen(false)}
+            aria-hidden="true"
           />
-          <div className="relative z-50 xl:hidden bg-slate-900/98 backdrop-blur-xl border-b border-emerald-800/50 px-4 pt-3 pb-6 animate-slideDown transition-all max-h-[85vh] overflow-y-auto shadow-2xl">
-            <div className="mb-4 pt-1 pb-2 border-b border-slate-800 flex items-center justify-between gap-3">
-              <span className="text-xs text-slate-400 font-semibold">{lang === 'bn' ? 'ভাষা ও থিম' : 'Language & Theme'}:</span>
-              <div className="flex items-center gap-2">
-                <ThemeToggle />
-                <LanguageSwitcher variant="mobile" />
-              </div>
+          <div className="relative z-50 lg:hidden bg-white/98 dark:bg-slate-900/98 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800 px-4 pt-3 pb-6 animate-slideDown transition-all max-h-[85vh] overflow-y-auto shadow-xl">
+            
+            {/* Mobile Top Controls Bar: Language & Join CTA */}
+            <div className="mb-4 pb-3 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between gap-2">
+              <LanguageSwitcher />
+
+              <Link
+                to="/join"
+                onClick={() => setMobileMenuOpen(false)}
+                className="inline-flex items-center gap-1 py-1.5 px-3 rounded-lg text-xs font-bold text-white bg-crimson-600 hover:bg-crimson-700 shadow-xs"
+              >
+                <Plus className="w-3 h-3" />
+                <span>{t('nav.join')}</span>
+              </Link>
             </div>
 
-            <div className="grid grid-cols-1 gap-1">
-              {navLinks.map((link) => {
+            {/* Mobile Primary Navigation Links */}
+            <div className="space-y-1">
+              <div className="px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+                {isBn ? 'প্রধান মেন্যু' : 'Main Menu'}
+              </div>
+              {primaryLinks.map((link) => {
                 const Icon = link.icon;
                 const active = isActive(link.path);
                 return (
@@ -245,34 +270,47 @@ export const Navbar = () => {
                     key={link.path}
                     to={link.path}
                     onClick={() => setMobileMenuOpen(false)}
-                    className={`flex items-center justify-between px-3.5 py-3 rounded-xl text-sm font-medium transition-colors min-h-[44px] ${
-                      link.featured
-                        ? 'bg-gradient-to-r from-emerald-900 to-emerald-950 text-amber-300 font-bold border border-amber-500/40'
-                        : active
-                          ? 'bg-emerald-800/70 text-emerald-200 font-bold border-l-4 border-emerald-400 pl-3'
-                          : 'text-slate-200 hover:bg-slate-800/70 hover:text-white active:bg-slate-800'
+                    className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold transition-colors min-h-[42px] ${
+                      active
+                        ? 'bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 font-bold border-l-4 border-emerald-600 dark:border-emerald-400 pl-2.5'
+                        : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/70 hover:text-slate-900 dark:hover:text-white'
                     }`}
                   >
-                    <div className="flex items-center gap-3">
-                      <Icon className={`w-4 h-4 ${link.featured ? 'text-amber-400' : active ? 'text-emerald-400' : 'text-slate-400'}`} />
-                      <span>{link.label}</span>
-                    </div>
-                    <ChevronRight className="w-4 h-4 text-slate-500" />
+                    <Icon className={`w-4 h-4 ${active ? 'text-emerald-600 dark:text-emerald-400' : 'text-slate-400 dark:text-slate-500'}`} />
+                    <span>{link.label}</span>
                   </Link>
                 );
               })}
             </div>
 
-            <div className="mt-5 pt-4 border-t border-slate-800 flex flex-col gap-3">
-              <Link
-                to="/join"
-                onClick={() => setMobileMenuOpen(false)}
-                className="w-full flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-crimson-600 to-rose-700 shadow-lg text-center min-h-[48px]"
-              >
-                <UserPlus className="w-4 h-4" />
-                <span>{t('nav.join')}</span>
-              </Link>
+            {/* Mobile Secondary / "আরও" Navigation Links */}
+            <div className="mt-4 pt-3 border-t border-slate-200 dark:border-slate-800 space-y-1">
+              <div className="px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+                {isBn ? 'আরও পেজসমূহ' : 'More Pages'}
+              </div>
+              <div className="grid grid-cols-1 gap-1">
+                {secondaryLinks.map((sublink) => {
+                  const SubIcon = sublink.icon;
+                  const active = isActive(sublink.path);
+                  return (
+                    <Link
+                      key={sublink.path}
+                      to={sublink.path}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className={`flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold transition-colors ${
+                        active
+                          ? 'bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 font-bold'
+                          : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800/70 hover:text-slate-900 dark:hover:text-white'
+                      }`}
+                    >
+                      <SubIcon className={`w-3.5 h-3.5 ${active ? 'text-emerald-600 dark:text-emerald-400' : 'text-slate-400 dark:text-slate-500'}`} />
+                      <span>{sublink.label}</span>
+                    </Link>
+                  );
+                })}
+              </div>
             </div>
+
           </div>
         </>
       )}

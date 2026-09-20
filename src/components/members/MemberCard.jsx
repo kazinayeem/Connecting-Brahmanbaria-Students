@@ -12,7 +12,11 @@ export const MemberCard = ({ member }) => {
       <div className="relative shrink-0">
         <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl overflow-hidden ring-2 ring-emerald-100 dark:ring-slate-800 shadow-inner">
           <img
-            src={member.photo}
+            src={member.photo || '/boss.png'}
+            onError={(e) => {
+              e.currentTarget.onerror = null;
+              e.currentTarget.src = '/boss.jpg';
+            }}
             alt={lang === 'bn' ? member.nameBn : member.nameEn}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform"
             loading="lazy"

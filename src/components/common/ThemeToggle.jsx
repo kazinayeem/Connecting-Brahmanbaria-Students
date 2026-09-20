@@ -1,32 +1,29 @@
 import React from 'react';
 import { useTheme } from '../../context/ThemeContext';
+import { useLanguage } from '../../context/LanguageContext';
 import { Sun, Moon } from 'lucide-react';
 
-export const ThemeToggle = ({ variant = "default" }) => {
-  const { theme, toggleTheme, isDark } = useTheme();
+export const ThemeToggle = ({ className = "" }) => {
+  const { toggleTheme, isDark } = useTheme();
+  const { lang } = useLanguage();
+  const isBn = lang === 'bn';
+
+  const label = isDark 
+    ? (isBn ? 'লাইট মোড চালু করুন' : 'Switch to Light mode')
+    : (isBn ? 'ডার্ক মোড চালু করুন' : 'Switch to Dark mode');
 
   return (
     <button
       type="button"
       onClick={toggleTheme}
-      className={`inline-flex items-center gap-1.5 px-2 py-1 rounded-lg text-xs font-bold transition-all duration-200 border ${
-        isDark
-          ? 'bg-slate-800 hover:bg-slate-700 text-amber-400 border-slate-700 shadow-xs'
-          : 'bg-emerald-950/50 hover:bg-emerald-900/70 text-emerald-200 hover:text-white border-emerald-700/50 shadow-xs'
-      }`}
-      aria-label={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
-      title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
+      className={`relative p-2 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/60 ${className}`}
+      aria-label={label}
+      title={label}
     >
       {isDark ? (
-        <>
-          <Sun className="w-3.5 h-3.5 text-amber-400" />
-          <span className="text-[11px] font-semibold text-slate-200">Light</span>
-        </>
+        <Sun className="w-4 h-4 text-amber-400 transition-transform duration-200 rotate-0 hover:rotate-45" />
       ) : (
-        <>
-          <Moon className="w-3.5 h-3.5 text-emerald-200" />
-          <span className="text-[11px] font-semibold text-emerald-100">Dark</span>
-        </>
+        <Moon className="w-4 h-4 text-slate-600 dark:text-slate-300 transition-transform duration-200" />
       )}
     </button>
   );

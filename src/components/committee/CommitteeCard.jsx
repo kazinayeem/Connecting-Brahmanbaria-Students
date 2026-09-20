@@ -15,7 +15,11 @@ export const CommitteeCard = ({ member }) => {
       <div className="relative mt-2 mb-5">
         <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden ring-4 ring-emerald-50 dark:ring-slate-800 ring-offset-2 ring-offset-white dark:ring-offset-slate-900 shadow-md group-hover:scale-105 transition-transform duration-300">
           <img
-            src={member.photo}
+            src={member.photo || '/boss.png'}
+            onError={(e) => {
+              e.currentTarget.onerror = null;
+              e.currentTarget.src = '/boss.jpg';
+            }}
             alt={lang === 'bn' ? member.nameBn : member.nameEn}
             className="w-full h-full object-cover"
           />

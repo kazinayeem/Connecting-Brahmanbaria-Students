@@ -179,7 +179,12 @@ export const StudentHomeFinder = () => {
             <div className="flex flex-wrap gap-2">
               {localMembers.map((m) => (
                 <div key={m.id} className="flex items-center gap-2 bg-white dark:bg-slate-900 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 text-xs">
-                  <img src={m.photo} alt={m.nameEn} className="w-6 h-6 rounded-full object-cover" />
+                  <img 
+                    src={m.photo || '/boss.png'} 
+                    onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = '/boss.jpg'; }}
+                    alt={m.nameEn} 
+                    className="w-6 h-6 rounded-full object-cover" 
+                  />
                   <span className="font-semibold text-slate-800 dark:text-slate-200">{lang === 'bn' ? m.nameBn : m.nameEn}</span>
                   <span className="text-[10px] text-slate-400">({m.deptId})</span>
                 </div>

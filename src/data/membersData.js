@@ -26,7 +26,7 @@ export const membersData = [
     studentId: "212-35-789",
     upazilaBn: "ব্রাহ্মণবাড়িয়া সদর",
     upazilaEn: "Brahmanbaria Sadar",
-    photo: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=300&q=80",
+    photo: "/boss.png",
     blood: "B+",
     email: "mamun.swe@diu.edu.bd"
   },
@@ -41,7 +41,7 @@ export const membersData = [
     studentId: "221-15-442",
     upazilaBn: "আশুগঞ্জ",
     upazilaEn: "Ashuganj",
-    photo: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80",
+    photo: "/boss.png",
     blood: "O+",
     email: "riya.cse@diu.edu.bd"
   },
@@ -56,7 +56,7 @@ export const membersData = [
     studentId: "211-11-852",
     upazilaBn: "সরাইল",
     upazilaEn: "Sarail",
-    photo: "https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&w=300&q=80",
+    photo: "/boss.png",
     blood: "A+",
     email: "tareq.bba@diu.edu.bd"
   },
@@ -71,7 +71,7 @@ export const membersData = [
     studentId: "203-29-331",
     upazilaBn: "কসবা",
     upazilaEn: "Kasba",
-    photo: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=300&q=80",
+    photo: "/boss.png",
     blood: "AB+",
     email: "mim.pharm@diu.edu.bd"
   },
@@ -86,7 +86,7 @@ export const membersData = [
     studentId: "223-33-102",
     upazilaBn: "নবীনগর",
     upazilaEn: "Nabinagar",
-    photo: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&w=300&q=80",
+    photo: "/boss.png",
     blood: "O+",
     email: "sakib.eee@diu.edu.bd"
   },
@@ -101,7 +101,7 @@ export const membersData = [
     studentId: "213-14-672",
     upazilaBn: "আখাউড়া",
     upazilaEn: "Akhaura",
-    photo: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+    photo: "/boss.png",
     blood: "B-",
     email: "tasnia.eng@diu.edu.bd"
   },
@@ -116,7 +116,7 @@ export const membersData = [
     studentId: "211-38-519",
     upazilaBn: "বাঞ্ছারামপুর",
     upazilaEn: "Bancharampur",
-    photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80",
+    photo: "/boss.png",
     blood: "A+",
     email: "rocky.law@diu.edu.bd"
   },
@@ -131,7 +131,7 @@ export const membersData = [
     studentId: "212-16-904",
     upazilaBn: "বিজয়নগর",
     upazilaEn: "Bijoynagar",
-    photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80",
+    photo: "/boss.png",
     blood: "O-",
     email: "mostafiz.ce@diu.edu.bd"
   },
@@ -146,7 +146,7 @@ export const membersData = [
     studentId: "231-35-118",
     upazilaBn: "নাসিরনগর",
     upazilaEn: "Nasirnagar",
-    photo: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80",
+    photo: "/boss.png",
     blood: "B+",
     email: "toma.swe@diu.edu.bd"
   },
@@ -161,7 +161,7 @@ export const membersData = [
     studentId: "232-15-774",
     upazilaBn: "ব্রাহ্মণবাড়িয়া সদর",
     upazilaEn: "Brahmanbaria Sadar",
-    photo: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=300&q=80",
+    photo: "/boss.png",
     blood: "A+",
     email: "sourav.cse@diu.edu.bd"
   },
@@ -176,7 +176,7 @@ export const membersData = [
     studentId: "221-11-309",
     upazilaBn: "কসবা",
     upazilaEn: "Kasba",
-    photo: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80",
+    photo: "/boss.png",
     blood: "O+",
     email: "esha.bba@diu.edu.bd"
   },
@@ -191,7 +191,7 @@ export const membersData = [
     studentId: "202-40-192",
     upazilaBn: "নবীনগর",
     upazilaEn: "Nabinagar",
-    photo: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=300&q=80",
+    photo: "/boss.png",
     blood: "AB+",
     email: "rifat.jmc@diu.edu.bd"
   }
