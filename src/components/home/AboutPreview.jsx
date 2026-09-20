@@ -8,7 +8,7 @@ import {
 } from 'lucide-react';
 
 export const AboutPreview = () => {
-  const { t, lang } = useLanguage();
+  const { t, lang, isBb, isBn, isEn } = useLanguage();
 
   const cards = [
     {
@@ -69,7 +69,7 @@ export const AboutPreview = () => {
                 </div>
 
                 <div className="mt-6 pt-4 border-t border-slate-200/60 dark:border-slate-700/60 flex items-center text-xs font-semibold text-brand-700 dark:text-emerald-400 group-hover:text-brand-800 dark:group-hover:text-emerald-300">
-                  <span>{lang === 'bn' ? 'বিস্তারিত দেখুন' : 'Read details'}</span>
+                  <span>{isBb ? 'আরও দেহেন' : isBn ? 'বিস্তারিত দেখুন' : 'Read details'}</span>
                   <ArrowRight className="w-3.5 h-3.5 ml-1 transform group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
@@ -82,12 +82,14 @@ export const AboutPreview = () => {
           <div className="space-y-2 text-center md:text-left">
             <h4 className="text-xl font-bold flex items-center justify-center md:justify-start gap-2">
               <Sparkles className="w-5 h-5 text-emerald-400" />
-              <span>{lang === 'bn' ? 'আমাদের পরিবারে সবাইকে স্বাগতম' : 'Everyone is Welcomed in Our Student Family'}</span>
+              <span>{isBb ? 'আমাগো পরিবারে হগলতেরে খোশ আমদেদ' : isBn ? 'আমাদের পরিবারে সবাইকে স্বাগতম' : 'Everyone is Welcomed in Our Student Family'}</span>
             </h4>
             <p className="text-sm text-slate-300 max-w-xl">
-              {lang === 'bn' 
-                ? 'ব্রাহ্মণবাড়িয়া থেকে ডিআইইউ-তে আসা প্রতিটি নতুন শিক্ষার্থীর পাশে ছায়ার মতো থাকে বিএসএ-ডিআইইউ।'
-                : 'BSA-DIU stands by every Brahmanbaria student at DIU, offering warm academic and social guidance from day one.'}
+              {isBb 
+                ? 'বাউনবাইরা থেইকা ডিআইইউ-তে আসা প্রত্যেক নতুন ছাওয়াল-মাইয়ার পাশে ছায়ার মতো খাড়ায় বিএসএ-ডিআইইউ।'
+                : isBn
+                  ? 'ব্রাহ্মণবাড়িয়া থেকে ডিআইইউ-তে আসা প্রতিটি নতুন শিক্ষার্থীর পাশে ছায়ার মতো থাকে বিএসএ-ডিআইইউ।'
+                  : 'BSA-DIU stands by every Brahmanbaria student at DIU, offering warm academic and social guidance from day one.'}
             </p>
           </div>
 
@@ -95,7 +97,7 @@ export const AboutPreview = () => {
             to="/about"
             className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white text-brand-900 font-bold hover:bg-emerald-50 shadow-md transition-colors text-sm"
           >
-            <span>{lang === 'bn' ? 'আমাদের সম্পূর্ণ পরিচিতি' : 'Full About Page'}</span>
+            <span>{isBb ? 'আমাগো আদ্যোপান্ত জানুন' : isBn ? 'আমাদের সম্পূর্ণ পরিচিতি' : 'Full About Page'}</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>

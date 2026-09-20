@@ -6,7 +6,7 @@ import { upazilasData } from '../../data/upazilasData';
 import { MapPin, Users, Waves, Sparkles, ArrowRight, ExternalLink } from 'lucide-react';
 
 export const UpazilaHighlight = () => {
-  const { t, lang } = useLanguage();
+  const { t, lang, isBb, isBn, isEn, isBanglaScript } = useLanguage();
   const [selectedUpazila, setSelectedUpazila] = useState(upazilasData[0]);
 
   return (
@@ -56,11 +56,11 @@ export const UpazilaHighlight = () => {
                           </span>
                         </div>
                         <h4 className="font-bold text-xs sm:text-sm leading-snug">
-                          {lang === 'bn' ? item.nameBn : item.nameEn}
+                          {isBanglaScript ? item.nameBn : item.nameEn}
                         </h4>
                       </div>
                       <span className={`text-[10px] sm:text-[11px] mt-1 line-clamp-1 ${isSelected ? 'text-emerald-200' : 'text-slate-500 dark:text-slate-400'}`}>
-                        {lang === 'bn' ? item.riverBn : item.riverEn}
+                        {isBanglaScript ? item.riverBn : item.riverEn}
                       </span>
                     </button>
                   );
@@ -87,17 +87,17 @@ export const UpazilaHighlight = () => {
 
                   <div className="flex items-center gap-1 text-xs font-bold text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded-lg">
                     <Users className="w-3.5 h-3.5 text-brand-600 dark:text-emerald-400" />
-                    <span>{selectedUpazila.studentCount}+ {lang === 'bn' ? 'শিক্ষার্থী' : 'Students'}</span>
+                    <span>{selectedUpazila.studentCount}+ {isBb ? 'জন শিক্ষার্থী' : isBn ? 'শিক্ষার্থী' : 'Students'}</span>
                   </div>
                 </div>
 
                 {/* Title */}
                 <div>
                   <h3 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">
-                    {lang === 'bn' ? selectedUpazila.nameBn : selectedUpazila.nameEn}
+                    {isBanglaScript ? selectedUpazila.nameBn : selectedUpazila.nameEn}
                   </h3>
                   <p className="text-sm font-semibold text-brand-700 dark:text-emerald-400 mt-1">
-                    {lang === 'bn' ? selectedUpazila.titleBn : selectedUpazila.titleEn}
+                    {isBanglaScript ? selectedUpazila.titleBn : selectedUpazila.titleEn}
                   </p>
                 </div>
 
@@ -105,27 +105,27 @@ export const UpazilaHighlight = () => {
                 <div className="flex items-center gap-2 text-xs font-medium text-slate-600 dark:text-slate-300 bg-slate-50 dark:bg-slate-800/70 p-2.5 rounded-xl border border-slate-100 dark:border-slate-800">
                   <Waves className="w-4 h-4 text-cyan-600 dark:text-cyan-400 shrink-0" />
                   <span>
-                    <strong>{lang === 'bn' ? 'নদী সংযোগ:' : 'River Basin:'}</strong> {lang === 'bn' ? selectedUpazila.riverBn : selectedUpazila.riverEn}
+                    <strong>{isBb ? 'গাঙ/নদী সংযোগ:' : isBn ? 'নদী সংযোগ:' : 'River Basin:'}</strong> {isBanglaScript ? selectedUpazila.riverBn : selectedUpazila.riverEn}
                   </span>
                 </div>
 
                 {/* Highlights / Heritage */}
                 <div className="space-y-1.5">
                   <h5 className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                    {lang === 'bn' ? 'ঐতিহ্য ও পরিচয়' : 'Heritage & Distinction'}
+                    {isBb ? 'ঐতিহ্য আর পরিচয়' : isBn ? 'ঐতিহ্য ও পরিচয়' : 'Heritage & Distinction'}
                   </h5>
                   <p className="text-sm text-slate-700 dark:text-slate-200 leading-relaxed bg-emerald-50/50 dark:bg-emerald-950/40 p-3.5 rounded-xl border border-emerald-200/50 dark:border-emerald-800/40">
-                    {lang === 'bn' ? selectedUpazila.highlightBn : selectedUpazila.highlightEn}
+                    {isBanglaScript ? selectedUpazila.highlightBn : selectedUpazila.highlightEn}
                   </p>
                 </div>
 
                 {/* Connection at DIU */}
                 <div className="space-y-1.5">
                   <h5 className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                    {lang === 'bn' ? 'ডিআইইউতে শিক্ষার্থী উপস্থিতি' : 'Presence at DIU Campus'}
+                    {isBb ? 'ডিআইইউতে আমাগো ছাওয়াল-মাইয়া' : isBn ? 'ডিআইইউতে শিক্ষার্থী উপস্থিতি' : 'Presence at DIU Campus'}
                   </h5>
                   <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                    {lang === 'bn' ? selectedUpazila.descBn : selectedUpazila.descEn}
+                    {isBanglaScript ? selectedUpazila.descBn : selectedUpazila.descEn}
                   </p>
                 </div>
 
@@ -135,7 +135,7 @@ export const UpazilaHighlight = () => {
                     to="/upazilas"
                     className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs font-bold text-white bg-brand-700 hover:bg-brand-800 shadow-md transition-colors"
                   >
-                    <span>{lang === 'bn' ? '৯ উপজেলার বিস্তারিত দেখুন' : 'Explore All 9 Upazilas'}</span>
+                    <span>{isBb ? '৯ উপজেলার বিস্তারিত দেহেন' : isBn ? '৯ উপজেলার বিস্তারিত দেখুন' : 'Explore All 9 Upazilas'}</span>
                     <ArrowRight className="w-4 h-4" />
                   </Link>
                 </div>

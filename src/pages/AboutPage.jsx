@@ -7,7 +7,7 @@ import {
 } from 'lucide-react';
 
 export const AboutPage = () => {
-  const { t, lang } = useLanguage();
+  const { t, lang, isBb, isBn, isEn } = useLanguage();
 
   const values = t('about.values') || [];
 
@@ -30,9 +30,11 @@ export const AboutPage = () => {
               <span>{t('about.storyTitle')}</span>
             </div>
             <h3 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white leading-tight">
-              {lang === 'bn' 
-                ? 'ক্যাম্পাসে আমাদের পথচলা ও শিক্ষার্থীদের মেলবন্ধন' 
-                : 'Our Student Journey & Brotherhood at DIU'}
+              {isBb
+                ? 'ক্যাম্পাসে আমাগো পথচলা আর ভাই-বেরাদরির মেলবন্ধন'
+                : isBn 
+                  ? 'ক্যাম্পাসে আমাদের পথচলা ও শিক্ষার্থীদের মেলবন্ধন' 
+                  : 'Our Student Journey & Brotherhood at DIU'}
             </h3>
             <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
               {t('about.storyDesc')}
@@ -40,15 +42,15 @@ export const AboutPage = () => {
             <div className="pt-2 flex flex-wrap gap-4 text-xs font-semibold text-slate-700 dark:text-slate-300">
               <div className="flex items-center gap-2 bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-xl">
                 <CheckCircle2 className="w-4 h-4 text-brand-600 dark:text-brand-400" />
-                <span>{lang === 'bn' ? 'সম্পূর্ণ অরাজনৈতিক' : 'Strictly Non-Political'}</span>
+                <span>{isBb ? 'সম্পূর্ণ অরাজনৈতিক' : isBn ? 'সম্পূর্ণ অরাজনৈতিক' : 'Strictly Non-Political'}</span>
               </div>
               <div className="flex items-center gap-2 bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-xl">
                 <CheckCircle2 className="w-4 h-4 text-brand-600 dark:text-brand-400" />
-                <span>{lang === 'bn' ? 'শিক্ষার্থীবান্ধব প্ল্যাটফর্ম' : 'Student-Centric Welfare'}</span>
+                <span>{isBb ? 'ছাওয়াল-মাইয়াবান্ধব সংগঠন' : isBn ? 'শিক্ষার্থীবান্ধব প্ল্যাটফর্ম' : 'Student-Centric Welfare'}</span>
               </div>
               <div className="flex items-center gap-2 bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-xl">
                 <CheckCircle2 className="w-4 h-4 text-brand-600 dark:text-brand-400" />
-                <span>{lang === 'bn' ? '৯ উপজেলার সমঅধিকার' : 'All 9 Upazilas Represented'}</span>
+                <span>{isBb ? '৯ উপজেলার হক সমান' : isBn ? '৯ উপজেলার সমঅধিকার' : 'All 9 Upazilas Represented'}</span>
               </div>
             </div>
           </div>
@@ -62,7 +64,7 @@ export const AboutPage = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-brand-950/80 via-transparent to-transparent"></div>
               <div className="absolute bottom-4 left-4 right-4 text-white text-xs font-medium">
-                {lang === 'bn' ? 'ড্যাফোডিল স্মার্ট সিটি, আশুলিয়া ক্যাম্পাস' : 'Daffodil Smart City, Ashulia Campus'}
+                {isEn ? 'Daffodil Smart City, Ashulia Campus' : 'ড্যাফোডিল স্মার্ট সিটি, আশুলিয়া ক্যাম্পাস'}
               </div>
             </div>
           </div>
@@ -126,7 +128,7 @@ export const AboutPage = () => {
               <span>{t('about.valuesBadge')}</span>
             </span>
             <h3 className="text-2xl sm:text-3xl font-black">
-              {lang === 'bn' ? 'আমাদের মূল্যবোধ ও দর্শন' : 'Our Guiding Philosophy & Pillars'}
+              {isBb ? 'আমাগো নীতি আর মূল ভিত্তি' : isBn ? 'আমাদের মূল্যবোধ ও দর্শন' : 'Our Guiding Philosophy & Pillars'}
             </h3>
           </div>
 

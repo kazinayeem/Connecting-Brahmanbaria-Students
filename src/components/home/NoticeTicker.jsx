@@ -5,7 +5,7 @@ import { noticesData } from '../../data/noticesData';
 import { Bell, ArrowRight, AlertCircle } from 'lucide-react';
 
 export const NoticeTicker = () => {
-  const { lang } = useLanguage();
+  const { lang, isBb, isBn, isEn, isBanglaScript } = useLanguage();
   const latestNotice = noticesData[0]; // e.g. Urgent blood or registration notice
 
   if (!latestNotice) return null;
@@ -17,10 +17,10 @@ export const NoticeTicker = () => {
         <div className="flex items-center gap-2.5 overflow-hidden">
           <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-crimson-600 text-white font-bold text-[10px] tracking-wider uppercase shrink-0 animate-pulse">
             <AlertCircle className="w-3 h-3" />
-            {lang === 'bn' ? 'জরুরি নোটিশ' : 'Notice'}
+            {isBb ? 'জরুরি খবর' : isBn ? 'জরুরি নোটিশ' : 'Notice'}
           </span>
           <span className="text-emerald-100 truncate font-medium">
-            {lang === 'bn' ? latestNotice.titleBn : latestNotice.titleEn}
+            {isBanglaScript ? latestNotice.titleBn : latestNotice.titleEn}
           </span>
         </div>
 
@@ -28,7 +28,7 @@ export const NoticeTicker = () => {
           to="/notices"
           className="inline-flex items-center gap-1 font-semibold text-emerald-200 hover:text-white hover:underline shrink-0 text-xs transition-colors"
         >
-          <span>{lang === 'bn' ? 'সব নোটিশ দেখুন' : 'View All Notices'}</span>
+          <span>{isBb ? 'হগলতি নোটিশ দেহেন' : isBn ? 'সব নোটিশ দেখুন' : 'View All Notices'}</span>
           <ArrowRight className="w-3.5 h-3.5" />
         </Link>
 

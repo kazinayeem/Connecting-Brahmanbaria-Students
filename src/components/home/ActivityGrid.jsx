@@ -26,7 +26,7 @@ const colorMap = {
 };
 
 export const ActivityGrid = () => {
-  const { t, lang } = useLanguage();
+  const { t, lang, isBb, isBn, isEn } = useLanguage();
   const pillars = t('activities.pillars') || [];
 
   return (
@@ -89,7 +89,7 @@ export const ActivityGrid = () => {
                   to="/activities"
                   className="inline-flex items-center justify-between w-full pt-3 text-xs font-bold text-brand-700 dark:text-emerald-400 group-hover:text-brand-800 dark:group-hover:text-emerald-300 border-t border-slate-200/60 dark:border-slate-800"
                 >
-                  <span>{lang === 'bn' ? 'কার্যক্রমের বিস্তারিত' : 'Learn more about this pillar'}</span>
+                  <span>{isBb ? 'কামকাজের বিস্তারিত' : isBn ? 'কার্যক্রমের বিস্তারিত' : 'Learn more about this pillar'}</span>
                   <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>

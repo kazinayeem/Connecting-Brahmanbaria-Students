@@ -8,7 +8,7 @@ import { EventModal } from '../events/EventModal';
 import { ArrowRight, Calendar } from 'lucide-react';
 
 export const LatestEvents = () => {
-  const { t, lang } = useLanguage();
+  const { t, lang, isBb, isBn, isEn } = useLanguage();
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -46,7 +46,7 @@ export const LatestEvents = () => {
             className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white border border-slate-300 text-slate-800 font-bold hover:bg-slate-50 hover:border-brand-500 shadow-sm transition-all text-sm group"
           >
             <Calendar className="w-4 h-4 text-brand-600" />
-            <span>{lang === 'bn' ? 'সকল ইভেন্ট ও পুরনো স্মৃতি দেখুন' : 'Browse All Events & Memories'}</span>
+            <span>{isBb ? 'হগলতি ইভেন্ট আর আগের স্মৃতি দেহেন' : isBn ? 'সকল ইভেন্ট ও পুরনো স্মৃতি দেখুন' : 'Browse All Events & Memories'}</span>
             <ArrowRight className="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
