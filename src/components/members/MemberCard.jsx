@@ -3,7 +3,7 @@ import { useLanguage } from '../../context/LanguageContext';
 import { GraduationCap, MapPin, Hash, Droplet } from 'lucide-react';
 
 export const MemberCard = ({ member }) => {
-  const { lang } = useLanguage();
+  const { lang, isBanglaScript } = useLanguage();
 
   return (
     <div className="group rounded-2xl p-3.5 sm:p-5 bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 hover:border-brand-400 dark:hover:border-brand-600 hover:shadow-soft transition-all duration-200 flex items-start gap-3 sm:gap-4">
@@ -17,7 +17,7 @@ export const MemberCard = ({ member }) => {
               e.currentTarget.onerror = null;
               e.currentTarget.src = '/boss.jpg';
             }}
-            alt={lang === 'bn' ? member.nameBn : member.nameEn}
+            alt={isBanglaScript ? member.nameBn : member.nameEn}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform"
             loading="lazy"
             width="64"
@@ -37,12 +37,12 @@ export const MemberCard = ({ member }) => {
         
         {/* Name */}
         <h4 className="text-base font-bold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors truncate">
-          {lang === 'bn' ? member.nameBn : member.nameEn}
+          {isBanglaScript ? member.nameBn : member.nameEn}
         </h4>
 
         {/* Department */}
         <p className="text-xs font-semibold text-brand-700 dark:text-emerald-400 truncate">
-          {lang === 'bn' ? member.deptBn : member.deptEn}
+          {isBanglaScript ? member.deptBn : member.deptEn}
         </p>
 
         {/* Meta tags: Batch & Student ID */}
@@ -62,8 +62,8 @@ export const MemberCard = ({ member }) => {
 
         {/* Home Upazila */}
         <div className="pt-1 flex items-center gap-1 text-[11px] text-slate-500 dark:text-slate-400">
-          <MapPin className="w-3 h-3 text-crimson-500 shrink-0" />
-          <span className="truncate">{lang === 'bn' ? member.upazilaBn : member.upazilaEn}</span>
+          <MapPin className="w-3.5 h-3.5 text-crimson-500 shrink-0" />
+          <span className="truncate">{isBanglaScript ? member.upazilaBn : member.upazilaEn}</span>
         </div>
 
       </div>

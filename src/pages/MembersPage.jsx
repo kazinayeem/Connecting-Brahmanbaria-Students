@@ -7,7 +7,7 @@ import { membersData } from '../data/membersData';
 import { Users, Info, Sparkles } from 'lucide-react';
 
 export const MembersPage = () => {
-  const { t, lang } = useLanguage();
+  const { t, lang, isBb, isBn, isEn } = useLanguage();
   
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedDept, setSelectedDept] = useState('all');
@@ -62,9 +62,11 @@ export const MembersPage = () => {
         <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 flex items-start gap-3 max-w-2xl mx-auto text-xs text-slate-600 dark:text-slate-300 shadow-xs">
           <Info className="w-4 h-4 text-brand-600 dark:text-brand-400 shrink-0 mt-0.5" />
           <p>
-            {lang === 'bn' 
-              ? 'এখানে শিক্ষার্থীদের কিছু নমুনা তথ্য দেওয়া হয়েছে। নতুন শিক্ষার্থীরা "যোগ দিন" পাতা থেকে সহজেই রেজিস্ট্রেশন করতে পারেন।'
-              : 'The student profiles shown below are demonstration samples. New students can register via the "Join Us" page.'}
+            {isBb
+              ? 'এইহানে ছাওয়াল-মাইয়াগো কিছু নমুনা তথ্য দেওয়া হইছে। নতুন ছাওয়াল-মাইয়ারা "যোগ দেন" পাতা থেইকা সহজেই নাম লেখাইতে পারবেন।'
+              : isBn 
+                ? 'এখানে শিক্ষার্থীদের কিছু নমুনা তথ্য দেওয়া হয়েছে। নতুন শিক্ষার্থীরা "যোগ দিন" পাতা থেকে সহজেই রেজিস্ট্রেশন করতে পারেন।'
+                : 'The student profiles shown below are demonstration samples. New students can register via the "Join Us" page.'}
           </p>
         </div>
 
@@ -91,7 +93,7 @@ export const MembersPage = () => {
           </div>
           {(searchQuery || selectedDept !== 'all' || selectedBatch !== 'all' || selectedUpazila !== 'all') && (
             <span className="text-brand-700 dark:text-emerald-300 bg-brand-50 dark:bg-emerald-950/60 px-2.5 py-1 rounded-lg">
-              {lang === 'bn' ? 'ফিল্টার সক্রিয়' : 'Filters Active'}
+              {isBb ? 'ফিল্টার চালু আছে' : isBn ? 'ফিল্টার সক্রিয়' : 'Filters Active'}
             </span>
           )}
         </div>
@@ -109,7 +111,7 @@ export const MembersPage = () => {
               <Users className="w-8 h-8" />
             </div>
             <h4 className="text-lg font-bold text-slate-900 dark:text-white">
-              {lang === 'bn' ? 'কোনো শিক্ষার্থী পাওয়া যায়নি' : 'No Students Found'}
+              {isBb ? 'কুনো ছাওয়াল-মাইয়া পাওয়া যায় নাই' : isBn ? 'কোনো শিক্ষার্থী পাওয়া যায়নি' : 'No Students Found'}
             </h4>
             <p className="text-xs text-slate-500 dark:text-slate-400">
               {t('members.noResults')}
@@ -120,7 +122,7 @@ export const MembersPage = () => {
                 onClick={handleReset}
                 className="px-4 py-2 rounded-xl text-xs font-bold text-brand-700 dark:text-emerald-300 bg-brand-50 dark:bg-emerald-950/60 hover:bg-brand-100 dark:hover:bg-emerald-900/60 transition-colors"
               >
-                {lang === 'bn' ? 'ফিল্টার রিসেট করুন' : 'Reset Filters'}
+                {isBb ? 'ফিল্টার রিসেট করেন' : isBn ? 'ফিল্টার রিসেট করুন' : 'Reset Filters'}
               </button>
             </div>
           </div>

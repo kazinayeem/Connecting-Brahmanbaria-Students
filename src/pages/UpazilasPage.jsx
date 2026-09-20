@@ -9,7 +9,7 @@ import {
 import { Link } from 'react-router-dom';
 
 export const UpazilasPage = () => {
-  const { t, lang } = useLanguage();
+  const { t, lang, isBb, isBn, isEn, isBanglaScript } = useLanguage();
   const [activeUpazila, setActiveUpazila] = useState(upazilasData[0]);
 
   const totalEstimatedStudents = upazilasData.reduce((acc, cur) => acc + cur.studentCount, 0);
@@ -30,13 +30,15 @@ export const UpazilasPage = () => {
           <div className="lg:col-span-8 space-y-4">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-emerald-900/80 text-emerald-300 border border-emerald-600/40">
               <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
-              <span>{lang === 'bn' ? 'তিতাস-মেঘনা থেকে ডিআইইউ ক্যাম্পাস' : 'From Titas & Meghna to DIU Campus'}</span>
+              <span>{isBb ? 'তিতাস-মেঘনা থেইকা ডিআইইউ ক্যাম্পাস' : isBn ? 'তিতাস-মেঘনা থেকে ডিআইইউ ক্যাম্পাস' : 'From Titas & Meghna to DIU Campus'}</span>
             </div>
 
             <h3 className="text-2xl sm:text-4xl font-black tracking-tight leading-tight">
-              {lang === 'bn' 
-                ? 'ব্রাহ্মণবাড়িয়ার ৯টি প্রান্ত, কিন্তু ডিআইইউতে আমরা এক আত্মা'
-                : '9 Distinct Upazilas, United as One Family at DIU'}
+              {isBb
+                ? 'বাউনবাইরার ৯টা কোণ, কিন্তু ডিআইইউতে আমরা এক আত্মা'
+                : isBn 
+                  ? 'ব্রাহ্মণবাড়িয়ার ৯টি প্রান্ত, কিন্তু ডিআইইউতে আমরা এক আত্মা'
+                  : '9 Distinct Upazilas, United as One Family at DIU'}
             </h3>
 
             <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl">
@@ -46,11 +48,11 @@ export const UpazilasPage = () => {
             <div className="pt-2 flex flex-wrap gap-4 text-xs font-semibold text-emerald-200">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                <span>{lang === 'bn' ? '৯টি উপজেলার সক্রিয় অংশগ্রহণ' : 'Representation across all 9 upazilas'}</span>
+                <span>{isBb ? '৯ উপজেলার হক্কলতের সরব উপস্থিতি' : isBn ? '৯টি উপজেলার সক্রিয় অংশগ্রহণ' : 'Representation across all 9 upazilas'}</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                <span>{lang === 'bn' ? 'একে অপরকে সহযোগিতা ও বন্ধুত্বের বন্ধন' : 'Academic & social peer collaboration'}</span>
+                <span>{isBb ? 'একজন আরেকজনরে সাহায্য আর বন্ধুত্বের বাঁধন' : isBn ? 'একে অপরকে সহযোগিতা ও বন্ধুত্বের বন্ধন' : 'Academic & social peer collaboration'}</span>
               </div>
             </div>
           </div>
@@ -60,10 +62,10 @@ export const UpazilasPage = () => {
               {totalEstimatedStudents}+
             </span>
             <span className="text-xs font-bold uppercase tracking-wider text-slate-300">
-              {lang === 'bn' ? 'ডিআইইউতে ব্রাহ্মণবাড়িয়ার শিক্ষার্থী' : 'Students from Brahmanbaria at DIU'}
+              {isBb ? 'ডিআইইউতে বাউনবাইরার ছাওয়াল-মাইয়া' : isBn ? 'ডিআইইউতে ব্রাহ্মণবাড়িয়ার শিক্ষার্থী' : 'Students from Brahmanbaria at DIU'}
             </span>
             <span className="text-[11px] text-slate-400">
-              {lang === 'bn' ? 'আশুলিয়া ও ধানমন্ডি ক্যাম্পাস মিলিয়ে' : 'Across Ashulia & Dhaka Campuses'}
+              {isBb ? 'আশুলিয়া আর ধানমন্ডি ক্যাম্পাস মিলাইয়া' : isBn ? 'আশুলিয়া ও ধানমন্ডি ক্যাম্পাস মিলিয়ে' : 'Across Ashulia & Dhaka Campuses'}
             </span>
           </div>
         </div>
@@ -84,44 +86,44 @@ export const UpazilasPage = () => {
 
                   <span className="text-xs font-bold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full flex items-center gap-1">
                     <Users className="w-3 h-3 text-brand-600 dark:text-brand-400" />
-                    <span>{upz.studentCount}+ {lang === 'bn' ? 'শিক্ষার্থী' : 'Students'}</span>
+                    <span>{upz.studentCount}+ {isBanglaScript ? 'জন শিক্ষার্থী' : 'Students'}</span>
                   </span>
                 </div>
 
                 {/* Name */}
                 <h4 className="text-xl font-black text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
-                  {lang === 'bn' ? upz.nameBn : upz.nameEn}
+                  {isBanglaScript ? upz.nameBn : upz.nameEn}
                 </h4>
 
                 <p className="text-xs font-bold text-brand-700 dark:text-emerald-400 mt-1 mb-3">
-                  {lang === 'bn' ? upz.titleBn : upz.titleEn}
+                  {isBanglaScript ? upz.titleBn : upz.titleEn}
                 </p>
 
                 {/* River Basin */}
                 <div className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-800/80 p-2.5 rounded-xl border border-slate-100 dark:border-slate-700/60 mb-4">
                   <Waves className="w-3.5 h-3.5 text-cyan-600 shrink-0" />
                   <span className="truncate">
-                    <strong>{lang === 'bn' ? 'নদী:' : 'River:'}</strong> {lang === 'bn' ? upz.riverBn : upz.riverEn}
+                    <strong>{isBb ? 'গাঙ:' : isBn ? 'নদী:' : 'River:'}</strong> {isBanglaScript ? upz.riverBn : upz.riverEn}
                   </span>
                 </div>
 
                 {/* Highlights */}
                 <div className="space-y-1 mb-4">
                   <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 block">
-                    {lang === 'bn' ? 'ঐতিহ্য ও স্বকীয়তা' : 'Heritage & Culture'}
+                    {isBb ? 'ঐতিহ্য আর স্বকীয়তা' : isBn ? 'ঐতিহ্য ও স্বকীয়তা' : 'Heritage & Culture'}
                   </span>
                   <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed bg-emerald-50/40 dark:bg-emerald-950/30 p-3 rounded-xl border border-emerald-100 dark:border-emerald-900/40">
-                    {lang === 'bn' ? upz.highlightBn : upz.highlightEn}
+                    {isBanglaScript ? upz.highlightBn : upz.highlightEn}
                   </p>
                 </div>
 
                 {/* Campus Presence */}
                 <div className="space-y-1">
                   <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 block">
-                    {lang === 'bn' ? 'ক্যাম্পাস কার্যক্রম' : 'Campus Connection'}
+                    {isBb ? 'ক্যাম্পাসের কামকাজ' : isBn ? 'ক্যাম্পাস কার্যক্রম' : 'Campus Connection'}
                   </span>
                   <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                    {lang === 'bn' ? upz.descBn : upz.descEn}
+                    {isBanglaScript ? upz.descBn : upz.descEn}
                   </p>
                 </div>
               </div>
@@ -135,7 +137,7 @@ export const UpazilasPage = () => {
                   to={`/members`}
                   className="text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-brand-700 dark:hover:text-emerald-400 hover:underline"
                 >
-                  {lang === 'bn' ? 'উপজেলার শিক্ষার্থীদের খুঁজুন ›' : 'Find students ›'}
+                  {isBb ? 'উপজেলার শিক্ষার্থীদের খুঁজেন ›' : isBn ? 'উপজেলার শিক্ষার্থীদের খুঁজুন ›' : 'Find students ›'}
                 </Link>
               </div>
 
