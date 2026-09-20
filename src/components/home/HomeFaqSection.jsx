@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { useLanguage } from '../../context/LanguageContext';
 import { homeFaqData } from '../../data/homeFaqData';
 import { Plus, Minus, HelpCircle } from 'lucide-react';
+import {
+  fadeUp, staggerContainer, staggerItem,
+  VIEWPORT, EASE_OUT_EXPO,
+} from '../../lib/motion';
 
 export const HomeFaqSection = () => {
   const { lang, isBb, isBn, isEn } = useLanguage();
+  const prefersReducedMotion = useReducedMotion();
   // Open the first item by default; toggle on click
   const [openIndex, setOpenIndex] = useState(0);
 
@@ -13,20 +19,26 @@ export const HomeFaqSection = () => {
   };
 
   return (
-    <section 
+    <section
       className="py-16 sm:py-20 bg-slate-50/60 dark:bg-slate-950/60 border-t border-slate-200/80 dark:border-slate-800 transition-colors relative"
       aria-labelledby="home-faq-heading"
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-12">
-        
+
         {/* Section Header */}
-        <div className="text-center space-y-3 max-w-2xl mx-auto">
+        <motion.div
+          variants={prefersReducedMotion ? {} : fadeUp}
+          initial={prefersReducedMotion ? false : 'hidden'}
+          whileInView="visible"
+          viewport={VIEWPORT}
+          className="text-center space-y-3 max-w-2xl mx-auto"
+        >
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-brand-100 dark:bg-emerald-950/70 text-brand-800 dark:text-emerald-300 border border-brand-200 dark:border-emerald-800/80 shadow-2xs">
             <HelpCircle className="w-3.5 h-3.5 text-brand-600 dark:text-emerald-400" />
             <span>{isBb ? 'জিজ্ঞাসা আর জবাব' : isBn ? 'প্রশ্ন ও উত্তর' : 'FAQ'}</span>
           </div>
 
-          <h2 
+          <h2
             id="home-faq-heading"
             className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 dark:text-white tracking-tight"
           >
@@ -35,23 +47,30 @@ export const HomeFaqSection = () => {
 
           <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
             {isBb
-              ? 'আমাগো সংগঠন আর কামকাজ নিয়া মনে কুনো প্রশ্ন থাকলে এইহানে দেহেন।'
+              ? 'আমাগো সংগঠন আর কামকাজ নিয়া মনে কুনো প্রশ্ন থাকলে এইহানে দেহেন।'
               : isBn
-                ? 'আমাদের সংগঠন ও কার্যক্রম সম্পর্কে কিছু সাধারণ প্রশ্নের উত্তর।' 
+                ? 'আমাদের সংগঠন ও কার্যক্রম সম্পর্কে কিছু সাধারণ প্রশ্নের উত্তর।'
                 : 'Answers to some common questions about our association and activities.'}
           </p>
-        </div>
+        </motion.div>
 
         {/* Accordion List */}
-        <div className="space-y-3 sm:space-y-3.5">
+        <motion.div
+          variants={prefersReducedMotion ? {} : staggerContainer}
+          initial={prefersReducedMotion ? false : 'hidden'}
+          whileInView="visible"
+          viewport={VIEWPORT}
+          className="space-y-3 sm:space-y-3.5"
+        >
           {homeFaqData.map((faq, index) => {
             const isOpen = openIndex === index;
             const questionText = isBb ? (faq.qBb || faq.qBn) : isBn ? faq.qBn : faq.qEn;
             const answerText = isBb ? (faq.aBb || faq.aBn) : isBn ? faq.aBn : faq.aEn;
 
             return (
-              <div
+              <motion.div
                 key={faq.id}
+                variants={prefersReducedMotion ? {} : staggerItem}
                 className={`rounded-2xl border transition-all duration-200 overflow-hidden ${
                   isOpen
                     ? 'bg-white dark:bg-slate-900 border-brand-500/60 dark:border-emerald-500/50 shadow-soft ring-1 ring-brand-500/20 dark:ring-emerald-500/20'
@@ -71,38 +90,47 @@ export const HomeFaqSection = () => {
                       {questionText}
                     </span>
 
-                    {/* Plus / Minus Icon Container */}
-                    <div 
-                      className={`w-7 h-7 sm:w-8 sm:h-8 rounded-xl flex items-center justify-center shrink-0 transition-all duration-200 ${
+                    {/* Animated icon */}
+                    <motion.div
+                      animate={prefersReducedMotion ? {} : { rotate: isOpen ? 45 : 0 }}
+                      transition={{ duration: 0.22, ease: EASE_OUT_EXPO }}
+                      className={`w-7 h-7 sm:w-8 sm:h-8 rounded-xl flex items-center justify-center shrink-0 transition-colors duration-200 ${
                         isOpen
-                          ? 'bg-brand-700 dark:bg-brand-600 text-white rotate-0 shadow-xs'
+                          ? 'bg-brand-700 dark:bg-brand-600 text-white shadow-xs'
                           : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
                       }`}
                       aria-hidden="true"
                     >
-                      {isOpen ? (
-                        <Minus className="w-4 h-4 transition-transform duration-200" />
-                      ) : (
-                        <Plus className="w-4 h-4 transition-transform duration-200" />
-                      )}
-                    </div>
+                      <Plus className="w-4 h-4" />
+                    </motion.div>
                   </button>
                 </h3>
 
-                {isOpen && (
-                  <div
-                    id={`home-faq-answer-${faq.id}`}
-                    role="region"
-                    aria-labelledby={`home-faq-question-${faq.id}`}
-                    className="px-5 sm:px-6 pb-5 pt-1 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-100 dark:border-slate-800/80 animate-fadeIn"
-                  >
-                    <p className="pt-2">{answerText}</p>
-                  </div>
-                )}
-              </div>
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      key="answer"
+                      initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, height: 0 }}
+                      animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, height: 'auto' }}
+                      exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, height: 0 }}
+                      transition={{ duration: 0.28, ease: EASE_OUT_EXPO }}
+                      style={{ overflow: 'hidden' }}
+                    >
+                      <div
+                        id={`home-faq-answer-${faq.id}`}
+                        role="region"
+                        aria-labelledby={`home-faq-question-${faq.id}`}
+                        className="px-5 sm:px-6 pb-5 pt-1 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-100 dark:border-slate-800/80"
+                      >
+                        <p className="pt-2">{answerText}</p>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
 
       </div>
     </section>

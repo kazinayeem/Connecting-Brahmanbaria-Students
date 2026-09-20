@@ -1,11 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion, useReducedMotion } from 'framer-motion';
 import { useLanguage } from '../../context/LanguageContext';
 import { SectionHeader } from '../common/SectionHeader';
-import { 
-  BookOpen, Briefcase, Music, Trophy, HeartHandshake, 
-  Users, CheckCircle, ArrowRight 
+import {
+  BookOpen, Briefcase, Music, Trophy, HeartHandshake,
+  Users, CheckCircle, ArrowRight
 } from 'lucide-react';
+import {
+  fadeUp, staggerContainer, staggerItem,
+  VIEWPORT, EASE_OUT_EXPO,
+} from '../../lib/motion';
 
 const iconMap = {
   academic: BookOpen,
@@ -27,34 +32,55 @@ const colorMap = {
 
 export const ActivityGrid = () => {
   const { t, lang, isBb, isBn, isEn } = useLanguage();
+  const prefersReducedMotion = useReducedMotion();
   const pillars = t('activities.pillars') || [];
 
   return (
     <section className="py-20 bg-white dark:bg-slate-950 relative transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <SectionHeader
-          badge={t('activities.badge')}
-          title={t('activities.title')}
-          subtitle={t('activities.subtitle')}
-        />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <motion.div
+          variants={prefersReducedMotion ? {} : fadeUp}
+          initial={prefersReducedMotion ? false : 'hidden'}
+          whileInView="visible"
+          viewport={VIEWPORT}
+        >
+          <SectionHeader
+            badge={t('activities.badge')}
+            title={t('activities.title')}
+            subtitle={t('activities.subtitle')}
+          />
+        </motion.div>
+
+        <motion.div
+          variants={prefersReducedMotion ? {} : staggerContainer}
+          initial={prefersReducedMotion ? false : 'hidden'}
+          whileInView="visible"
+          viewport={VIEWPORT}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
           {Array.isArray(pillars) && pillars.map((pillar) => {
             const Icon = iconMap[pillar.id] || BookOpen;
             const style = colorMap[pillar.id] || "from-emerald-500 to-teal-700 text-emerald-700 bg-emerald-50 border-emerald-200";
 
             return (
-              <div
+              <motion.div
                 key={pillar.id}
+                variants={prefersReducedMotion ? {} : staggerItem}
+                whileHover={prefersReducedMotion ? {} : { y: -5 }}
+                transition={{ duration: 0.25, ease: EASE_OUT_EXPO }}
                 className="group rounded-3xl p-7 bg-slate-50/70 dark:bg-slate-900/80 border border-slate-200/80 dark:border-slate-800 hover:border-brand-500/50 dark:hover:border-emerald-500/50 hover:bg-white dark:hover:bg-slate-900 hover:shadow-soft-lg transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
                   {/* Icon Header */}
                   <div className="flex items-center justify-between mb-5">
-                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${style.split(' ')[0]} ${style.split(' ')[1]} text-white flex items-center justify-center shadow-md group-hover:scale-110 transition-transform`}>
+                    <motion.div
+                      className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${style.split(' ')[0]} ${style.split(' ')[1]} text-white flex items-center justify-center shadow-md`}
+                      whileHover={prefersReducedMotion ? {} : { scale: 1.12, rotate: 4 }}
+                      transition={{ duration: 0.2 }}
+                    >
                       <Icon className="w-7 h-7" />
-                    </div>
+                    </motion.div>
                     <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 bg-white dark:bg-slate-800 px-2.5 py-1 rounded-full border border-slate-200 dark:border-slate-700">
                       BSA Pillar
                     </span>
@@ -90,12 +116,18 @@ export const ActivityGrid = () => {
                   className="inline-flex items-center justify-between w-full pt-3 text-xs font-bold text-brand-700 dark:text-emerald-400 group-hover:text-brand-800 dark:group-hover:text-emerald-300 border-t border-slate-200/60 dark:border-slate-800"
                 >
                   <span>{isBb ? 'কামকাজের বিস্তারিত' : isBn ? 'কার্যক্রমের বিস্তারিত' : 'Learn more about this pillar'}</span>
-                  <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+                  <motion.span
+                    className="inline-flex"
+                    whileHover={prefersReducedMotion ? {} : { x: 3 }}
+                    transition={{ duration: 0.15 }}
+                  >
+                    <ArrowRight className="w-4 h-4" />
+                  </motion.span>
                 </Link>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
 
       </div>
     </section>

@@ -1,23 +1,32 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion, useReducedMotion } from 'framer-motion';
 import { useLanguage } from '../../context/LanguageContext';
-import { 
-  MapPin, Mail, Phone, Heart, Globe, 
-  ExternalLink, Sparkles, ShieldCheck, Compass, Landmark 
+import {
+  MapPin, Mail, Phone, Heart,
+  ShieldCheck, Compass, Landmark
 } from 'lucide-react';
+import { fadeUp, staggerContainer, staggerItem, VIEWPORT } from '../../lib/motion';
 
 export const Footer = () => {
+  const prefersReducedMotion = useReducedMotion();
   const { t, lang, isBb, isBn, isEn } = useLanguage();
 
   return (
     <footer className="bg-gradient-to-b from-slate-900 to-brand-950 text-slate-300 border-t border-emerald-900/60 pt-12 sm:pt-16 pb-8 sm:pb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Top Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10 pb-10 sm:pb-12 border-b border-slate-800">
-          
+        <motion.div
+          variants={prefersReducedMotion ? {} : staggerContainer}
+          initial={prefersReducedMotion ? false : 'hidden'}
+          whileInView="visible"
+          viewport={VIEWPORT}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10 pb-10 sm:pb-12 border-b border-slate-800"
+        >
+
           {/* Brand Info (Span 2 cols on lg) */}
-          <div className="lg:col-span-2 space-y-4">
+          <motion.div variants={prefersReducedMotion ? {} : staggerItem} className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
               <img src="/logo.svg" alt="BSA-DIU" className="w-12 h-12 rounded-full ring-2 ring-emerald-500/50" />
               <div>
@@ -35,39 +44,31 @@ export const Footer = () => {
             </p>
 
             <div className="pt-2 flex items-center gap-3">
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noreferrer"
-                className="w-9 h-9 rounded-lg bg-slate-800/80 hover:bg-brand-600 text-slate-300 hover:text-white flex items-center justify-center transition-colors border border-slate-700"
-                aria-label="Facebook Page"
-              >
-                <span className="text-sm font-bold">fb</span>
-              </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noreferrer"
-                className="w-9 h-9 rounded-lg bg-slate-800/80 hover:bg-rose-600 text-slate-300 hover:text-white flex items-center justify-center transition-colors border border-slate-700"
-                aria-label="Instagram"
-              >
-                <span className="text-sm font-bold">ig</span>
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noreferrer"
-                className="w-9 h-9 rounded-lg bg-slate-800/80 hover:bg-blue-600 text-slate-300 hover:text-white flex items-center justify-center transition-colors border border-slate-700"
-                aria-label="LinkedIn"
-              >
-                <span className="text-sm font-bold">in</span>
-              </a>
+              {[
+                { href: 'https://facebook.com', label: 'Facebook Page', text: 'fb', hover: 'hover:bg-brand-600' },
+                { href: 'https://instagram.com', label: 'Instagram', text: 'ig', hover: 'hover:bg-rose-600' },
+                { href: 'https://linkedin.com', label: 'LinkedIn', text: 'in', hover: 'hover:bg-blue-600' },
+              ].map((s) => (
+                <motion.a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={s.label}
+                  whileHover={prefersReducedMotion ? {} : { scale: 1.1 }}
+                  whileTap={prefersReducedMotion ? {} : { scale: 0.92 }}
+                  transition={{ duration: 0.15 }}
+                  className={`w-9 h-9 rounded-lg bg-slate-800/80 ${s.hover} text-slate-300 hover:text-white flex items-center justify-center transition-colors border border-slate-700`}
+                >
+                  <span className="text-sm font-bold">{s.text}</span>
+                </motion.a>
+              ))}
               <span className="text-xs text-slate-500 pl-2">#bsadiu #brahmanbaria</span>
             </div>
-          </div>
+          </motion.div>
 
           {/* Quick Links */}
-          <div className="space-y-3">
+          <motion.div variants={prefersReducedMotion ? {} : staggerItem} className="space-y-3">
             <h3 className="text-sm font-bold text-white uppercase tracking-wider border-b border-emerald-800/60 pb-2 inline-block">
               {t('footer.quickLinks')}
             </h3>
@@ -113,10 +114,10 @@ export const Footer = () => {
                 </Link>
               </li>
             </ul>
-          </div>
+          </motion.div>
 
           {/* Activities & Community */}
-          <div className="space-y-3">
+          <motion.div variants={prefersReducedMotion ? {} : staggerItem} className="space-y-3">
             <h3 className="text-sm font-bold text-white uppercase tracking-wider border-b border-emerald-800/60 pb-2 inline-block">
               {t('footer.activitiesCol')}
             </h3>
@@ -152,10 +153,10 @@ export const Footer = () => {
                 </Link>
               </li>
             </ul>
-          </div>
+          </motion.div>
 
           {/* Campus Connect & Contacts */}
-          <div className="space-y-3">
+          <motion.div variants={prefersReducedMotion ? {} : staggerItem} className="space-y-3">
             <h3 className="text-sm font-bold text-white uppercase tracking-wider border-b border-emerald-800/60 pb-2 inline-block">
               {t('footer.contactCol')}
             </h3>
@@ -182,9 +183,9 @@ export const Footer = () => {
                 <span>{isEn ? 'Non-Political & Non-Profit' : 'অরাজনৈতিক ও অলাভজনক'}</span>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-        </div>
+        </motion.div>
 
         {/* Disclaimer Box */}
         <div className="my-6 p-4 rounded-xl bg-slate-800/40 border border-slate-700/50 text-center">
@@ -194,7 +195,13 @@ export const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <motion.div
+          variants={prefersReducedMotion ? {} : fadeUp}
+          initial={prefersReducedMotion ? false : 'hidden'}
+          whileInView="visible"
+          viewport={VIEWPORT}
+          className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500"
+        >
           <p>
             © 2026 {isBb ? 'বাউনবাইরা স্টুডেন্টস অ্যাসোসিয়েশন, ড্যাফোডিল ইন্টারন্যাশনাল ইউনিভার্সিটি' : isBn ? 'ব্রাহ্মণবাড়িয়া স্টুডেন্টস অ্যাসোসিয়েশন, ড্যাফোডিল ইন্টারন্যাশনাল ইউনিভার্সিটি' : 'Brahmanbaria Students Association, Daffodil International University'}. {t('footer.rights')}
           </p>
@@ -202,7 +209,7 @@ export const Footer = () => {
             <span>{isBb ? 'বাউনবাইরার ছাওয়াল-মাইয়াগো ভালোবাসায় বানাইছি' : isBn ? 'ব্রাহ্মণবাড়িয়ার শিক্ষার্থীদের ভালোবাসায় নির্মিত' : 'Crafted with unity for Brahmanbaria students at DIU'}</span>
             <Heart className="w-3.5 h-3.5 text-crimson-500 inline fill-crimson-500 ml-1" />
           </div>
-        </div>
+        </motion.div>
 
         {/* Sponsorship Credit */}
         <div className="mt-6 pt-4 border-t border-slate-800/60 text-center text-xs text-slate-400">
