@@ -30,7 +30,7 @@ export const ActivitiesPage = () => {
   const pillars = t('activities.pillars') || [];
 
   return (
-    <div className="py-12 sm:py-16 bg-slate-50 min-h-screen">
+    <div className="py-12 sm:py-16 bg-slate-50 dark:bg-slate-950 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         
         {/* Header */}
@@ -50,33 +50,33 @@ export const ActivitiesPage = () => {
             return (
               <div
                 key={pillar.id}
-                className={`rounded-3xl bg-white p-6 sm:p-10 border border-slate-200/90 shadow-soft grid grid-cols-1 lg:grid-cols-12 gap-8 items-center ${
+                className={`rounded-3xl bg-white dark:bg-slate-900 p-6 sm:p-10 border border-slate-200/90 dark:border-slate-800 shadow-soft grid grid-cols-1 lg:grid-cols-12 gap-8 items-center ${
                   isReversed ? 'lg:grid-flow-dense' : ''
                 }`}
               >
                 {/* Text Content */}
                 <div className={`space-y-5 ${isReversed ? 'lg:col-start-7 lg:col-span-6' : 'lg:col-span-6'}`}>
-                  <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-brand-50 text-brand-800 text-xs font-bold border border-brand-200">
-                    <Icon className="w-4 h-4 text-brand-600" />
+                  <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-brand-50 dark:bg-emerald-950/60 text-brand-800 dark:text-emerald-300 text-xs font-bold border border-brand-200 dark:border-emerald-800/60">
+                    <Icon className="w-4 h-4 text-brand-600 dark:text-brand-400" />
                     <span>Pillar {idx + 1}: {pillar.subtitle}</span>
                   </div>
 
-                  <h3 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+                  <h3 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
                     {pillar.title}
                   </h3>
 
-                  <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+                  <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
                     {pillar.desc}
                   </p>
 
                   <div className="space-y-2.5 pt-2">
-                    <h5 className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                      {lang === 'bn' ? 'মূল আকর্ষণসমূহ' : 'Key Highlights & Sessions'}
+                    <h5 className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+                      {lang === 'bn' ? 'মূল কার্যক্রম' : 'Key Highlights & Sessions'}
                     </h5>
                     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                       {pillar.features && pillar.features.map((feat, fIdx) => (
-                        <li key={fIdx} className="flex items-center gap-2 text-xs font-medium text-slate-700 bg-slate-50 p-2.5 rounded-xl border border-slate-100">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-brand-600 shrink-0" />
+                        <li key={fIdx} className="flex items-center gap-2 text-xs font-medium text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-800/80 p-2.5 rounded-xl border border-slate-100 dark:border-slate-700/60">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-brand-600 dark:text-brand-400 shrink-0" />
                           <span>{feat}</span>
                         </li>
                       ))}
@@ -86,9 +86,9 @@ export const ActivitiesPage = () => {
                   <div className="pt-3">
                     <Link
                       to="/events"
-                      className="inline-flex items-center gap-2 text-xs font-bold text-brand-700 hover:text-brand-900"
+                      className="inline-flex items-center gap-2 text-xs font-bold text-brand-700 dark:text-emerald-400 hover:text-brand-900 dark:hover:text-emerald-300"
                     >
-                      <span>{lang === 'bn' ? 'আসন্ন ইভেন্ট তালিকা দেখুন' : 'View upcoming events related to this'}</span>
+                      <span>{lang === 'bn' ? 'সম্পর্কিত ইভেন্টগুলো দেখুন' : 'View upcoming events related to this'}</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
                   </div>

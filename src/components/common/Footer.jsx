@@ -3,18 +3,18 @@ import { Link } from 'react-router-dom';
 import { useLanguage } from '../../context/LanguageContext';
 import { 
   MapPin, Mail, Phone, Heart, Globe, 
-  ExternalLink, Sparkles, ShieldCheck, Compass 
+  ExternalLink, Sparkles, ShieldCheck, Compass, Landmark 
 } from 'lucide-react';
 
 export const Footer = () => {
   const { t, lang } = useLanguage();
 
   return (
-    <footer className="bg-gradient-to-b from-slate-900 to-brand-950 text-slate-300 border-t border-emerald-900/60 pt-16 pb-10">
+    <footer className="bg-gradient-to-b from-slate-900 to-brand-950 text-slate-300 border-t border-emerald-900/60 pt-12 sm:pt-16 pb-8 sm:pb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Top Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10 pb-10 sm:pb-12 border-b border-slate-800">
           
           {/* Brand Info (Span 2 cols on lg) */}
           <div className="lg:col-span-2 space-y-4">
@@ -80,6 +80,11 @@ export const Footer = () => {
               <li>
                 <Link to="/explore" className="text-amber-400 hover:text-amber-300 font-bold transition-colors flex items-center gap-1.5">
                   <Compass className="w-3.5 h-3.5 text-amber-400" /> {t('nav.explore')}
+                </Link>
+              </li>
+              <li>
+                <Link to="/history" className="text-emerald-400 hover:text-emerald-300 font-bold transition-colors flex items-center gap-1.5">
+                  <Landmark className="w-3.5 h-3.5 text-emerald-400" /> {t('nav.history')}
                 </Link>
               </li>
               <li>

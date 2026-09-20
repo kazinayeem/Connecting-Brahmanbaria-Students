@@ -7,3 +7,4 @@ export * from './rivers';
 export * from './notablePeople';
 export * from './culture';
 export * from './facts';
+export * from './funCulture';

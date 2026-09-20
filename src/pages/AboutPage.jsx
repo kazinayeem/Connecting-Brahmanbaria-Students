@@ -12,7 +12,7 @@ export const AboutPage = () => {
   const values = t('about.values') || [];
 
   return (
-    <div className="py-12 sm:py-16 bg-slate-50 min-h-screen">
+    <div className="py-12 sm:py-16 bg-slate-50 dark:bg-slate-950 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         
         {/* Header */}
@@ -23,38 +23,38 @@ export const AboutPage = () => {
         />
 
         {/* Story Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center bg-white rounded-3xl p-8 sm:p-12 shadow-soft border border-slate-200">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center bg-white dark:bg-slate-900 rounded-3xl p-8 sm:p-12 shadow-soft border border-slate-200 dark:border-slate-800">
           <div className="lg:col-span-7 space-y-5">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-brand-100 text-brand-800">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-brand-100 dark:bg-emerald-950/60 text-brand-800 dark:text-emerald-300">
               <BookOpen className="w-3.5 h-3.5" />
               <span>{t('about.storyTitle')}</span>
             </div>
-            <h3 className="text-2xl sm:text-3xl font-black text-slate-900 leading-tight">
+            <h3 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white leading-tight">
               {lang === 'bn' 
                 ? 'ক্যাম্পাসে আমাদের পথচলা ও শিক্ষার্থীদের মেলবন্ধন' 
                 : 'Our Student Journey & Brotherhood at DIU'}
             </h3>
-            <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+            <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
               {t('about.storyDesc')}
             </p>
-            <div className="pt-2 flex flex-wrap gap-4 text-xs font-semibold text-slate-700">
-              <div className="flex items-center gap-2 bg-slate-100 px-3 py-1.5 rounded-xl">
-                <CheckCircle2 className="w-4 h-4 text-brand-600" />
+            <div className="pt-2 flex flex-wrap gap-4 text-xs font-semibold text-slate-700 dark:text-slate-300">
+              <div className="flex items-center gap-2 bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-xl">
+                <CheckCircle2 className="w-4 h-4 text-brand-600 dark:text-brand-400" />
                 <span>{lang === 'bn' ? 'সম্পূর্ণ অরাজনৈতিক' : 'Strictly Non-Political'}</span>
               </div>
-              <div className="flex items-center gap-2 bg-slate-100 px-3 py-1.5 rounded-xl">
-                <CheckCircle2 className="w-4 h-4 text-brand-600" />
+              <div className="flex items-center gap-2 bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-xl">
+                <CheckCircle2 className="w-4 h-4 text-brand-600 dark:text-brand-400" />
                 <span>{lang === 'bn' ? 'শিক্ষার্থীবান্ধব প্ল্যাটফর্ম' : 'Student-Centric Welfare'}</span>
               </div>
-              <div className="flex items-center gap-2 bg-slate-100 px-3 py-1.5 rounded-xl">
-                <CheckCircle2 className="w-4 h-4 text-brand-600" />
+              <div className="flex items-center gap-2 bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-xl">
+                <CheckCircle2 className="w-4 h-4 text-brand-600 dark:text-brand-400" />
                 <span>{lang === 'bn' ? '৯ উপজেলার সমঅধিকার' : 'All 9 Upazilas Represented'}</span>
               </div>
             </div>
           </div>
 
           <div className="lg:col-span-5">
-            <div className="relative rounded-3xl overflow-hidden shadow-xl ring-4 ring-emerald-50">
+            <div className="relative rounded-3xl overflow-hidden shadow-xl ring-4 ring-emerald-50 dark:ring-slate-800">
               <img
                 src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80"
                 alt="DIU campus students"
@@ -72,45 +72,45 @@ export const AboutPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           
           {/* Purpose */}
-          <div className="rounded-3xl p-8 bg-white border border-slate-200 shadow-soft flex flex-col justify-between">
+          <div className="rounded-3xl p-8 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-soft flex flex-col justify-between">
             <div className="space-y-4">
               <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-700 text-white flex items-center justify-center shadow-md">
                 <Target className="w-7 h-7" />
               </div>
-              <h4 className="text-xl font-bold text-slate-900">
+              <h4 className="text-xl font-bold text-slate-900 dark:text-white">
                 {t('about.purposeTitle')}
               </h4>
-              <p className="text-sm text-slate-600 leading-relaxed">
+              <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                 {t('about.purposeDesc')}
               </p>
             </div>
           </div>
 
           {/* Vision */}
-          <div className="rounded-3xl p-8 bg-white border border-slate-200 shadow-soft flex flex-col justify-between">
+          <div className="rounded-3xl p-8 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-soft flex flex-col justify-between">
             <div className="space-y-4">
               <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-rose-700 text-white flex items-center justify-center shadow-md">
                 <Eye className="w-7 h-7" />
               </div>
-              <h4 className="text-xl font-bold text-slate-900">
+              <h4 className="text-xl font-bold text-slate-900 dark:text-white">
                 {t('about.visionTitle')}
               </h4>
-              <p className="text-sm text-slate-600 leading-relaxed">
+              <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                 {t('about.visionDesc')}
               </p>
             </div>
           </div>
 
           {/* Mission */}
-          <div className="rounded-3xl p-8 bg-white border border-slate-200 shadow-soft flex flex-col justify-between">
+          <div className="rounded-3xl p-8 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-soft flex flex-col justify-between">
             <div className="space-y-4">
               <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-brand-600 to-emerald-800 text-white flex items-center justify-center shadow-md">
                 <Compass className="w-7 h-7" />
               </div>
-              <h4 className="text-xl font-bold text-slate-900">
+              <h4 className="text-xl font-bold text-slate-900 dark:text-white">
                 {t('about.missionTitle')}
               </h4>
-              <p className="text-sm text-slate-600 leading-relaxed">
+              <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                 {t('about.missionDesc')}
               </p>
             </div>

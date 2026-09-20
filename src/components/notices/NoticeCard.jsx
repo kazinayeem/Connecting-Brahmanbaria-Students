@@ -15,7 +15,7 @@ export const NoticeCard = ({ notice, onSelect }) => {
   const catStyle = categoryColorMap[notice.category] || categoryColorMap.general;
 
   return (
-    <div className="group rounded-2xl p-6 bg-white border border-slate-200/80 hover:border-brand-500/50 shadow-soft hover:shadow-soft-lg transition-all duration-300 flex flex-col justify-between">
+    <div className="group rounded-2xl p-6 bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 hover:border-brand-500/50 dark:hover:border-emerald-500/50 shadow-soft hover:shadow-soft-lg transition-all duration-300 flex flex-col justify-between">
       
       <div>
         {/* Header: Category Badge & Date */}
@@ -31,22 +31,22 @@ export const NoticeCard = ({ notice, onSelect }) => {
         </div>
 
         {/* Notice Title */}
-        <h3 className="text-lg font-bold text-slate-900 group-hover:text-brand-700 transition-colors mb-2.5 leading-snug">
+        <h3 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-brand-700 dark:group-hover:text-emerald-400 transition-colors mb-2.5 leading-snug">
           {lang === 'bn' ? notice.titleBn : notice.titleEn}
         </h3>
 
         {/* Short Description */}
-        <p className="text-sm text-slate-600 leading-relaxed line-clamp-3 mb-4">
+        <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed line-clamp-3 mb-4">
           {lang === 'bn' ? notice.descBn : notice.descEn}
         </p>
       </div>
 
       {/* Footer Action */}
-      <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+      <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
         <button
           type="button"
           onClick={() => onSelect(notice)}
-          className="inline-flex items-center gap-1 text-xs font-bold text-brand-700 hover:text-brand-900 group-hover:underline"
+          className="inline-flex items-center gap-1 text-xs font-bold text-brand-700 dark:text-emerald-400 hover:text-brand-900 dark:hover:text-emerald-300 group-hover:underline"
         >
           <span>{t('notices.viewDetails')}</span>
           <ArrowRight className="w-3.5 h-3.5 ml-0.5 transform group-hover:translate-x-1 transition-transform" />

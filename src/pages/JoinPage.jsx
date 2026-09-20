@@ -68,7 +68,7 @@ export const JoinPage = () => {
   const currentDeptObj = departmentsList.find(d => d.id === formData.department) || departmentsList[0];
 
   return (
-    <div className="py-12 sm:py-16 bg-slate-50 min-h-screen">
+    <div className="py-12 sm:py-16 bg-slate-50 dark:bg-slate-950 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         
         {/* Header */}
@@ -81,38 +81,38 @@ export const JoinPage = () => {
         {isSubmitted ? (
           /* Submission Success State with Digital Member Card */
           <div className="max-w-2xl mx-auto space-y-8 animate-fadeIn">
-            <div className="p-8 rounded-3xl bg-white border border-emerald-200 shadow-soft-lg text-center space-y-4">
-              <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto shadow-inner">
+            <div className="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-emerald-200 dark:border-emerald-800/60 shadow-soft-lg text-center space-y-4">
+              <div className="w-16 h-16 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto shadow-inner">
                 <CheckCircle2 className="w-8 h-8" />
               </div>
-              <h3 className="text-2xl font-black text-slate-900">
+              <h3 className="text-2xl font-black text-slate-900 dark:text-white">
                 {t('join.successTitle')}
               </h3>
-              <p className="text-sm text-slate-600 leading-relaxed max-w-lg mx-auto">
+              <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed max-w-lg mx-auto">
                 {t('join.successDesc')}
               </p>
             </div>
 
             {/* Generated Digital Student Membership Badge */}
             <div className="p-1 rounded-3xl bg-gradient-to-br from-brand-600 via-emerald-800 to-slate-900 shadow-2xl">
-              <div className="rounded-[22px] bg-slate-900 p-6 sm:p-8 text-white relative overflow-hidden">
+              <div className="rounded-[22px] bg-slate-900 p-4 sm:p-8 text-white relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none"></div>
 
                 <div className="flex items-center justify-between border-b border-slate-800 pb-4 mb-6">
-                  <div className="flex items-center gap-3">
-                    <img src="/logo.svg" alt="BSA-DIU" className="w-10 h-10 rounded-full ring-2 ring-emerald-400" />
+                  <div className="flex items-center gap-2.5 sm:gap-3">
+                    <img src="/logo.svg" alt="BSA-DIU" className="w-9 h-9 sm:w-10 sm:h-10 rounded-full ring-2 ring-emerald-400" />
                     <div>
-                      <h4 className="text-base font-black tracking-tight text-white">BSA • DIU</h4>
-                      <p className="text-[10px] text-emerald-400 font-semibold">Student Membership Card</p>
+                      <h4 className="text-sm sm:text-base font-black tracking-tight text-white">BSA • DIU</h4>
+                      <p className="text-[9px] sm:text-[10px] text-emerald-400 font-semibold">Student Membership Card</p>
                     </div>
                   </div>
-                  <span className="text-[11px] font-mono text-slate-400 bg-slate-800 px-2.5 py-1 rounded-lg">
+                  <span className="text-[10px] sm:text-[11px] font-mono text-slate-400 bg-slate-800 px-2 sm:px-2.5 py-1 rounded-lg">
                     BSA-{generatedId}
                   </span>
                 </div>
 
-                <div className="flex flex-col sm:flex-row items-center gap-6">
-                  <div className="w-24 h-24 rounded-2xl overflow-hidden ring-2 ring-emerald-500/50 bg-slate-800 shrink-0 shadow-md">
+                <div className="flex flex-col sm:flex-row items-center gap-5 sm:gap-6">
+                  <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden ring-2 ring-emerald-500/50 bg-slate-800 shrink-0 shadow-md">
                     {formData.photoPreview ? (
                       <img src={formData.photoPreview} alt={formData.fullName} className="w-full h-full object-cover" />
                     ) : (
@@ -123,11 +123,11 @@ export const JoinPage = () => {
                   </div>
 
                   <div className="flex-1 space-y-2 text-center sm:text-left">
-                    <h5 className="text-xl font-black text-white">{formData.fullName || "Student Name"}</h5>
+                    <h5 className="text-lg sm:text-xl font-black text-white">{formData.fullName || "Student Name"}</h5>
                     <p className="text-xs text-emerald-300 font-medium">
                       {lang === 'bn' ? currentDeptObj.nameBn : currentDeptObj.nameEn} • {formData.batch}
                     </p>
-                    <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 pt-1 text-[11px] text-slate-300">
+                    <div className="flex flex-wrap items-center justify-center sm:justify-start gap-1.5 sm:gap-2 pt-1 text-[10px] sm:text-[11px] text-slate-300">
                       <span className="bg-slate-800/80 px-2 py-0.5 rounded">ID: {formData.studentId}</span>
                       <span className="bg-slate-800/80 px-2 py-0.5 rounded">Upazila: {formData.homeUpazila}</span>
                       <span className="bg-crimson-900/80 text-crimson-200 font-bold px-2 py-0.5 rounded">Blood: {formData.bloodGroup}</span>
@@ -146,36 +146,36 @@ export const JoinPage = () => {
               <button
                 type="button"
                 onClick={handleReset}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 text-xs font-bold transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 text-xs font-bold transition-colors min-h-[44px]"
               >
                 <RefreshCw className="w-4 h-4" />
-                <span>{lang === 'bn' ? 'আরেকটি আবেদন করুন' : 'Submit Another Application'}</span>
+                <span>{lang === 'bn' ? 'নতুন আবেদন করুন' : 'Submit Another Application'}</span>
               </button>
             </div>
           </div>
         ) : (
           /* Application Form & Live Preview Layout */
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
             
             {/* Form Column */}
-            <div className="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-10 border border-slate-200/90 shadow-soft">
+            <div className="lg:col-span-7 bg-white dark:bg-slate-900 rounded-3xl p-4 sm:p-8 lg:p-10 border border-slate-200/90 dark:border-slate-800 shadow-soft">
               
-              <div className="mb-6 pb-4 border-b border-slate-100 flex items-center justify-between">
+              <div className="mb-6 pb-4 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
                 <div>
-                  <h3 className="text-xl font-extrabold text-slate-900">
+                  <h3 className="text-xl font-extrabold text-slate-900 dark:text-white">
                     {lang === 'bn' ? 'সদস্য নিবন্ধন ফরম' : 'Membership Application Form'}
                   </h3>
-                  <p className="text-xs text-slate-500 mt-0.5">
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
                     {t('join.sampleNotice')}
                   </p>
                 </div>
-                <ShieldCheck className="w-6 h-6 text-brand-600" />
+                <ShieldCheck className="w-6 h-6 text-brand-600 dark:text-brand-400" />
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-4">
                 {/* Full Name */}
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">
+                  <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
                     {t('join.fullName')} *
                   </label>
                   <input
@@ -184,14 +184,14 @@ export const JoinPage = () => {
                     value={formData.fullName}
                     onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                     placeholder="e.g. Tanvir Ahmed / তানভীর আহমেদ"
-                    className="w-full px-3.5 py-2.5 rounded-xl text-sm border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500"
+                    className="w-full px-3.5 py-2.5 rounded-xl text-sm border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500"
                   />
                 </div>
 
                 {/* Student ID & Blood Group */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-1">
+                    <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
                       {t('join.studentId')} *
                     </label>
                     <input
@@ -200,18 +200,18 @@ export const JoinPage = () => {
                       value={formData.studentId}
                       onChange={(e) => setFormData({ ...formData, studentId: e.target.value })}
                       placeholder="e.g. 221-15-XXXX"
-                      className="w-full px-3.5 py-2.5 rounded-xl text-sm border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500"
+                      className="w-full px-3.5 py-2.5 rounded-xl text-sm border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-1">
+                    <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
                       {t('join.bloodGroup')} *
                     </label>
                     <select
                       value={formData.bloodGroup}
                       onChange={(e) => setFormData({ ...formData, bloodGroup: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-xl text-sm border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500"
+                      className="w-full px-3.5 py-2.5 rounded-xl text-sm border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500"
                     >
                       {bloodGroups.map(bg => (
                         <option key={bg} value={bg}>{bg}</option>
@@ -223,13 +223,13 @@ export const JoinPage = () => {
                 {/* Department & Batch */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-1">
+                    <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
                       {t('join.department')} *
                     </label>
                     <select
                       value={formData.department}
                       onChange={(e) => setFormData({ ...formData, department: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-xl text-sm border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500"
+                      className="w-full px-3.5 py-2.5 rounded-xl text-sm border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500"
                     >
                       {departmentsList.map(dept => (
                         <option key={dept.id} value={dept.id}>
@@ -240,13 +240,13 @@ export const JoinPage = () => {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-1">
+                    <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
                       {t('join.batch')} *
                     </label>
                     <select
                       value={formData.batch}
                       onChange={(e) => setFormData({ ...formData, batch: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-xl text-sm border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500"
+                      className="w-full px-3.5 py-2.5 rounded-xl text-sm border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500"
                     >
                       {batchesList.map(b => (
                         <option key={b} value={b}>{b}</option>
@@ -258,7 +258,7 @@ export const JoinPage = () => {
                 {/* Email & Phone */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-1">
+                    <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
                       {t('join.email')} *
                     </label>
                     <input
@@ -267,12 +267,12 @@ export const JoinPage = () => {
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="student@diu.edu.bd"
-                      className="w-full px-3.5 py-2.5 rounded-xl text-sm border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500"
+                      className="w-full px-3.5 py-2.5 rounded-xl text-sm border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-1">
+                    <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
                       {t('join.phone')} *
                     </label>
                     <input
@@ -281,20 +281,20 @@ export const JoinPage = () => {
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       placeholder="017XXXXXXXX"
-                      className="w-full px-3.5 py-2.5 rounded-xl text-sm border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500"
+                      className="w-full px-3.5 py-2.5 rounded-xl text-sm border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500"
                     />
                   </div>
                 </div>
 
                 {/* Home Upazila */}
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">
+                  <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
                     {t('join.homeUpazila')} *
                   </label>
                   <select
                     value={formData.homeUpazila}
                     onChange={(e) => setFormData({ ...formData, homeUpazila: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl text-sm border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500"
+                    className="w-full px-3.5 py-2.5 rounded-xl text-sm border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500"
                   >
                     {upazilasData.map(upz => (
                       <option key={upz.id} value={lang === 'bn' ? upz.nameBn : upz.nameEn}>
@@ -306,7 +306,7 @@ export const JoinPage = () => {
 
                 {/* Current Living Address */}
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">
+                  <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
                     {t('join.currentAddress')} *
                   </label>
                   <input
@@ -315,17 +315,17 @@ export const JoinPage = () => {
                     value={formData.currentAddress}
                     onChange={(e) => setFormData({ ...formData, currentAddress: e.target.value })}
                     placeholder="e.g. Daffodil Hall / Ashulia Mess / Mirpur"
-                    className="w-full px-3.5 py-2.5 rounded-xl text-sm border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500"
+                    className="w-full px-3.5 py-2.5 rounded-xl text-sm border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500"
                   />
                 </div>
 
                 {/* Profile Photo */}
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">
+                  <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
                     {t('join.profilePhoto')}
                   </label>
                   <div className="flex items-center gap-3">
-                    <label className="cursor-pointer inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-dashed border-slate-300 hover:border-brand-500 text-xs font-semibold text-slate-600 hover:text-brand-700 bg-slate-50 transition-colors">
+                    <label className="cursor-pointer inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-dashed border-slate-300 dark:border-slate-700 hover:border-brand-500 dark:hover:border-brand-500 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-brand-700 dark:hover:text-emerald-400 bg-slate-50 dark:bg-slate-800 transition-colors">
                       <Upload className="w-4 h-4" />
                       <span>{lang === 'bn' ? 'ছবি নির্বাচন করুন' : 'Choose Photo'}</span>
                       <input
@@ -336,7 +336,7 @@ export const JoinPage = () => {
                       />
                     </label>
                     {formData.photoPreview && (
-                      <span className="text-xs text-emerald-600 font-bold">
+                      <span className="text-xs text-emerald-600 dark:text-emerald-400 font-bold">
                         ✓ {lang === 'bn' ? 'ছবি যুক্ত হয়েছে' : 'Photo Attached'}
                       </span>
                     )}
@@ -360,12 +360,12 @@ export const JoinPage = () => {
             <div className="lg:col-span-5 space-y-6">
               
               <div className="sticky top-24">
-                <div className="p-4 rounded-2xl bg-white border border-slate-200 mb-4 text-xs font-bold text-slate-600 flex items-center justify-between">
+                <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 mb-4 text-xs font-bold text-slate-600 dark:text-slate-300 flex items-center justify-between">
                   <span className="flex items-center gap-2">
-                    <CreditCard className="w-4 h-4 text-brand-600" />
+                    <CreditCard className="w-4 h-4 text-brand-600 dark:text-brand-400" />
                     <span>{t('join.cardPreview')}</span>
                   </span>
-                  <span className="text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded text-[10px]">
+                  <span className="text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 rounded text-[10px]">
                     Live Preview
                   </span>
                 </div>
@@ -420,16 +420,16 @@ export const JoinPage = () => {
                 </div>
 
                 {/* Membership perks callout */}
-                <div className="mt-6 p-5 rounded-2xl bg-emerald-50/70 border border-emerald-200/80 text-xs text-emerald-950 space-y-2">
-                  <h5 className="font-bold flex items-center gap-1.5 text-brand-800">
-                    <Sparkles className="w-4 h-4 text-brand-600" />
+                <div className="mt-6 p-5 rounded-2xl bg-emerald-50/70 dark:bg-emerald-950/40 border border-emerald-200/80 dark:border-emerald-800/60 text-xs text-emerald-950 dark:text-emerald-200 space-y-2">
+                  <h5 className="font-bold flex items-center gap-1.5 text-brand-800 dark:text-emerald-300">
+                    <Sparkles className="w-4 h-4 text-brand-600 dark:text-brand-400" />
                     <span>{lang === 'bn' ? 'সদস্যপদের সুবিধাসমূহ' : 'Membership Benefits'}</span>
                   </h5>
-                  <ul className="space-y-1 text-slate-600 text-[11px]">
-                    <li>• {lang === 'bn' ? 'ক্যাম্পাসে জরুরি রক্তদান সহায়তায় অগ্রাধিকার' : 'Priority 24/7 campus blood network'}</li>
-                    <li>• {lang === 'bn' ? 'সিনিয়রদের সাথে সেমিস্টারভিত্তিক ফ্রি স্টাডি সার্কেল' : 'Free peer tutoring & course material access'}</li>
-                    <li>• {lang === 'bn' ? 'অ্যালামনাই ক্যারিয়ার ওয়ার্কশপে ফ্রি রেজিস্ট্রেশন' : 'Exclusive alumni corporate career talks'}</li>
-                    <li>• {lang === 'bn' ? 'বাৎসরিক রিইউনিয়ন ও সাংস্কৃতিক উৎসবে অংশগ্রহণ' : 'Invitation to annual reunions & cultural gala'}</li>
+                  <ul className="space-y-1 text-slate-600 dark:text-slate-300 text-[11px]">
+                    <li>• {lang === 'bn' ? 'জরুরি প্রয়োজনে রক্তের ব্যবস্থা পেতে সহায়তা' : 'Priority 24/7 campus blood network'}</li>
+                    <li>• {lang === 'bn' ? 'সিনিয়রদের সাথে স্টাডি সার্কেল ও নোটস শেয়ারিং' : 'Free peer tutoring & course material access'}</li>
+                    <li>• {lang === 'bn' ? 'ক্যারিয়ার বিষয়ক সেশন ও অ্যালামনাই পরামর্শ' : 'Exclusive alumni corporate career talks'}</li>
+                    <li>• {lang === 'bn' ? 'বার্ষিক পুনর্মিলনী ও গেট টুগেদারে অংশ নেওয়ার সুযোগ' : 'Invitation to annual reunions & cultural gala'}</li>
                   </ul>
                 </div>
 

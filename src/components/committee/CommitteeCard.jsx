@@ -6,14 +6,14 @@ export const CommitteeCard = ({ member }) => {
   const { lang } = useLanguage();
 
   return (
-    <div className="group rounded-3xl p-6 bg-white border border-slate-200/80 hover:border-brand-500/50 shadow-soft hover:shadow-soft-lg transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden">
+    <div className="group rounded-3xl p-6 bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 hover:border-brand-500/50 shadow-soft hover:shadow-soft-lg transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden">
       
       {/* Decorative top accent line */}
       <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-brand-600 via-emerald-400 to-crimson-500 opacity-80 group-hover:opacity-100 transition-opacity"></div>
 
       {/* Avatar Container */}
       <div className="relative mt-2 mb-5">
-        <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden ring-4 ring-emerald-50 ring-offset-2 ring-offset-white shadow-md group-hover:scale-105 transition-transform duration-300">
+        <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden ring-4 ring-emerald-50 dark:ring-slate-800 ring-offset-2 ring-offset-white dark:ring-offset-slate-900 shadow-md group-hover:scale-105 transition-transform duration-300">
           <img
             src={member.photo}
             alt={lang === 'bn' ? member.nameBn : member.nameEn}
@@ -22,48 +22,48 @@ export const CommitteeCard = ({ member }) => {
         </div>
         
         {/* Upazila Badge on Avatar */}
-        <span className="absolute -bottom-2 inset-x-0 mx-auto w-max px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-900 text-white shadow-sm flex items-center gap-1">
+        <span className="absolute -bottom-2 inset-x-0 mx-auto w-max px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-900 dark:bg-slate-800 text-white shadow-sm flex items-center gap-1 border border-slate-700/50">
           <MapPin className="w-2.5 h-2.5 text-brand-400" />
           <span>{lang === 'bn' ? member.upazilaBn : member.upazilaEn}</span>
         </span>
       </div>
 
       {/* Name */}
-      <h3 className="text-lg font-bold text-slate-900 group-hover:text-brand-700 transition-colors">
+      <h3 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
         {lang === 'bn' ? member.nameBn : member.nameEn}
       </h3>
 
       {/* Position Badge */}
       <div className="mt-2 mb-3">
-        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-brand-50 text-brand-800 border border-brand-200/80">
-          <Award className="w-3.5 h-3.5 text-brand-600" />
+        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-brand-50 dark:bg-emerald-950/60 text-brand-800 dark:text-emerald-300 border border-brand-200/80 dark:border-emerald-800/60">
+          <Award className="w-3.5 h-3.5 text-brand-600 dark:text-brand-400" />
           <span>{lang === 'bn' ? member.roleBn : member.roleEn}</span>
         </span>
       </div>
 
       {/* Department & Batch */}
-      <div className="space-y-1 text-xs text-slate-500 mb-5">
-        <p className="font-medium text-slate-700">
+      <div className="space-y-1 text-xs text-slate-500 dark:text-slate-400 mb-5">
+        <p className="font-medium text-slate-700 dark:text-slate-300">
           {lang === 'bn' ? member.deptBn : member.deptEn}
         </p>
-        <p className="flex items-center justify-center gap-1 text-slate-400">
+        <p className="flex items-center justify-center gap-1 text-slate-400 dark:text-slate-500">
           <GraduationCap className="w-3.5 h-3.5" />
           <span>{member.batch}</span>
         </p>
       </div>
 
       {/* Contact Links */}
-      <div className="mt-auto pt-4 border-t border-slate-100 w-full flex items-center justify-center gap-3 text-slate-400">
+      <div className="mt-auto pt-4 border-t border-slate-100 dark:border-slate-800 w-full flex items-center justify-center gap-3 text-slate-400 dark:text-slate-500">
         <a
           href={`mailto:${member.email}`}
-          className="p-2 rounded-lg hover:bg-emerald-50 hover:text-brand-600 transition-colors"
+          className="p-2 rounded-lg hover:bg-emerald-50 dark:hover:bg-slate-800 hover:text-brand-600 dark:hover:text-emerald-400 transition-colors"
           title="Send email"
         >
           <Mail className="w-4 h-4" />
         </a>
         <a
           href={`tel:${member.phone}`}
-          className="p-2 rounded-lg hover:bg-emerald-50 hover:text-brand-600 transition-colors"
+          className="p-2 rounded-lg hover:bg-emerald-50 dark:hover:bg-slate-800 hover:text-brand-600 dark:hover:text-emerald-400 transition-colors"
           title="Call member"
         >
           <Phone className="w-4 h-4" />

@@ -6,7 +6,9 @@ import { NoticeTicker } from '../components/home/NoticeTicker';
 import { AboutPreview } from '../components/home/AboutPreview';
 import { ActivityGrid } from '../components/home/ActivityGrid';
 import { UpazilaHighlight } from '../components/home/UpazilaHighlight';
+import { FunCultureSection } from '../components/home/FunCultureSection';
 import { LatestEvents } from '../components/home/LatestEvents';
+import { HomeFaqSection } from '../components/home/HomeFaqSection';
 import { SectionHeader } from '../components/common/SectionHeader';
 import { NoticeCard } from '../components/notices/NoticeCard';
 import { Modal } from '../components/common/Modal';
@@ -76,29 +78,32 @@ export const HomePage = () => {
         </div>
       </section>
 
+      {/* Fun & Local Culture Section */}
+      <FunCultureSection />
+
       {/* Upcoming Events Section */}
       <LatestEvents />
 
       {/* Notice Board Preview Section */}
-      <section className="py-20 bg-white relative">
+      <section className="py-20 bg-white dark:bg-slate-900 relative transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
             <div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase mb-2 bg-crimson-100 text-crimson-800 border border-crimson-300">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase mb-2 bg-crimson-100 dark:bg-rose-950/70 text-crimson-800 dark:text-rose-300 border border-crimson-300 dark:border-rose-800/60">
                 <Bell className="w-3.5 h-3.5" />
                 <span>{t('notices.badge')}</span>
               </div>
-              <h2 className="text-2xl sm:text-3xl font-black text-slate-900">
+              <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">
                 {t('notices.title')}
               </h2>
-              <p className="text-sm text-slate-600 mt-1">
+              <p className="text-sm text-slate-600 dark:text-slate-300 mt-1">
                 {t('notices.subtitle')}
               </p>
             </div>
 
             <Link
               to="/notices"
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-700 hover:text-brand-900 bg-brand-50 hover:bg-brand-100 px-4 py-2.5 rounded-xl border border-brand-200 transition-colors shrink-0"
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-700 dark:text-emerald-400 hover:text-brand-900 dark:hover:text-emerald-300 bg-brand-50 dark:bg-emerald-950/60 hover:bg-brand-100 dark:hover:bg-emerald-900/80 px-4 py-2.5 rounded-xl border border-brand-200 dark:border-emerald-800/80 transition-colors shrink-0"
             >
               <span>{lang === 'bn' ? 'সকল নোটিশ দেখুন' : 'All Announcements'}</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -169,6 +174,9 @@ export const HomePage = () => {
         </div>
       </section>
 
+      {/* Home FAQ Section */}
+      <HomeFaqSection />
+
       {/* Join Community CTA Banner */}
       <section className="py-16 bg-gradient-to-r from-brand-800 via-emerald-900 to-brand-950 text-white relative overflow-hidden">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center space-y-6">
@@ -215,9 +223,9 @@ export const HomePage = () => {
         title={selectedNotice ? (lang === 'bn' ? selectedNotice.titleBn : selectedNotice.titleEn) : ''}
       >
         {selectedNotice && (
-          <div className="space-y-4 text-slate-700">
-            <div className="flex items-center justify-between text-xs text-slate-400 pb-2 border-b border-slate-100">
-              <span className="font-bold text-brand-700">
+          <div className="space-y-4 text-slate-700 dark:text-slate-200">
+            <div className="flex items-center justify-between text-xs text-slate-400 dark:text-slate-500 pb-2 border-b border-slate-100 dark:border-slate-800">
+              <span className="font-bold text-brand-700 dark:text-emerald-400">
                 {lang === 'bn' ? selectedNotice.categoryBn : selectedNotice.categoryEn}
               </span>
               <span>
@@ -225,11 +233,11 @@ export const HomePage = () => {
               </span>
             </div>
 
-            <p className="text-sm font-semibold text-slate-900 leading-relaxed">
+            <p className="text-sm font-semibold text-slate-900 dark:text-white leading-relaxed">
               {lang === 'bn' ? selectedNotice.descBn : selectedNotice.descEn}
             </p>
 
-            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80 text-sm leading-relaxed text-slate-700 whitespace-pre-line">
+            <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700 text-sm leading-relaxed text-slate-700 dark:text-slate-200 whitespace-pre-line">
               {lang === 'bn' ? selectedNotice.contentBn : selectedNotice.contentEn}
             </div>
 
@@ -237,7 +245,7 @@ export const HomePage = () => {
               <button
                 type="button"
                 onClick={() => setSelectedNotice(null)}
-                className="px-5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-xs font-bold text-slate-700 transition-colors"
+                className="px-5 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-bold text-slate-700 dark:text-slate-200 transition-colors"
               >
                 {t('notices.close')}
               </button>

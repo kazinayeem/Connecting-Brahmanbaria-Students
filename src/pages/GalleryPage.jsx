@@ -8,7 +8,7 @@ export const GalleryPage = () => {
   const { t, lang } = useLanguage();
 
   return (
-    <div className="py-12 sm:py-16 bg-slate-50 min-h-screen">
+    <div className="py-12 sm:py-16 bg-slate-50 dark:bg-slate-950 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         
         {/* Header */}
@@ -19,12 +19,12 @@ export const GalleryPage = () => {
         />
 
         {/* Placeholder disclaimer notice */}
-        <div className="p-4 rounded-2xl bg-white border border-slate-200/90 flex items-start gap-3 max-w-2xl mx-auto text-xs text-slate-600 shadow-xs">
-          <Info className="w-4 h-4 text-brand-600 shrink-0 mt-0.5" />
+        <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 flex items-start gap-3 max-w-2xl mx-auto text-xs text-slate-600 dark:text-slate-300 shadow-xs">
+          <Info className="w-4 h-4 text-brand-600 dark:text-brand-400 shrink-0 mt-0.5" />
           <p>
             {lang === 'bn'
-              ? 'বর্তমানে ডেমো/প্লেসহোল্ডার আলোকচিত্র ব্যবহার করা হয়েছে। অ্যাসোসিয়েশনের অফিশিয়াল ইভেন্টের মূল ছবি শিগগিরই সংযুক্ত করা হবে।'
-              : 'Demonstration photo placeholders are currently displayed. Official event photos from BSA-DIU gatherings will be curated and updated.'}
+              ? 'এখানে ডেমো ছবি দেওয়া হয়েছে। অ্যাসোসিয়েশনের আসল ইভেন্টের ছবিগুলো শিগগিরই যুক্ত করা হবে।'
+              : 'Demonstration photo placeholders are currently displayed. Official event photos from BSA-DIU gatherings will be updated soon.'}
           </p>
         </div>
 

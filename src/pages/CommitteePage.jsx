@@ -23,7 +23,7 @@ export const CommitteePage = () => {
   ];
 
   return (
-    <div className="py-12 sm:py-16 bg-slate-50 min-h-screen">
+    <div className="py-12 sm:py-16 bg-slate-50 dark:bg-slate-950 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         
         {/* Header */}
@@ -34,16 +34,16 @@ export const CommitteePage = () => {
         />
 
         {/* Notice Info Box: Sample Data Alert */}
-        <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200/80 flex items-start gap-3 max-w-2xl mx-auto text-xs text-emerald-900">
-          <Info className="w-4 h-4 text-brand-600 shrink-0 mt-0.5" />
+        <div className="p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200/80 dark:border-emerald-800/60 flex items-start gap-3 max-w-2xl mx-auto text-xs text-emerald-900 dark:text-emerald-300">
+          <Info className="w-4 h-4 text-brand-600 dark:text-brand-400 shrink-0 mt-0.5" />
           <div>
             <p className="font-bold mb-0.5">
-              {lang === 'bn' ? 'কার্যকরী পরিষদের তথ্য সম্পর্কিত বিজ্ঞপ্তি:' : 'Executive Committee Information Notice:'}
+              {lang === 'bn' ? 'কমিটি সংক্রান্ত তথ্য:' : 'Executive Committee Notice:'}
             </p>
-            <p className="text-slate-600">
+            <p className="text-slate-600 dark:text-slate-300">
               {lang === 'bn'
-                ? 'বর্তমান প্রদর্শিত তথ্যগুলো নির্দেশনামূলক নমুনা ডেটা। প্রকৃত কমিটি অনুমোদনের পর তথ্য সহজেই ডাটাবেজে হালনাগাদ করা সম্ভব।'
-                : 'The details displayed here are representative sample placeholders. Official committee member details can be updated directly via the dataset.'}
+                ? 'এখানে দেওয়া তথ্যগুলো ডেমো বা নমুনা হিসেবে রয়েছে। অফিশিয়াল কমিটি চূড়ান্ত হলে আসল তথ্য যুক্ত করা হবে।'
+                : 'The details displayed here are representative samples. Official committee member details will be updated soon.'}
             </p>
           </div>
         </div>
@@ -57,8 +57,8 @@ export const CommitteePage = () => {
               onClick={() => setSelectedRole(filter.key)}
               className={`px-4 py-2 rounded-full text-xs font-bold transition-all duration-200 ${
                 selectedRole === filter.key
-                  ? 'bg-brand-700 text-white shadow-md'
-                  : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
+                  ? 'bg-brand-700 dark:bg-brand-600 text-white shadow-md'
+                  : 'bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800'
               }`}
             >
               {lang === 'bn' ? filter.labelBn : filter.labelEn}

@@ -30,7 +30,7 @@ export const ActivityGrid = () => {
   const pillars = t('activities.pillars') || [];
 
   return (
-    <section className="py-20 bg-white relative">
+    <section className="py-20 bg-white dark:bg-slate-950 relative transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <SectionHeader
@@ -47,7 +47,7 @@ export const ActivityGrid = () => {
             return (
               <div
                 key={pillar.id}
-                className="group rounded-3xl p-7 bg-slate-50/70 border border-slate-200/80 hover:border-brand-500/50 hover:bg-white hover:shadow-soft-lg transition-all duration-300 flex flex-col justify-between"
+                className="group rounded-3xl p-7 bg-slate-50/70 dark:bg-slate-900/80 border border-slate-200/80 dark:border-slate-800 hover:border-brand-500/50 dark:hover:border-emerald-500/50 hover:bg-white dark:hover:bg-slate-900 hover:shadow-soft-lg transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
                   {/* Icon Header */}
@@ -55,29 +55,29 @@ export const ActivityGrid = () => {
                     <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${style.split(' ')[0]} ${style.split(' ')[1]} text-white flex items-center justify-center shadow-md group-hover:scale-110 transition-transform`}>
                       <Icon className="w-7 h-7" />
                     </div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 bg-white px-2.5 py-1 rounded-full border border-slate-200">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 bg-white dark:bg-slate-800 px-2.5 py-1 rounded-full border border-slate-200 dark:border-slate-700">
                       BSA Pillar
                     </span>
                   </div>
 
                   {/* Title & Subtitle */}
-                  <h3 className="text-xl font-bold text-slate-900 group-hover:text-brand-700 transition-colors">
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-brand-700 dark:group-hover:text-emerald-400 transition-colors">
                     {pillar.title}
                   </h3>
-                  <p className="text-xs font-semibold text-slate-500 mb-3">
+                  <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-3">
                     {pillar.subtitle}
                   </p>
 
                   {/* Description */}
-                  <p className="text-sm text-slate-600 leading-relaxed mb-6">
+                  <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
                     {pillar.desc}
                   </p>
 
                   {/* Bullet points */}
-                  <ul className="space-y-2 border-t border-slate-200/60 pt-4 mb-6">
+                  <ul className="space-y-2 border-t border-slate-200/60 dark:border-slate-800 pt-4 mb-6">
                     {pillar.features && pillar.features.map((feat, idx) => (
-                      <li key={idx} className="flex items-center gap-2 text-xs text-slate-700">
-                        <CheckCircle className="w-3.5 h-3.5 text-brand-600 shrink-0" />
+                      <li key={idx} className="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300">
+                        <CheckCircle className="w-3.5 h-3.5 text-brand-600 dark:text-emerald-400 shrink-0" />
                         <span>{feat}</span>
                       </li>
                     ))}
@@ -87,7 +87,7 @@ export const ActivityGrid = () => {
                 {/* Footer Link */}
                 <Link
                   to="/activities"
-                  className="inline-flex items-center justify-between w-full pt-3 text-xs font-bold text-brand-700 group-hover:text-brand-800 border-t border-slate-200/60"
+                  className="inline-flex items-center justify-between w-full pt-3 text-xs font-bold text-brand-700 dark:text-emerald-400 group-hover:text-brand-800 dark:group-hover:text-emerald-300 border-t border-slate-200/60 dark:border-slate-800"
                 >
                   <span>{lang === 'bn' ? 'কার্যক্রমের বিস্তারিত' : 'Learn more about this pillar'}</span>
                   <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />

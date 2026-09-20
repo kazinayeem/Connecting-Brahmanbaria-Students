@@ -94,7 +94,7 @@ export const BrahmanbariaToDiuPipeline = () => {
           to="/join"
           className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3 rounded-xl bg-gradient-to-r from-crimson-600 to-rose-600 hover:from-crimson-500 hover:to-rose-500 text-white font-bold text-sm shadow-md transition-all"
         >
-          <span>{lang === 'bn' ? 'আমাদের পরিবারে যুক্ত হোন' : 'Join Our Community Family'}</span>
+          <span>{lang === 'bn' ? 'আমাদের সাথে যোগ দিন' : 'Join Our Community Family'}</span>
           <ArrowRight className="w-4 h-4" />
         </Link>
         <Link

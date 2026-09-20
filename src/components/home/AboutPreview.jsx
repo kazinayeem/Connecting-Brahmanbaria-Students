@@ -38,7 +38,7 @@ export const AboutPreview = () => {
   ];
 
   return (
-    <section className="py-20 bg-white relative overflow-hidden">
+    <section className="py-20 bg-white dark:bg-slate-900 relative overflow-hidden transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <SectionHeader
@@ -54,22 +54,22 @@ export const AboutPreview = () => {
             return (
               <div 
                 key={idx}
-                className="group relative rounded-2xl p-6 bg-slate-50 border border-slate-200/80 hover:border-brand-500/50 hover:bg-white hover:shadow-soft-lg transition-all duration-300 flex flex-col justify-between"
+                className="group relative rounded-2xl p-6 bg-slate-50 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 hover:border-brand-500/50 dark:hover:border-emerald-500/50 hover:bg-white dark:hover:bg-slate-800 hover:shadow-soft-lg transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
                   <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${card.color} text-white flex items-center justify-center shadow-md mb-5 group-hover:scale-110 transition-transform`}>
                     <Icon className="w-6 h-6" />
                   </div>
-                  <h3 className="text-lg font-bold text-slate-900 mb-2.5 group-hover:text-brand-700 transition-colors">
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2.5 group-hover:text-brand-700 dark:group-hover:text-emerald-400 transition-colors">
                     {card.title}
                   </h3>
-                  <p className="text-sm text-slate-600 leading-relaxed line-clamp-4">
+                  <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed line-clamp-4">
                     {card.desc}
                   </p>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-slate-200/60 flex items-center text-xs font-semibold text-brand-700 group-hover:text-brand-800">
-                  <span>{lang === 'bn' ? 'বিস্তারিত পড়ুন' : 'Read details'}</span>
+                <div className="mt-6 pt-4 border-t border-slate-200/60 dark:border-slate-700/60 flex items-center text-xs font-semibold text-brand-700 dark:text-emerald-400 group-hover:text-brand-800 dark:group-hover:text-emerald-300">
+                  <span>{lang === 'bn' ? 'বিস্তারিত দেখুন' : 'Read details'}</span>
                   <ArrowRight className="w-3.5 h-3.5 ml-1 transform group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>

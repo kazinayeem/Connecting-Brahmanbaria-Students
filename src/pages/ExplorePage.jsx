@@ -58,7 +58,10 @@ export const ExplorePage = () => {
     return placesData.filter(p => 
       matchesText(p.nameBn) || matchesText(p.nameEn) ||
       matchesText(p.upazilaBn) || matchesText(p.upazilaEn) ||
-      matchesText(p.historyBn) || matchesText(p.historyEn)
+      matchesText(p.upazila) ||
+      matchesText(p.descriptionBn) || matchesText(p.descriptionEn) ||
+      matchesText(p.locationBn) || matchesText(p.locationEn) ||
+      matchesText(p.howToReachBn) || matchesText(p.howToReachEn)
     );
   }, [q]);
 
@@ -116,7 +119,7 @@ export const ExplorePage = () => {
   };
 
   return (
-    <div className="py-12 sm:py-16 bg-slate-50 min-h-screen space-y-16">
+    <div className="py-12 sm:py-16 bg-slate-50 dark:bg-slate-950 min-h-screen space-y-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         
         {/* Page Header */}
@@ -138,10 +141,10 @@ export const ExplorePage = () => {
         {/* 4. Omni-Search & Category Filters */}
         <div className="space-y-8">
           <div className="text-center max-w-xl mx-auto">
-            <h3 className="text-2xl sm:text-3xl font-black text-slate-900">
+            <h3 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">
               {lang === 'bn' ? 'ব্রাহ্মণবাড়িয়া তথ্য ভান্ডার অনুসন্ধান' : 'Search Brahmanbaria Compendium'}
             </h3>
-            <p className="text-xs sm:text-sm text-slate-500 mt-1">
+            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
               {lang === 'bn' ? 'খাবার, স্থান, নদী, বিখ্যাত ব্যক্তিত্ব বা ঐতিহ্য সহজেই খুঁজুন' : 'Explore any topic, food, landmark, river, or icon'}
             </p>
           </div>
@@ -160,12 +163,12 @@ export const ExplorePage = () => {
           {/* Tab: All or Upazilas */}
           {(activeTab === 'all' || activeTab === 'upazilas') && filteredUpazilas.length > 0 && (
             <div className="space-y-6 pt-4">
-              <div className="flex items-center justify-between border-b border-slate-200 pb-3">
-                <h4 className="text-xl font-black text-slate-900 flex items-center gap-2">
-                  <Compass className="w-5 h-5 text-brand-600" />
+              <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+                <h4 className="text-xl font-black text-slate-900 dark:text-white flex items-center gap-2">
+                  <Compass className="w-5 h-5 text-brand-600 dark:text-brand-400" />
                   <span>{lang === 'bn' ? 'ব্রাহ্মণবাড়িয়ার ৯টি উপজেলা' : 'The 9 Upazilas'}</span>
                 </h4>
-                <span className="text-xs font-bold text-brand-700 bg-brand-50 px-2.5 py-1 rounded-lg">
+                <span className="text-xs font-bold text-brand-700 dark:text-emerald-300 bg-brand-50 dark:bg-emerald-950/60 px-2.5 py-1 rounded-lg">
                   {filteredUpazilas.length} {lang === 'bn' ? 'উপজেলা' : 'Upazilas'}
                 </span>
               </div>
@@ -176,30 +179,30 @@ export const ExplorePage = () => {
           {/* Tab: All or Areas */}
           {(activeTab === 'all' || activeTab === 'areas') && filteredAreas.length > 0 && (
             <div className="space-y-6 pt-6">
-              <div className="flex items-center justify-between border-b border-slate-200 pb-3">
-                <h4 className="text-xl font-black text-slate-900 flex items-center gap-2">
-                  <MapPin className="w-5 h-5 text-crimson-600" />
+              <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+                <h4 className="text-xl font-black text-slate-900 dark:text-white flex items-center gap-2">
+                  <MapPin className="w-5 h-5 text-crimson-600 dark:text-rose-400" />
                   <span>{lang === 'bn' ? 'জনপ্রিয় এলাকা, শহর ও বাণিজ্যিক মোকাম' : 'Popular Areas, Towns & Trading Centers'}</span>
                 </h4>
-                <span className="text-xs font-bold text-slate-600 bg-slate-100 px-2.5 py-1 rounded-lg">
+                <span className="text-xs font-bold text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded-lg">
                   {filteredAreas.length} {lang === 'bn' ? 'এলাকা' : 'Areas'}
                 </span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredAreas.map((area) => (
-                  <div key={area.id} className="p-6 rounded-3xl bg-white border border-slate-200/90 shadow-soft hover:shadow-soft-lg transition-all space-y-3">
+                  <div key={area.id} className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-soft hover:shadow-soft-lg transition-all space-y-3">
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-bold text-brand-800 bg-brand-50 px-2.5 py-1 rounded-lg">
+                      <span className="text-xs font-bold text-brand-800 dark:text-emerald-300 bg-brand-50 dark:bg-emerald-950/60 px-2.5 py-1 rounded-lg">
                         {lang === 'bn' ? area.upazilaBn : area.upazilaEn}
                       </span>
                     </div>
-                    <h5 className="text-lg font-bold text-slate-900">{lang === 'bn' ? area.nameBn : area.nameEn}</h5>
-                    <p className="text-xs text-slate-600 leading-relaxed">{lang === 'bn' ? area.whyKnownBn : area.whyKnownEn}</p>
-                    <div className="pt-2 border-t border-slate-100 text-xs text-slate-500">
+                    <h5 className="text-lg font-bold text-slate-900 dark:text-white">{lang === 'bn' ? area.nameBn : area.nameEn}</h5>
+                    <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">{lang === 'bn' ? area.whyKnownBn : area.whyKnownEn}</p>
+                    <div className="pt-2 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400">
                       <strong>{lang === 'bn' ? 'আশপাশের স্থান:' : 'Nearby Places:'}</strong> {lang === 'bn' ? area.nearbyPlacesBn : area.nearbyPlacesEn}
                     </div>
-                    <div className="text-[10px] text-slate-400 italic pt-1">
+                    <div className="text-[10px] text-slate-400 dark:text-slate-500 italic pt-1">
                       {t('explore.verifiedSource')} {area.source}
                     </div>
                   </div>
@@ -211,12 +214,12 @@ export const ExplorePage = () => {
           {/* Tab: All or Places */}
           {(activeTab === 'all' || activeTab === 'places') && filteredPlaces.length > 0 && (
             <div className="space-y-6 pt-6">
-              <div className="flex items-center justify-between border-b border-slate-200 pb-3">
-                <h4 className="text-xl font-black text-slate-900 flex items-center gap-2">
-                  <Compass className="w-5 h-5 text-emerald-600" />
+              <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+                <h4 className="text-xl font-black text-slate-900 dark:text-white flex items-center gap-2">
+                  <Compass className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
                   <span>{lang === 'bn' ? 'ঐতিহাসিক ও দর্শনীয় স্থান' : 'Verified Places to Visit'}</span>
                 </h4>
-                <span className="text-xs font-bold text-brand-700 bg-brand-50 px-2.5 py-1 rounded-lg">
+                <span className="text-xs font-bold text-brand-700 dark:text-emerald-300 bg-brand-50 dark:bg-emerald-950/60 px-2.5 py-1 rounded-lg">
                   {filteredPlaces.length} {lang === 'bn' ? 'টি স্থান' : 'Places'}
                 </span>
               </div>
@@ -227,9 +230,9 @@ export const ExplorePage = () => {
           {/* Tab: All or Foods or Products */}
           {(activeTab === 'all' || activeTab === 'foods' || activeTab === 'products') && (filteredFoods.length > 0 || filteredProducts.length > 0) && (
             <div className="space-y-6 pt-6">
-              <div className="flex items-center justify-between border-b border-slate-200 pb-3">
-                <h4 className="text-xl font-black text-slate-900 flex items-center gap-2">
-                  <MapPin className="w-5 h-5 text-crimson-600" />
+              <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+                <h4 className="text-xl font-black text-slate-900 dark:text-white flex items-center gap-2">
+                  <MapPin className="w-5 h-5 text-crimson-600 dark:text-rose-400" />
                   <span>{lang === 'bn' ? 'বিখ্যাত খাবার ও ঐতিহ্যবাহী পণ্য' : 'Famous Foods & Regional Products'}</span>
                 </h4>
               </div>
@@ -240,12 +243,12 @@ export const ExplorePage = () => {
           {/* Tab: All or Rivers */}
           {(activeTab === 'all' || activeTab === 'rivers') && filteredRivers.length > 0 && (
             <div className="space-y-6 pt-6">
-              <div className="flex items-center justify-between border-b border-slate-200 pb-3">
-                <h4 className="text-xl font-black text-slate-900 flex items-center gap-2">
-                  <Compass className="w-5 h-5 text-cyan-600" />
+              <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+                <h4 className="text-xl font-black text-slate-900 dark:text-white flex items-center gap-2">
+                  <Compass className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
                   <span>{lang === 'bn' ? 'ব্রাহ্মণবাড়িয়ার নদী ও জলপথ' : 'Rivers & Waterways'}</span>
                 </h4>
-                <span className="text-xs font-bold text-cyan-800 bg-cyan-50 px-2.5 py-1 rounded-lg">
+                <span className="text-xs font-bold text-cyan-800 dark:text-cyan-300 bg-cyan-50 dark:bg-cyan-950/60 px-2.5 py-1 rounded-lg">
                   {filteredRivers.length} {lang === 'bn' ? 'টি নদী' : 'Rivers'}
                 </span>
               </div>
@@ -256,12 +259,12 @@ export const ExplorePage = () => {
           {/* Tab: All or Notable */}
           {(activeTab === 'all' || activeTab === 'notable') && filteredNotable.length > 0 && (
             <div className="space-y-6 pt-6">
-              <div className="flex items-center justify-between border-b border-slate-200 pb-3">
-                <h4 className="text-xl font-black text-slate-900 flex items-center gap-2">
-                  <Compass className="w-5 h-5 text-amber-600" />
+              <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+                <h4 className="text-xl font-black text-slate-900 dark:text-white flex items-center gap-2">
+                  <Compass className="w-5 h-5 text-amber-600 dark:text-amber-400" />
                   <span>{lang === 'bn' ? 'ব্রাহ্মণবাড়িয়ার পরিচিত মানুষ ও ব্যক্তিত্ব' : 'Notable People from Brahmanbaria'}</span>
                 </h4>
-                <span className="text-xs font-bold text-amber-800 bg-amber-50 px-2.5 py-1 rounded-lg">
+                <span className="text-xs font-bold text-amber-800 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/60 px-2.5 py-1 rounded-lg">
                   {filteredNotable.length} {lang === 'bn' ? 'জন' : 'Icons'}
                 </span>
               </div>
@@ -272,9 +275,9 @@ export const ExplorePage = () => {
           {/* Tab: All or Culture */}
           {(activeTab === 'all' || activeTab === 'culture') && filteredCulture.length > 0 && (
             <div className="space-y-6 pt-6">
-              <div className="flex items-center justify-between border-b border-slate-200 pb-3">
-                <h4 className="text-xl font-black text-slate-900 flex items-center gap-2">
-                  <Compass className="w-5 h-5 text-purple-600" />
+              <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+                <h4 className="text-xl font-black text-slate-900 dark:text-white flex items-center gap-2">
+                  <Compass className="w-5 h-5 text-purple-600 dark:text-purple-400" />
                   <span>{lang === 'bn' ? 'লোকসংস্কৃতি ও ঐতিহ্যের ধারা' : 'Culture & Folk Traditions'}</span>
                 </h4>
               </div>
@@ -284,16 +287,16 @@ export const ExplorePage = () => {
 
           {/* Empty search state */}
           {totalResults === 0 && (
-            <div className="text-center py-12 bg-white rounded-3xl border border-slate-200 p-8 max-w-md mx-auto space-y-3">
+            <div className="text-center py-12 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-8 max-w-md mx-auto space-y-3">
               <Search className="w-8 h-8 text-slate-400 mx-auto" />
-              <h5 className="font-bold text-slate-800">{lang === 'bn' ? 'কোনো ফলাফল পাওয়া যায়নি' : 'No Results Found'}</h5>
-              <p className="text-xs text-slate-500">
+              <h5 className="font-bold text-slate-800 dark:text-white">{lang === 'bn' ? 'কোনো ফলাফল পাওয়া যায়নি' : 'No Results Found'}</h5>
+              <p className="text-xs text-slate-500 dark:text-slate-400">
                 {lang === 'bn' ? 'বানান যাচাই করে অথবা ভিন্ন শব্দ দিয়ে পুনরায় অনুসন্ধান করুন।' : 'Try adjusting your search terms or resetting filters.'}
               </p>
               <button
                 type="button"
                 onClick={handleReset}
-                className="px-4 py-2 rounded-xl text-xs font-bold text-brand-700 bg-brand-50 hover:bg-brand-100 transition-colors"
+                className="px-4 py-2 rounded-xl text-xs font-bold text-brand-700 dark:text-emerald-300 bg-brand-50 dark:bg-emerald-950/60 hover:bg-brand-100 dark:hover:bg-emerald-900/60 transition-colors"
               >
                 {lang === 'bn' ? 'অনুসন্ধান রিসেট করুন' : 'Reset Search'}
               </button>

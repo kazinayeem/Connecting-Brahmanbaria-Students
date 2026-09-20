@@ -6,10 +6,10 @@ export const EventCard = ({ event, onRegister, onViewDetails }) => {
   const { lang, t } = useLanguage();
 
   return (
-    <div className="group rounded-3xl overflow-hidden bg-white border border-slate-200/80 hover:border-brand-500/50 shadow-soft hover:shadow-soft-lg transition-all duration-300 flex flex-col justify-between">
+    <div className="group rounded-3xl overflow-hidden bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 hover:border-brand-500/50 dark:hover:border-emerald-500/50 shadow-soft hover:shadow-soft-lg transition-all duration-300 flex flex-col justify-between">
       
       {/* Event Image & Badges */}
-      <div className="relative h-48 sm:h-52 overflow-hidden bg-slate-100">
+      <div className="relative h-48 sm:h-52 overflow-hidden bg-slate-100 dark:bg-slate-800">
         <img
           src={event.image}
           alt={lang === 'bn' ? event.titleBn : event.titleEn}
@@ -31,7 +31,7 @@ export const EventCard = ({ event, onRegister, onViewDetails }) => {
               <span>{lang === 'bn' ? 'আসন্ন' : 'Upcoming'}</span>
             </span>
           ) : (
-            <span className="px-3 py-1 rounded-full text-xs font-bold text-slate-700 bg-slate-200">
+            <span className="px-3 py-1 rounded-full text-xs font-bold text-slate-700 dark:text-slate-300 bg-slate-200 dark:bg-slate-800">
               {lang === 'bn' ? 'সম্পন্ন' : 'Past'}
             </span>
           )}
@@ -42,15 +42,15 @@ export const EventCard = ({ event, onRegister, onViewDetails }) => {
       <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
         <div>
           {/* Title */}
-          <h3 className="text-lg sm:text-xl font-bold text-slate-900 group-hover:text-brand-700 transition-colors leading-snug">
-            {lang === 'bn' ? event.titleBn : event.titleEn}
+          <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white group-hover:text-brand-700 dark:group-hover:text-emerald-400 transition-colors leading-snug">
+            {event.titleBn}
           </h3>
 
           {/* Meta Info */}
-          <div className="mt-4 space-y-2 text-xs text-slate-600">
+          <div className="mt-4 space-y-2 text-xs text-slate-600 dark:text-slate-300">
             <div className="flex items-center gap-2">
-              <Calendar className="w-4 h-4 text-brand-600 shrink-0" />
-              <span className="font-semibold text-slate-800">
+              <Calendar className="w-4 h-4 text-brand-600 dark:text-emerald-400 shrink-0" />
+              <span className="font-semibold text-slate-800 dark:text-slate-200">
                 {lang === 'bn' ? event.dateBn : event.dateEn}
               </span>
             </div>
@@ -61,20 +61,20 @@ export const EventCard = ({ event, onRegister, onViewDetails }) => {
             </div>
 
             <div className="flex items-start gap-2">
-              <MapPin className="w-4 h-4 text-crimson-600 shrink-0 mt-0.5" />
+              <MapPin className="w-4 h-4 text-crimson-600 dark:text-rose-400 shrink-0 mt-0.5" />
               <span className="line-clamp-1">{lang === 'bn' ? event.locationBn : event.locationEn}</span>
             </div>
           </div>
 
           {/* Description */}
-          <p className="mt-4 text-sm text-slate-600 leading-relaxed line-clamp-2">
+          <p className="mt-4 text-sm text-slate-600 dark:text-slate-300 leading-relaxed line-clamp-2">
             {lang === 'bn' ? event.descBn : event.descEn}
           </p>
         </div>
 
         {/* Footer Actions */}
-        <div className="pt-4 border-t border-slate-100 flex items-center justify-between gap-3">
-          <div className="text-xs text-slate-500 flex items-center gap-1">
+        <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-3">
+          <div className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1">
             <Users className="w-3.5 h-3.5 text-slate-400" />
             <span>
               {event.registeredCount}/{event.totalSeats} {lang === 'bn' ? 'নিবন্ধিত' : 'Registered'}
@@ -91,7 +91,7 @@ export const EventCard = ({ event, onRegister, onViewDetails }) => {
               <span>{t('events.registerBtn')}</span>
             </button>
           ) : (
-            <span className="text-xs font-semibold text-slate-400 bg-slate-100 px-3 py-1.5 rounded-lg">
+            <span className="text-xs font-semibold text-slate-400 bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-lg">
               {lang === 'bn' ? 'রেজিস্ট্রেশন সমাপ্ত' : 'Registration Closed'}
             </span>
           )}

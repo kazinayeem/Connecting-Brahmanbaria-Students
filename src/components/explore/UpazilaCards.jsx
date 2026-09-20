@@ -16,7 +16,7 @@ export const UpazilaCards = ({ upazilas }) => {
         {upazilas.map((u) => (
           <div
             key={u.id}
-            className="group rounded-3xl overflow-hidden bg-white border border-slate-200/90 hover:border-brand-500/50 shadow-soft hover:shadow-soft-lg transition-all duration-300 flex flex-col justify-between"
+            className="group rounded-3xl overflow-hidden bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 hover:border-brand-500/50 dark:hover:border-brand-500/50 shadow-soft hover:shadow-soft-lg transition-all duration-300 flex flex-col justify-between"
           >
             {/* Image Header */}
             <div className="relative h-52 overflow-hidden bg-slate-900">
@@ -45,21 +45,21 @@ export const UpazilaCards = ({ upazilas }) => {
 
             {/* Card Body */}
             <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed line-clamp-3">
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed line-clamp-3">
                 {lang === 'bn' ? u.shortIntroBn : u.shortIntroEn}
               </p>
 
               {/* Highlights pills */}
-              <div className="space-y-2 pt-2 border-t border-slate-100 text-xs">
-                <div className="flex items-center gap-1.5 text-slate-700">
-                  <Utensils className="w-3.5 h-3.5 text-crimson-600 shrink-0" />
+              <div className="space-y-2 pt-2 border-t border-slate-100 dark:border-slate-800 text-xs">
+                <div className="flex items-center gap-1.5 text-slate-700 dark:text-slate-300">
+                  <Utensils className="w-3.5 h-3.5 text-crimson-600 dark:text-rose-400 shrink-0" />
                   <span className="truncate">
                     <strong>{lang === 'bn' ? 'খাবার:' : 'Food:'}</strong> {(lang === 'bn' ? u.famousFoodBn : u.famousFoodEn).slice(0, 2).join(', ')}
                   </span>
                 </div>
 
-                <div className="flex items-center gap-1.5 text-slate-700">
-                  <Bookmark className="w-3.5 h-3.5 text-brand-600 shrink-0" />
+                <div className="flex items-center gap-1.5 text-slate-700 dark:text-slate-300">
+                  <Bookmark className="w-3.5 h-3.5 text-brand-600 dark:text-brand-400 shrink-0" />
                   <span className="truncate">
                     <strong>{lang === 'bn' ? 'স্থান:' : 'Places:'}</strong> {(lang === 'bn' ? u.famousPlacesBn : u.famousPlacesEn).slice(0, 2).join(', ')}
                   </span>
@@ -67,11 +67,11 @@ export const UpazilaCards = ({ upazilas }) => {
               </div>
 
               {/* Action Button */}
-              <div className="pt-3 border-t border-slate-100">
+              <div className="pt-3 border-t border-slate-100 dark:border-slate-800">
                 <button
                   type="button"
                   onClick={() => setSelectedUpazila(u)}
-                  className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-bold text-brand-700 hover:text-white bg-brand-50 hover:bg-brand-700 transition-colors"
+                  className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-bold text-brand-700 dark:text-emerald-300 hover:text-white dark:hover:text-white bg-brand-50 dark:bg-emerald-950/60 hover:bg-brand-700 dark:hover:bg-brand-600 transition-colors"
                 >
                   <span>{t('explore.exploreAreaBtn')}</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -91,7 +91,7 @@ export const UpazilaCards = ({ upazilas }) => {
         maxWidth="max-w-3xl"
       >
         {selectedUpazila && (
-          <div className="space-y-6 text-slate-700 text-xs sm:text-sm">
+          <div className="space-y-6 text-slate-700 dark:text-slate-300 text-xs sm:text-sm">
             
             {/* Hero Image in Modal */}
             <div className="relative rounded-2xl overflow-hidden h-56 bg-slate-900">
@@ -108,55 +108,55 @@ export const UpazilaCards = ({ upazilas }) => {
             </div>
 
             {/* Intro */}
-            <p className="text-sm leading-relaxed p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <p className="text-sm leading-relaxed p-4 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
               {lang === 'bn' ? selectedUpazila.shortIntroBn : selectedUpazila.shortIntroEn}
             </p>
 
             {/* Details Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="p-4 rounded-xl bg-slate-50 border border-slate-100 space-y-1.5">
-                <h5 className="font-bold text-slate-900 text-xs flex items-center gap-1.5">
-                  <MapPin className="w-4 h-4 text-brand-600" />
+              <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/70 border border-slate-100 dark:border-slate-700 space-y-1.5">
+                <h5 className="font-bold text-slate-900 dark:text-white text-xs flex items-center gap-1.5">
+                  <MapPin className="w-4 h-4 text-brand-600 dark:text-brand-400" />
                   <span>{lang === 'bn' ? 'জনপ্রিয় এলাকা ও বাজার' : 'Popular Towns & Areas'}</span>
                 </h5>
-                <p className="text-xs text-slate-600 leading-relaxed">
+                <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
                   {(lang === 'bn' ? selectedUpazila.popularAreasBn : selectedUpazila.popularAreasEn).join(' • ')}
                 </p>
               </div>
 
-              <div className="p-4 rounded-xl bg-slate-50 border border-slate-100 space-y-1.5">
-                <h5 className="font-bold text-slate-900 text-xs flex items-center gap-1.5">
-                  <Utensils className="w-4 h-4 text-crimson-600" />
+              <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/70 border border-slate-100 dark:border-slate-700 space-y-1.5">
+                <h5 className="font-bold text-slate-900 dark:text-white text-xs flex items-center gap-1.5">
+                  <Utensils className="w-4 h-4 text-crimson-600 dark:text-rose-400" />
                   <span>{lang === 'bn' ? 'বিখ্যাত খাবার ও পণ্য' : 'Famous Food & Products'}</span>
                 </h5>
-                <p className="text-xs text-slate-600 leading-relaxed">
+                <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
                   {(lang === 'bn' ? selectedUpazila.famousFoodBn : selectedUpazila.famousFoodEn).join(' • ')}
                 </p>
               </div>
 
-              <div className="p-4 rounded-xl bg-slate-50 border border-slate-100 space-y-1.5">
-                <h5 className="font-bold text-slate-900 text-xs flex items-center gap-1.5">
-                  <Bookmark className="w-4 h-4 text-emerald-600" />
+              <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/70 border border-slate-100 dark:border-slate-700 space-y-1.5">
+                <h5 className="font-bold text-slate-900 dark:text-white text-xs flex items-center gap-1.5">
+                  <Bookmark className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                   <span>{lang === 'bn' ? 'দর্শনীয় ও পরিচিত স্থান' : 'Places of Interest'}</span>
                 </h5>
-                <p className="text-xs text-slate-600 leading-relaxed">
+                <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
                   {(lang === 'bn' ? selectedUpazila.famousPlacesBn : selectedUpazila.famousPlacesEn).join(' • ')}
                 </p>
               </div>
 
-              <div className="p-4 rounded-xl bg-slate-50 border border-slate-100 space-y-1.5">
-                <h5 className="font-bold text-slate-900 text-xs flex items-center gap-1.5">
-                  <Award className="w-4 h-4 text-amber-600" />
+              <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/70 border border-slate-100 dark:border-slate-700 space-y-1.5">
+                <h5 className="font-bold text-slate-900 dark:text-white text-xs flex items-center gap-1.5">
+                  <Award className="w-4 h-4 text-amber-600 dark:text-amber-400" />
                   <span>{lang === 'bn' ? 'সাংস্কৃতিক স্বকীয়তা' : 'Cultural Identity'}</span>
                 </h5>
-                <p className="text-xs text-slate-600 leading-relaxed">
+                <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
                   {lang === 'bn' ? selectedUpazila.culturalIdentityBn : selectedUpazila.culturalIdentityEn}
                 </p>
               </div>
             </div>
 
             {/* Source */}
-            <div className="text-[11px] text-slate-400 border-t border-slate-100 pt-3">
+            <div className="text-[11px] text-slate-400 dark:text-slate-500 border-t border-slate-100 dark:border-slate-800 pt-3">
               <strong>{t('explore.verifiedSource')}</strong> {lang === 'bn' ? selectedUpazila.source : selectedUpazila.sourceEn}
             </div>
 
@@ -164,7 +164,7 @@ export const UpazilaCards = ({ upazilas }) => {
               <button
                 type="button"
                 onClick={() => setSelectedUpazila(null)}
-                className="px-5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-xs font-bold text-slate-700 transition-colors"
+                className="px-5 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-bold text-slate-700 dark:text-slate-300 transition-colors"
               >
                 {t('notices.close')}
               </button>

@@ -18,16 +18,16 @@ export const GalleryGrid = ({ limit }) => {
   return (
     <div>
       {/* Category Filter Pills */}
-      <div className="flex flex-wrap items-center justify-center gap-2 mb-10">
+      <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 mb-8 sm:mb-10">
         {galleryCategories.map((cat) => (
           <button
             key={cat.id}
             type="button"
             onClick={() => setActiveCategory(cat.id)}
-            className={`px-4 py-2 rounded-full text-xs font-bold transition-all duration-200 ${
+            className={`px-3.5 sm:px-4 py-2 rounded-full text-xs font-bold transition-all duration-200 min-h-[40px] flex items-center justify-center ${
               activeCategory === cat.id
-                ? 'bg-brand-700 text-white shadow-md'
-                : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
+                ? 'bg-brand-700 dark:bg-brand-600 text-white shadow-md'
+                : 'bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800'
             }`}
           >
             {lang === 'bn' ? cat.nameBn : cat.nameEn}
@@ -36,17 +36,20 @@ export const GalleryGrid = ({ limit }) => {
       </div>
 
       {/* Responsive Gallery Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {displayPhotos.map((photo) => (
           <div
             key={photo.id}
             onClick={() => setSelectedPhoto(photo)}
-            className="group relative rounded-3xl overflow-hidden bg-slate-900 cursor-pointer shadow-soft hover:shadow-soft-lg transition-all duration-300 h-64 sm:h-72"
+            className="group relative rounded-3xl overflow-hidden bg-slate-900 cursor-pointer shadow-soft hover:shadow-soft-lg transition-all duration-300 h-56 xs:h-64 sm:h-72 border border-transparent dark:border-slate-800"
           >
             <img
               src={photo.image}
               alt={lang === 'bn' ? photo.titleBn : photo.titleEn}
               className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
+              loading="lazy"
+              width="600"
+              height="400"
             />
 
             {/* Gradient Overlay */}
@@ -92,15 +95,15 @@ export const GalleryGrid = ({ limit }) => {
               />
             </div>
 
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-slate-500 pt-2 border-t border-slate-100">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-slate-500 dark:text-slate-400 pt-2 border-t border-slate-100 dark:border-slate-800">
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-crimson-600" />
-                <span className="font-medium text-slate-700">
+                <span className="font-medium text-slate-700 dark:text-slate-300">
                   {lang === 'bn' ? selectedPhoto.locationBn : selectedPhoto.locationEn}
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <Calendar className="w-4 h-4 text-slate-400" />
+                <Calendar className="w-4 h-4 text-slate-400 dark:text-slate-500" />
                 <span>{selectedPhoto.date} • BSA-DIU Archive</span>
               </div>
             </div>

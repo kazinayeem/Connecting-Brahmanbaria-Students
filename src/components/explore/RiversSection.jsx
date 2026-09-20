@@ -12,7 +12,7 @@ export const RiversSection = () => {
         {riversData.map((river) => (
           <div
             key={river.id}
-            className="rounded-3xl overflow-hidden bg-white border border-slate-200/90 shadow-soft hover:shadow-soft-lg transition-all duration-300 flex flex-col sm:flex-row group"
+            className="rounded-3xl overflow-hidden bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-soft hover:shadow-soft-lg transition-all duration-300 flex flex-col sm:flex-row group"
           >
             {/* Image */}
             <div className="sm:w-2/5 relative h-56 sm:h-auto overflow-hidden bg-slate-900 shrink-0">
@@ -32,11 +32,11 @@ export const RiversSection = () => {
             {/* Content */}
             <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
               <div>
-                <h4 className="text-xl font-bold text-slate-900 group-hover:text-brand-700 transition-colors">
+                <h4 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
                   {lang === 'bn' ? river.nameBn : river.nameEn}
                 </h4>
 
-                <div className="flex items-start gap-1.5 text-xs text-slate-500 mt-2 mb-3">
+                <div className="flex items-start gap-1.5 text-xs text-slate-500 dark:text-slate-400 mt-2 mb-3">
                   <MapPin className="w-3.5 h-3.5 text-crimson-600 shrink-0 mt-0.5" />
                   <span>
                     <strong>{lang === 'bn' ? 'প্রবাহিত অঞ্চল:' : 'Course:'}</strong>{' '}
@@ -44,12 +44,12 @@ export const RiversSection = () => {
                   </span>
                 </div>
 
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                   {lang === 'bn' ? river.importanceBn : river.importanceEn}
                 </p>
               </div>
 
-              <div className="pt-3 border-t border-slate-100 text-[10px] text-slate-400 italic">
+              <div className="pt-3 border-t border-slate-100 dark:border-slate-800 text-[10px] text-slate-400 dark:text-slate-500 italic">
                 {t('explore.verifiedSource')} {river.source}
               </div>
             </div>

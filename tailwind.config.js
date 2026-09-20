@@ -1,10 +1,19 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    screens: {
+      'xs': '400px',
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1536px',
+    },
     extend: {
       colors: {
         brand: {
@@ -50,6 +59,10 @@ export default {
       animation: {
         'pulse-subtle': 'pulseSubtle 3s ease-in-out infinite',
         'float': 'float 6s ease-in-out infinite',
+        'fadeIn': 'fadeIn 0.25s ease-out forwards',
+        'fadeInUp': 'fadeInUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'scaleUp': 'scaleUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'slideDown': 'slideDown 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards',
       },
       keyframes: {
         pulseSubtle: {
@@ -59,6 +72,22 @@ export default {
         float: {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-6px)' },
+        },
+        fadeIn: {
+          'from': { opacity: '0' },
+          'to': { opacity: '1' },
+        },
+        fadeInUp: {
+          'from': { opacity: '0', transform: 'translateY(12px)' },
+          'to': { opacity: '1', transform: 'translateY(0)' },
+        },
+        scaleUp: {
+          'from': { opacity: '0', transform: 'scale(0.96)' },
+          'to': { opacity: '1', transform: 'scale(1)' },
+        },
+        slideDown: {
+          'from': { opacity: '0', transform: 'translateY(-10px)' },
+          'to': { opacity: '1', transform: 'translateY(0)' },
         }
       }
     },
